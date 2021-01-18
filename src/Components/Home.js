@@ -14,6 +14,7 @@ class Home extends Component {
       <div>
         <NavWeb />
         <center>
+          <h3>ברוכים הבאים לספורט10</h3>
         <Carousel style={{ marginTop:15,marginBottom:15 }}>
           <Carousel.Item>
             <img
