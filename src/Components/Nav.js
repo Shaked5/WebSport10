@@ -16,6 +16,7 @@ class NavWeb extends Component {
             <Nav.Link className="nav-div" href="/teams">קבוצות</Nav.Link>
             <Nav.Link className="nav-div" href="#pricing">טבלת ניקוד</Nav.Link>
             <Nav.Link className="nav-div" href="#pricing">חנות</Nav.Link>
+        
         </Navbar>
       </div>
     );
