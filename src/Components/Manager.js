@@ -9,6 +9,7 @@ import Teams from './Teams';
 class Manager extends Component {
     constructor(props) {
         super(props);
+        this.counter =5;
         this.state = { 
             teams:[
                 { id: 1,
@@ -44,13 +45,18 @@ class Manager extends Component {
                 ]
          }
     }
+
+    getTeamFromChild=(data)=>{
+    let newTeam={id:++this.counter,club:data.club,items:[],imgClub:data.imgClub,players:data.players}
+    this.setState({teams:[...this.state.teams,newTeam]})
+    }
  
     render() { 
          console.log(this.state.teams);
         return ( 
             <Switch>
                 <Route exact path="/" component={Home}></Route>
-                <Route path="/teams" render={()=> <Teams teams={this.state.teams}/>}></Route>
+                <Route path="/teams" render={()=> <Teams teams={this.state.teams} sendToParent={this.getTeamFromChild}/>}></Route>
                 <Route path="/table_rank"></Route>
                 <Route path="/store"></Route>
                 <Route path="/cart"></Route>
