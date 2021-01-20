@@ -12,7 +12,8 @@ class Teams extends Component {
       imgClub: "",
       players: [],
       playerName: "",
-      age: 0
+      age: 0,
+      teamsFromLocalstorage:JSON.parse(localStorage.getItem('teams'))
     }
   }
   setOpen = () => {
@@ -29,6 +30,7 @@ class Teams extends Component {
     this.props.sendToParent({ club: this.state.club, imgClub: this.state.imgClub, players: this.state.players })
   }
   render() {
+    console.log(this.state.teamsFromLocalstorage);
     console.log(this.state.club);
     console.log(this.state.age);
     console.log(this.state.players);
@@ -39,12 +41,18 @@ class Teams extends Component {
           <h1>קבוצות הליגה</h1>
         </center>
         <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
-          {this.props.teams.map((team, index) => {
-            return <div index={index} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
-              <img index={index} src={team.imgClub} alt="stam" width="300" height="200" />
-              <p> {team.club} </p>
+          {this.state.teamsFromLocalstorage&&this.state.teamsFromLocalstorage.map((team, index) => 
+              <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
+              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200" />
+              <p index={team.id}> {team.club} </p>
             </div>
-          })}
+          )}
+          {!this.state.teamsFromLocalstorage&&this.props.teams.map((team,index)=>
+              <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
+              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200" />
+              <p index={team.id}> {team.club} </p>
+              </div>
+          )}
         </div>
         <center>
           <Button onClick={this.setOpen}
