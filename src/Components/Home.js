@@ -59,12 +59,9 @@ class Home extends Component {
             <Card.Img variant="top" src={rokaviza} width='150px' height='130px' />
             <Card.Body>
               <Card.Title>לצד סון: רוקאביצה בין נבחרי העונה באסיה</Card.Title>
-              <center>
-                <Card.Text>
-                  <a href="https://www.sport5.co.il/articles.aspx?FolderID=64&docID=358566">לכתבה לחץ כאן</a>
-                </Card.Text>
-              </center>
-
+              <Card.Text>
+                <a href="https://www.sport5.co.il/articles.aspx?FolderID=64&docID=358566">לכתבה לחץ כאן</a>
+              </Card.Text>
             </Card.Body>
           </Card>
 
