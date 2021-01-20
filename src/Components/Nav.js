@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
-import './navweb.css';
+import '../CSSWeb/navweb.css';
 import iconNav from '../images/newIcon.png';
 
 

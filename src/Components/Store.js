@@ -1,85 +1,95 @@
 import React, { Component } from 'react'
 import NavWeb from './Nav';
-import { Switch, Route, Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap/';
-
+import '../index.css';
+import '../CSSWeb/Store.css'
+import cart from '../images/cart.png';
 class StoreTeams extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            team_name: '',
+            src: cart
+        }
     }
+
+    inputTeam = (e) => {
+        this.setState({ team_name: e.target.value });
+    }
+
+    searchButton = () => {
+        alert("searching....")
+    }
+
     render() {
         return (<div>
             <NavWeb />
-            <div>
-               בחירת חנות על פי שם קבוצה  
+            <br />
+            <div><img className="cart" src={cart} /></div>
+            <div style={{ textAlign: 'right' }}>
+                <b>חיפוש חנות על פי שם קבוצה :</b> <input style={{height: '28px'}} type="text" onChange={this.inputTeam} /> <Button variant="outline-info" size="sm" onClick={this.searchButton}>חפש</Button>
             </div>
-            <h2>חנות המועדון</h2>
-            <div style={{ marginTop: 20, marginBottom: 15 }}>
-                <Card style={{ width: '18rem' }}>
+            <h2 style={{ textAlign: 'center' }}>חנות המועדון</h2>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', }}>
+                <Card className="card-store" style={{ width: '18rem' }}>
                     <Card.Img variant="top" src="holder.js/100px180" />
                     <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
+                        <Card.Title>צעיף</Card.Title>
                         <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            30 ש''ח
                     </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Button variant="success">הוסף לעגלה</Button>
                     </Card.Body>
                 </Card>
-                <Card style={{ width: '18rem' }}>
+                <Card className="card-store" style={{ width: '18rem' }}>
                     <Card.Img variant="top" src="holder.js/100px180" />
                     <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
+                        <Card.Title>כובע</Card.Title>
                         <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            30 ש"ח
                         </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Button variant="success">הוסף לעגלה</Button>
                     </Card.Body>
                 </Card>
-                <Card style={{ width: '18rem' }}>
+                <Card className="card-store" style={{ width: '18rem' }}>
                     <Card.Img variant="top" src="holder.js/100px180" />
                     <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
+                        <Card.Title>קפוצ'ון</Card.Title>
                         <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            50 ש"ח
                         </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Button variant="success">הוסף לעגלה</Button>
                     </Card.Body>
                 </Card>
-                <Card style={{ width: '18rem' }}>
+                <Card className="card-store" style={{ width: '18rem' }}>
                     <Card.Img variant="top" src="holder.js/100px180" />
                     <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
+                        <Card.Title>כובע טמבל</Card.Title>
                         <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            35 ש"ח
                         </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Button variant="success">הוסף לעגלה</Button>
                     </Card.Body>
                 </Card>
-                <Card style={{ width: '18rem' }}>
+                <Card className="card-store" style={{ width: '18rem' }}>
                     <Card.Img variant="top" src="holder.js/100px180" />
                     <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
+                        <Card.Title>מטריה</Card.Title>
                         <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            40 ש"ח
                         </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Button variant="success">הוסף לעגלה</Button>
                     </Card.Body>
                 </Card>
-                <Card style={{ width: '18rem' }}>
+                <Card className="card-store" style={{ width: '18rem' }}>
                     <Card.Img variant="top" src="holder.js/100px180" />
                     <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
+                        <Card.Title>מסכה</Card.Title>
                         <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            25 ש"ח
                         </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Button variant="success">הוסף לעגלה</Button>
                     </Card.Body>
                 </Card>
             </div>

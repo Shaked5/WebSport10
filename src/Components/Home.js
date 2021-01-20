@@ -3,7 +3,6 @@ import NavWeb from './Nav';
 import Carousel from 'react-bootstrap/Carousel';
 import { Card, Button } from 'react-bootstrap/';
 import rokaviza from '../images/rokaviza.jpg';
-import neymar from '../images/nejmar.jpg';
 import coach from '../images/1067598.jpg'
 import card1 from '../images/1067766.jpg'
 
@@ -59,12 +58,9 @@ class Home extends Component {
             <Card.Img variant="top" src={rokaviza} width='150px' height='130px' />
             <Card.Body>
               <Card.Title>לצד סון: רוקאביצה בין נבחרי העונה באסיה</Card.Title>
-              <center>
-                <Card.Text>
-                  <a href="https://www.sport5.co.il/articles.aspx?FolderID=64&docID=358566">לכתבה לחץ כאן</a>
-                </Card.Text>
-              </center>
-
+              <Card.Text>
+                <a href="https://www.sport5.co.il/articles.aspx?FolderID=64&docID=358566">לכתבה לחץ כאן</a>
+              </Card.Text>
             </Card.Body>
           </Card>
 

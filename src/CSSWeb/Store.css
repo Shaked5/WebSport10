@@ -1,0 +1,10 @@
+.card-store{
+    text-align: center;
+    margin: 3%
+}
+
+.cart{
+    width: 50px;
+    height: 50px;
+    background-image: none;
+}
