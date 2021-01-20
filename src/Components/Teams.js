@@ -43,8 +43,6 @@ class Teams extends Component {
             return <div index={index} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
               <img index={index} src={team.imgClub} alt="stam" width="300" height="200" />
               <p> {team.club} </p>
-
-
             </div>
           })}
         </div>
@@ -53,7 +51,6 @@ class Teams extends Component {
             aria-controls="example-collapse-text"
             aria-expanded={this.state.open}
           >הוסף קבוצה</Button>
-
           <Collapse in={this.state.open}>
 
             <Form style={{width:'70%'}}>
@@ -99,8 +96,6 @@ class Teams extends Component {
 
           </Collapse>
         </center>
-
-
       </div>
     );
   }
