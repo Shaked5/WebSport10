@@ -1,8 +1,9 @@
-.nav-div{
-    padding-left: 3%;
-    margin-right: 10%;
+.icon-nav {
+    padding-right: 30%;
 }
 
-.icon-nav{
-   padding-right:30%;
+.nav-link {
+    color: white;
+    justify-content: space-around;
+    width: 20%;
 }
