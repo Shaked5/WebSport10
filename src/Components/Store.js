@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NavWeb from './Nav';
 import { Switch, Route, Link, withRouter } from 'react-router-dom';
+import { Card, Button } from 'react-bootstrap/';
 
 class StoreTeams extends Component {
     constructor(props) {
