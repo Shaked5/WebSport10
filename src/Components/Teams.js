@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavWeb from './Nav';
 import '../index.css';
 import { Button, Collapse, Form, Col } from 'react-bootstrap/';
+import { withRouter } from 'react-router-dom';
 
 class Teams extends Component {
   constructor(props) {
@@ -29,11 +30,20 @@ class Teams extends Component {
   sendTeamToParent = () => {
     this.props.sendToParent({ club: this.state.club, imgClub: this.state.imgClub, players: this.state.players })
   }
+
+  sendTeamToPrint=(index1)=>{
+    debugger
+    let newTeam=this.props.teams.find(team=>team.id===index1);
+    console.log(newTeam);
+     this.props.history.push({
+       pathname: '/team',
+       state:newTeam
+     })
+  }
   render() {
     console.log(this.state.teamsFromLocalstorage);
-    console.log(this.state.club);
-    console.log(this.state.age);
-    console.log(this.state.players);
+  
+
     return (
       <div>
         <center>
@@ -43,13 +53,13 @@ class Teams extends Component {
         <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
           {this.state.teamsFromLocalstorage&&this.state.teamsFromLocalstorage.map((team, index) => 
               <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
-              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200" />
+           <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200"  onClick={()=>this.sendTeamToPrint(team.id)}/>
               <p index={team.id}> {team.club} </p>
             </div>
           )}
           {!this.state.teamsFromLocalstorage&&this.props.teams.map((team,index)=>
               <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
-              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200" />
+              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200" onClick={()=>this.sendTeamToPrint(team.id)}/>
               <p index={team.id}> {team.club} </p>
               </div>
           )}
@@ -109,4 +119,4 @@ class Teams extends Component {
   }
 }
 
-export default Teams;
+export default withRouter(Teams);

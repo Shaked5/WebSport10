@@ -73,6 +73,7 @@ class Manager extends Component {
                 <Route path="/store"></Route>
                 <Route path="/cart"></Route>
                 <Route path="/gamble"></Route>
+                <Route path="/team"></Route>
             </Switch>
         );
     }
