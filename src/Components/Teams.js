@@ -69,7 +69,7 @@ class Teams extends Component {
                   <Form.Control type="text"  value={this.state.imgClub}
                     onChange={e => this.setState({ imgClub: e.target.value })}/>
                   <Form.Text className="text-muted">
-                    Please enter a link for image
+                   הכנס לינק לסמל הקבוצה
                   </Form.Text>
                 </Form.Group>
               </Form.Row>

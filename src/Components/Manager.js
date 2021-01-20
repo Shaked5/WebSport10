@@ -9,7 +9,7 @@ import Teams from './Teams';
 class Manager extends Component {
     constructor(props) {
         super(props);
-        this.counter =5;
+        this.counter = 5;
         this.state = { 
             teams:[
                 { id: 1,
