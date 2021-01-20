@@ -3,7 +3,6 @@ import NavWeb from './Nav';
 import Carousel from 'react-bootstrap/Carousel';
 import { Card, Button } from 'react-bootstrap/';
 import rokaviza from '../images/rokaviza.jpg';
-import neymar from '../images/nejmar.jpg';
 import coach from '../images/1067598.jpg'
 import card1 from '../images/1067766.jpg'
 

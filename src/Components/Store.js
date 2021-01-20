@@ -4,11 +4,13 @@ import { withRouter } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap/';
 import '../index.css';
 import '../CSSWeb/Store.css'
+import cart from '../images/cart.png';
 class StoreTeams extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            team_name: ''
+            team_name: '',
+            src: cart
         }
     }
 
@@ -24,8 +26,9 @@ class StoreTeams extends Component {
         return (<div>
             <NavWeb />
             <br />
+            <div><img className="cart" src={cart} /></div>
             <div style={{ textAlign: 'right' }}>
-                <b>חיפוש חנות על פי שם קבוצה :</b> <input type="text" onChange={this.inputTeam} /> <Button variant="outline-info" size="sm" onClick={this.searchButton}>חפש</Button>
+                <b>חיפוש חנות על פי שם קבוצה :</b> <input style={{height: '28px'}} type="text" onChange={this.inputTeam} /> <Button variant="outline-info" size="sm" onClick={this.searchButton}>חפש</Button>
             </div>
             <h2 style={{ textAlign: 'center' }}>חנות המועדון</h2>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', }}>
