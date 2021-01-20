@@ -33,16 +33,25 @@ class Teams extends Component {
 
   sendTeamToPrint=(index1)=>{
     debugger
+    if(this.state.teamsFromLocalstorage===null){
     let newTeam=this.props.teams.find(team=>team.id===index1);
-    console.log(newTeam);
+    
      this.props.history.push({
        pathname: '/team',
-       state:newTeam
+       state:{newTeam:newTeam}
      })
+    }else
+    {
+      let newTeam=this.state.teamsFromLocalstorage.find(team=>team.id===index1);
+     console.log(newTeam);
+       this.props.history.push({
+         pathname: '/team',
+         state:{newTeam:newTeam}
+       })}
   }
   render() {
     console.log(this.state.teamsFromLocalstorage);
-  
+    
 
     return (
       <div>

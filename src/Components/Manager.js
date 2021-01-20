@@ -5,7 +5,7 @@ import StoreTeams from './Store';
 import maccabiIcon from '../images/maccabitlv.png';
 import maccabihaifaIcon from '../images/Haifa.png';
 import Teams from './Teams';
-
+import Team from './Team';
 
 class Manager extends Component {
     constructor(props) {
@@ -25,6 +25,7 @@ class Manager extends Component {
                     id: 2,
                     club: "מכבי חיפה",
                     items: [],
+                    info:"מכבי חיפה הוא מועדון כדורגל ישראלי מהעיר חיפה, המשחק בליגת העל הישראלית. המועדון הוקם בשנת 1913, ומאז 1992 הוא מנוהל על ידי איש העסקים יעקב שחר, שמכהן כנשיא המועדון. המועדון כולל גם קבוצות נוער, נערים וילדים, ובתי ספר לכדורגל. המועדון חבר שותף בארגון המועדונים האירופיים.",
                     imgClub: "https://newshaifakrayot.net/wp-content/uploads/2019/08/214px-Maccabi-h.png",
                     players: [{ id: 1, name: "dsaafd", age: 28 }]
                 },
@@ -74,7 +75,7 @@ class Manager extends Component {
                 <Route path="/store" render={()=> <StoreTeams/>}></Route>
                 <Route path="/cart"></Route>
                 <Route path="/gamble"></Route>
-                <Route path="/team"></Route>
+                <Route path="/team" render={()=> <Team/>}></Route>
             </Switch>
         );
     }
