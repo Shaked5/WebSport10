@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import Home from './Home';
+import StoreTeams from './Store';
 import maccabiIcon from '../images/maccabitlv.png';
 import maccabihaifaIcon from '../images/Haifa.png';
 import Teams from './Teams';
@@ -70,7 +71,7 @@ class Manager extends Component {
                 <Route exact path="/" component={Home}></Route>
                 <Route path="/teams" render={() => <Teams teams={this.state.teams} sendToParent={this.getTeamFromChild} />}></Route>
                 <Route path="/table_rank"></Route>
-                <Route path="/store"></Route>
+                <Route path="/store" render={()=> <StoreTeams/>}></Route>
                 <Route path="/cart"></Route>
                 <Route path="/gamble"></Route>
                 <Route path="/team"></Route>
