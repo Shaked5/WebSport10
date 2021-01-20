@@ -11,22 +11,22 @@ class Teams extends Component {
       club: "",
       imgClub: "",
       players: [],
-      playerName:"",
-      age:0
+      playerName: "",
+      age: 0
     }
   }
   setOpen = () => {
     this.setState({ open: !this.state.open })
   }
 
-  addPlayer=()=>{
-    let player={name:this.state.playerName, age:this.state.age}
-    this.setState({players: [...this.state.players,player],playerName:"",age:""})
+  addPlayer = () => {
+    let player = { name: this.state.playerName, age: this.state.age }
+    this.setState({ players: [...this.state.players, player], playerName: "", age: "" })
 
   }
 
-  sendTeamToParent=()=>{
-    this.props.sendToParent({club:this.state.club,imgClub:this.state.imgClub,players:this.state.players})
+  sendTeamToParent = () => {
+    this.props.sendToParent({ club: this.state.club, imgClub: this.state.imgClub, players: this.state.players })
   }
   render() {
     console.log(this.state.club);
@@ -53,7 +53,7 @@ class Teams extends Component {
           >הוסף קבוצה</Button>
           <Collapse in={this.state.open}>
 
-            <Form style={{width:'70%'}}>
+            <Form style={{ width: '70%' }}>
               <Form.Row>
                 <Form.Group as={Col} controlId="formGridEmail">
                   <Form.Label >שם קבוצה</Form.Label>
@@ -63,8 +63,8 @@ class Teams extends Component {
 
                 <Form.Group as={Col} controlId="formGridPassword">
                   <Form.Label>סמל הקבוצה</Form.Label>
-                  <Form.Control type="text"  value={this.state.imgClub}
-                    onChange={e => this.setState({ imgClub: e.target.value })}/>
+                  <Form.Control type="text" value={this.state.imgClub}
+                    onChange={e => this.setState({ imgClub: e.target.value })} />
                   <Form.Text className="text-muted">
                     Please enter a link for image
                   </Form.Text>
@@ -76,7 +76,7 @@ class Teams extends Component {
                 <Form.Group as={Col} controlId="formGridAddress1">
                   <Form.Label>שם שחקן</Form.Label>
                   <Form.Control type="text" value={this.state.playerName}
-                    onChange={e => this.setState({ playerName: e.target.value })}/>
+                    onChange={e => this.setState({ playerName: e.target.value })} />
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridAddress2">
@@ -84,13 +84,13 @@ class Teams extends Component {
                   <Form.Control type="number" value={this.state.age}
                     onChange={e => this.setState({ age: e.target.value })} />
                 </Form.Group>
-                
+
               </Form.Row>
               <Form.Group>
-              <Button onClick={this.addPlayer} variant="secondary">הוספת שחקן</Button>
-              </Form.Group> <br/>
+                <Button onClick={this.addPlayer} variant="secondary">הוספת שחקן</Button>
+              </Form.Group> <br />
               <Button variant="primary" onClick={this.sendTeamToParent}>
-               אשר
+                אישור
                </Button>
             </Form>
 

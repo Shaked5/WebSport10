@@ -17,7 +17,7 @@ class Home extends Component {
       <div>
         <NavWeb />
         <center>
-          <h3>ברוכים הבאים לספורט 10</h3>
+          <u><h3>ברוכים הבאים לספורט 10</h3></u>
           <Carousel style={{ marginTop: 20, marginBottom: 15 }}>
             <Carousel.Item>
               <img
@@ -85,15 +85,9 @@ class Home extends Component {
               <Card.Text>
                 <a href="https://www.sport5.co.il/articles.aspx?FolderID=64&docID=358475">לכתבה לחץ כאן</a>
               </Card.Text>
-
             </Card.Body>
           </Card>
         </div>
-
-
-
-
-
       </div>
     );
   }
