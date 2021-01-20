@@ -90,7 +90,7 @@ class Teams extends Component {
 
                 <Form.Group as={Col} controlId="formGridPassword">
                   <Form.Label>סמל הקבוצה</Form.Label>
-                  <Form.Control type="text" value={this.state.imgClub}
+                  <Form.Control type="text" value={this.state.imgClub} 
                     onChange={e => this.setState({ imgClub: e.target.value })} />
                   <Form.Text className="text-muted">
                    הכנס לינק לסמל הקבוצה
