@@ -47,7 +47,7 @@ class Manager extends Component {
                     id: 5,
                     club: "הפועל באר שבע",
                     items: [],
-                    imgClub: "https://lh3.googleusercontent.com/proxy/v127R82MjX5XLmoAqx_sy2RBknjIXgw_b9FFhV_9C6_VBB-IAnUdZ0o7mmq-QQCdidKYWTju4i9eib7IiuBxWsY",
+                    imgClub: "https://upload.wikimedia.org/wikipedia/he/2/27/HBSBC.png",
                     players: [{ id: 1, name: "weqeq", age: 23 }]
                 }
             ]

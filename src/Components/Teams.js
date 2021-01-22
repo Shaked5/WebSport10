@@ -28,11 +28,14 @@ class Teams extends Component {
   }
 
   sendTeamToParent = () => {
+    if(this.state.club!==""&&this.state.imgClub!==""&&this.state.players!==[])
     this.props.sendToParent({ club: this.state.club, imgClub: this.state.imgClub, players: this.state.players })
+    else{
+      alert("all details is required!")
+    }
   }
 
   sendTeamToPrint=(index1)=>{
-    debugger
     if(this.state.teamsFromLocalstorage===null){
     let newTeam=this.props.teams.find(team=>team.id===index1);
     
