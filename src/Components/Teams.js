@@ -14,7 +14,7 @@ class Teams extends Component {
       players: [],
       playerName: "",
       age: 0,
-      teamsFromLocalstorage:JSON.parse(localStorage.getItem('teams'))
+      teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams'))
     }
   }
   setOpen = () => {
@@ -35,6 +35,7 @@ class Teams extends Component {
     }
   }
 
+<<<<<<< HEAD
   sendTeamToPrint=(index1)=>{
     if(this.state.teamsFromLocalstorage===null){
     let newTeam=this.props.teams.find(team=>team.id===index1);
@@ -51,29 +52,48 @@ class Teams extends Component {
          pathname: '/team',
          state:{newTeam:newTeam}
        })}
+=======
+  sendTeamToPrint = (index1) => {
+    debugger
+    if (this.state.teamsFromLocalstorage === null) {
+      let newTeam = this.props.teams.find(team => team.id === index1);
+
+      this.props.history.push({
+        pathname: '/team',
+        state: { newTeam: newTeam }
+      })
+    } else {
+      let newTeam = this.state.teamsFromLocalstorage.find(team => team.id === index1);
+      console.log(newTeam);
+      this.props.history.push({
+        pathname: '/team',
+        state: { newTeam: newTeam }
+      })
+    }
+>>>>>>> 3b7a6acef54bd7d7726970bad42e86883d32fd55
   }
   render() {
     console.log(this.state.teamsFromLocalstorage);
-    
+
 
     return (
       <div>
+        <NavWeb />
         <center>
-          <NavWeb />
           <h1>קבוצות הליגה</h1>
         </center>
         <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
-          {this.state.teamsFromLocalstorage&&this.state.teamsFromLocalstorage.map((team, index) => 
-              <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
-           <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200"  onClick={()=>this.sendTeamToPrint(team.id)}/>
+          {this.state.teamsFromLocalstorage && this.state.teamsFromLocalstorage.map((team, index) =>
+            <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
+              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200" onClick={() => this.sendTeamToPrint(team.id)} />
               <p index={team.id}> {team.club} </p>
             </div>
           )}
-          {!this.state.teamsFromLocalstorage&&this.props.teams.map((team,index)=>
-              <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
-              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200" onClick={()=>this.sendTeamToPrint(team.id)}/>
+          {!this.state.teamsFromLocalstorage && this.props.teams.map((team, index) =>
+            <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
+              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200" onClick={() => this.sendTeamToPrint(team.id)} />
               <p index={team.id}> {team.club} </p>
-              </div>
+            </div>
           )}
         </div>
         <center>
@@ -93,10 +113,10 @@ class Teams extends Component {
 
                 <Form.Group as={Col} controlId="formGridPassword">
                   <Form.Label>סמל הקבוצה</Form.Label>
-                  <Form.Control type="text" value={this.state.imgClub} 
+                  <Form.Control type="text" value={this.state.imgClub}
                     onChange={e => this.setState({ imgClub: e.target.value })} />
                   <Form.Text className="text-muted">
-                   הכנס לינק של סמל הקבוצה
+                    הכנס לינק של סמל הקבוצה
                   </Form.Text>
                 </Form.Group>
               </Form.Row>
