@@ -14,14 +14,21 @@ class Team extends Component {
         return ( 
             <div>
                 <NavWeb/>
+                <center>
                 <h1>{this.props.location.state.newTeam.club}</h1>
 
                 <div>
-                <img src={this.props.location.state.newTeam.imgClub} alt="oops" width="400" height="300"/>
+                <img src={this.props.location.state.newTeam.imgClub} alt="oops" width="400" height="250"/>
                 </div>
                 <p>{this.props.location.state.newTeam.info}</p>
-                 
-                   
+                </center>
+                <div style={{float: 'right'}}>
+                <ul>
+                {this.props.location.state.newTeam.players.map((player,index)=>
+                <li>שם: {player.name} גיל: {player.age}</li>
+                )}
+                </ul>
+                </div>
             </div>
          );
     }
