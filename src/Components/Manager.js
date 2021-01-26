@@ -55,6 +55,7 @@ class Manager extends Component {
                     players: [{ id: 1, name: "מיגל ויטור", age: 32 }, { id: 2, name: "מרוואן קבהא", age: 30 }, { id: 3, name: "לואי טאהא", age: 32 }, { id: 4, name: "שון גולדברג", age: 25 }]
                 }
             ]
+
         }
     }
 
