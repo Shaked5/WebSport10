@@ -5,6 +5,30 @@ import { Card, Button } from 'react-bootstrap/';
 import '../index.css';
 import '../CSSWeb/Store.css'
 import cart from '../images/cart.png';
+import ball_mc_pt from '../images/shop/ball_mc_pt.jpg';
+import tezif_mc_pt from '../images/shop/tezif_mc_pt.jpg'
+import shirt_mc_pt from '../images/shop/shirt_mc_pt.jpg';
+import hat_mc_pt from '../images/shop/hat_mc_pt.jpg';
+
+import tezif_mc_tlv from '../images/shop/tezif_mc_tlv.jpg';
+import ball_mc_tlv from '../images/shop/ball_mc_tlv.jpg';
+import shirt_mc_tlv from '../images/shop/shirt_mc_tlv.jpg';
+import hat_mc_tlv from '../images/shop/hat_mc_tlv.jpg';
+
+import tezif_mc_haifa from '../images/shop/tezif_mc_haifa.jpg';
+import ball_mc_haifa from '../images/shop/ball_mc_haifa.jpg';
+import shirt_mc_haifa from '../images/shop/shirt_mc_haifa.jpg';
+import hat_mc_haifa from '../images/shop/hat_mc_haifa.jpg';
+
+import tezif_btr from '../images/shop/tezif_btr.jpeg';
+import ball_btr from '../images/shop/ball_btr.jpeg';
+import shirt_btr from '../images/shop/shirt_btr.jpeg';
+import hat_btr from '../images/shop/hat_btr.jpeg';
+
+import tezif_hp_sheva from '../images/shop/tezif_hp_sheva.jpg';
+import ball_hp_sheva from '../images/shop/ball_hp_sheva.jpeg';
+import shirt_hp_sheva from '../images/shop/shirt_hp_sheva.jpeg';
+import hat_hp_sheva from '../images/shop/hat_hp_sheva.jpeg';
 class StoreTeams extends Component {
     constructor(props) {
         super(props);
