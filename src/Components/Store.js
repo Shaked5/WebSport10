@@ -46,76 +46,31 @@ class StoreTeams extends Component {
         alert("searching....")
     }
 
+    sendItemToCart = (index) => {
+        this.props.addToCart(index)
+    }
     render() {
         return (<div>
             <NavWeb />
             <br />
             <div><img className="cart" src={cart} /></div>
             <div style={{ textAlign: 'right' }}>
-                <b>חיפוש חנות על פי שם קבוצה :</b> <input style={{height: '28px'}} type="text" onChange={this.inputTeam} /> <Button variant="outline-info" size="sm" onClick={this.searchButton}>חפש</Button>
+                <b>חיפוש חנות על פי שם קבוצה :</b> <input style={{ height: '28px' }} type="text" onChange={this.inputTeam} /> <Button variant="outline-info" size="sm" onClick={this.searchButton}>חפש</Button>
             </div>
             <h2 style={{ textAlign: 'center' }}>חנות המועדון</h2>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', }}>
-                <Card className="card-store" style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>צעיף</Card.Title>
-                        <Card.Text>
-                            30 ש''ח
-                    </Card.Text>
-                        <Button variant="success">הוסף לעגלה</Button>
-                    </Card.Body>
-                </Card>
-                <Card className="card-store" style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>כובע</Card.Title>
-                        <Card.Text>
-                            30 ש"ח
-                        </Card.Text>
-                        <Button variant="success">הוסף לעגלה</Button>
-                    </Card.Body>
-                </Card>
-                <Card className="card-store" style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>קפוצ'ון</Card.Title>
-                        <Card.Text>
-                            50 ש"ח
-                        </Card.Text>
-                        <Button variant="success">הוסף לעגלה</Button>
-                    </Card.Body>
-                </Card>
-                <Card className="card-store" style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>כובע טמבל</Card.Title>
-                        <Card.Text>
-                            35 ש"ח
-                        </Card.Text>
-                        <Button variant="success">הוסף לעגלה</Button>
-                    </Card.Body>
-                </Card>
-                <Card className="card-store" style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>מטריה</Card.Title>
-                        <Card.Text>
-                            40 ש"ח
-                        </Card.Text>
-                        <Button variant="success">הוסף לעגלה</Button>
-                    </Card.Body>
-                </Card>
-                <Card className="card-store" style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>מסכה</Card.Title>
-                        <Card.Text>
-                            25 ש"ח
-                        </Card.Text>
-                        <Button variant="success">הוסף לעגלה</Button>
-                    </Card.Body>
-                </Card>
+            <div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', margin: 20, }}>
+                    {this.props.items.map((item, index) =>
+                        <Card style={{ width: '18rem', marginLeft: '5rem', textAlign: 'center', marginBottom: '5rem' }} key={index}>
+                            <Card.Body>
+                                <Card.Img variant="top" src={item.src} />
+                                <Card.Title>{item.prod}</Card.Title>
+                                <Card.Text><b>₪{item.cost} ש"ח</b></Card.Text>
+                                <Button variant="success" onClick={() => this.sendItemToCart(index)}>הוסף לעגלה</Button>
+                            </Card.Body>
+                        </Card>
+                    )}
+                </div>
             </div>
         </div>);
     }
