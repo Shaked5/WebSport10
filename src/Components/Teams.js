@@ -11,6 +11,7 @@ class Teams extends Component {
       open: false,
       club: "",
       imgClub: "",
+      info:"",
       players: [],
       playerName: "",
       age: 0,
@@ -28,8 +29,11 @@ class Teams extends Component {
   }
 
   sendTeamToParent = () => {
-    if (this.state.club !== "" && this.state.imgClub !== "" && this.state.players !== [])
-      this.props.sendToParent({ club: this.state.club, imgClub: this.state.imgClub, players: this.state.players })
+    if (this.state.club !== "" && this.state.imgClub !== "" && this.state.players !== []&&this.state.info!==""){
+      this.props.sendToParent({ club: this.state.club, imgClub: this.state.imgClub,info:this.state.info, players: this.state.players })
+      this.setState({club:"", imgClub:"",info:""})
+    }
+
     else {
       alert("all details is required!")
     }
@@ -52,24 +56,7 @@ class Teams extends Component {
       })
     }
   }
-  sendTeamToPrint = (index1) => {
-    debugger
-    if (this.state.teamsFromLocalstorage === null) {
-      let newTeam = this.props.teams.find(team => team.id === index1);
-
-      this.props.history.push({
-        pathname: '/team',
-        state: { newTeam: newTeam }
-      })
-    } else {
-      let newTeam = this.state.teamsFromLocalstorage.find(team => team.id === index1);
-      console.log(newTeam);
-      this.props.history.push({
-        pathname: '/team',
-        state: { newTeam: newTeam }
-      })
-    }
-  }
+  
   render() {
     return (
       <div>
@@ -134,6 +121,12 @@ class Teams extends Component {
               <Form.Group>
                 <Button onClick={this.addPlayer} variant="secondary">הוספת שחקן</Button>
               </Form.Group> <br />
+
+              <Form.Group>
+                <Form.Label>מידע על הקבוצה</Form.Label>
+                <Form.Control as="textarea" rows={3}   value={this.state.info}
+                    onChange={e => this.setState({ info: e.target.value })} ></Form.Control>
+              </Form.Group>
               <Button variant="primary" onClick={this.sendTeamToParent}>
                 אישור
                </Button>
