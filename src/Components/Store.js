@@ -28,8 +28,8 @@ class StoreTeams extends Component {
     }
 
 
-    sendItemToCart = (index) => {
-        this.props.addToCart(index)
+    sendItemToCart = (id) => {
+        this.props.addToCart(id)
     }
 
 
@@ -41,6 +41,13 @@ class StoreTeams extends Component {
         this.props.RemoveItem(id)
     }
 
+    handleIncrement = (id) => {
+        this.props.handleIncrement(id)
+    }
+    handleDecrement = (id) => {
+        this.props.handleDecrement(id)
+    }
+
     render() {
         console.log(this.state.searchInput)
         return (<div>
@@ -50,7 +57,7 @@ class StoreTeams extends Component {
                 <>
                     <Button variant="btn-container secondary" onClick={this.SetModalShow}>
                         <span style={{ color: 'red', fontSize: '1rem', fontWeight: 'bold' }}>{this.props.cartItems.length}</span>
-                        <img style={{ position: 'absolute',top: '' ,left: '5.8%' }} className="cart" src={cart} />
+                        <img style={{ position: 'absolute', top: '', left: '5.8%' }} className="cart" src={cart} />
                     </Button>
 
                     <Modal
@@ -59,34 +66,41 @@ class StoreTeams extends Component {
                         backdrop="static"
                         keyboard={false}
                     >
-                        <Modal.Header>
-                            <Modal.Title>עגלת קניות</Modal.Title>
-                            <Button variant="secondary" onClick={this.SetCloseModal}>X</Button>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <div>
-                                {this.props.cartItems.map((item, index) => {
-                                    return <div key={index}>
-                                        <p style={{ textAlign: 'right' }}>
-                                            <b>שם מוצר: {item.prod}<br /> מחיר: ₪{item.cost} </b>
-                                            <img width="11%" height="3%" src={item.src}></img>
-                                            <Button className="btn btn-sm m-4" variant="danger"
-                                                onClick={() => this.RemoveItem(item.id)}>-</Button></p>
-                                    </div>
-                                })}
-                            </div>
-                        </Modal.Body>
+                        <div style={{ backgroundColor: 'rgba(117, 133, 145, 0.1)' }}>
+                            <Modal.Header >
+                                <Modal.Title>עגלת קניות</Modal.Title>
+                                <Button variant="secondary" onClick={this.SetCloseModal}>X</Button>
+                            </Modal.Header>
+                            <Modal.Body >
+                                <div>
+                                    {this.props.cartItems.map((item, index) => {
+                                        return <div key={index}>
+                                            <p style={{ textAlign: 'right' }}>
+                                                <b style={{ marginLeft: 20 }}>
+                                                    שם מוצר: {item.prod} <br />
+                                                מחיר הפריט: ₪{item.cost}
+                                                כמות: {item.quantity}
+                                                </b>
+                                                <img width="11%" height="3%" src={item.src}></img>
+                                                <Button className="btn btn-sm m-4" variant="danger"
+                                                    onClick={() => this.RemoveItem(item.id)}>הסר</Button></p>
+                                        </div>
+                                    })}
+                                </div>
+                                <b><p>סכום לתשלום: {this.props.total_price}₪ </p></b>
+                            </Modal.Body>
 
-                        <Modal.Footer>
-                            <Button variant="success" onClick={this.HandleConfirmOrder}>לתשלום</Button>
-                        </Modal.Footer>
+                            <Modal.Footer>
+                                <Button variant="success" onClick={this.HandleConfirmOrder}>לתשלום</Button>
+                            </Modal.Footer>
+                        </div>
                     </Modal>
                 </>
             </div>
             <div style={{ textAlign: 'right' }}>
                 <b>חיפוש מוצר על פי שם קבוצה :</b> <input style={{ height: '28px' }} type="text" onChange={this.inputTeam} />
             </div>
-            <h2 style={{ textAlign: 'center' }}>חנות המועדון</h2>
+            <h2 style={{ textAlign: 'center' }}>חנות האוהדים</h2>
             <div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', margin: 20, }}>
                     {this.state.searchInput === '' && this.props.items.map((item, index) =>
@@ -94,8 +108,12 @@ class StoreTeams extends Component {
                             <Card.Body>
                                 <Card.Img variant="top" src={item.src} height="200" />
                                 <Card.Title>{item.prod}</Card.Title>
-                                <Card.Text><b>₪{item.cost} ש"ח</b></Card.Text>
-                                <Button variant="success" onClick={() => this.sendItemToCart(index)}>הוסף לעגלה</Button>
+                                <Card.Text><b>₪{item.cost} ש"ח<br />
+                                    <Button variant='transpert' size='sm' onClick={() => this.handleIncrement(item.id)}>+</Button>
+                                    {item.quantity}
+                                    <Button variant='transpert' size='sm' onClick={() => this.handleDecrement(item.id)}>-</Button></b>
+                                </Card.Text>
+                                <Button variant="success" onClick={() => this.sendItemToCart(item.id)}>הוסף לעגלה</Button>
                             </Card.Body>
                         </Card>
                     )}
@@ -104,8 +122,12 @@ class StoreTeams extends Component {
                             <Card.Body>
                                 <Card.Img variant="top" src={item.src} height="200" />
                                 <Card.Title>{item.prod}</Card.Title>
-                                <Card.Text><b>₪{item.cost} ש"ח</b></Card.Text>
-                                <Button variant="success" onClick={() => this.sendItemToCart(index)}>הוסף לעגלה</Button>
+                                <Card.Text><b>₪{item.cost} ש"ח <br />
+                                    <Button variant='transpert' size='sm' onClick={() => this.handleIncrement(item.id)}>+</Button>
+                                    {item.quantity}
+                                    <Button variant='transpert' size='sm' onClick={() => this.handleDecrement(item.id)}>-</Button></b>
+                                </Card.Text>
+                                <Button variant="success" onClick={() => this.sendItemToCart(item.id)}>הוסף לעגלה</Button>
                             </Card.Body>
                         </Card>
                     })}

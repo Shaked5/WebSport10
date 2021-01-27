@@ -72,29 +72,29 @@ class Manager extends Component {
                 }
             ],
             items: [
-                { id: 1, prod: "צעיף", cost: 30, src: tezif_mc_pt, team_name: 'מכבי פתח תקווה' },
-                { id: 2, prod: "כדור", cost: 80, src: ball_mc_pt, team_name: "מכבי פתח תקווה" },
-                { id: 3, prod: "חולצה", cost: 50, src: shirt_mc_pt, team_name: "מכבי פתח תקווה" },
-                { id: 4, prod: "כובע", cost: 25, src: hat_mc_pt, team_name: "מכבי פתח תקווה" },
-                { id: 5, prod: "צעיף", cost: 25, src: tezif_mc_tlv, team_name: "מכבי תל אביב" },
-                { id: 6, prod: "כדור", cost: 25, src: ball_mc_tlv, team_name: "מכבי תל אביב" },
-                { id: 7, prod: "חולצה", cost: 25, src: shirt_mc_tlv, team_name: "מכבי תל אביב" },
-                { id: 8, prod: "כובע", cost: 25, src: hat_mc_tlv, team_name: "מכבי תל אביב" },
-                { id: 9, prod: "צעיף", cost: 25, src: tezif_mc_haifa, team_name: "מכבי חיפה" },
-                { id: 10, prod: "כדור", cost: 25, src: ball_mc_haifa, team_name: "מכבי חיפה" },
-                { id: 11, prod: "חולצה", cost: 25, src: shirt_mc_haifa, team_name: "מכבי חיפה" },
-                { id: 12, prod: "כובע", cost: 25, src: hat_mc_haifa, team_name: "מכבי חיפה" },
-                { id: 13, prod: "צעיף", cost: 25, src: tezif_btr, team_name: "ביתר ירושלים" },
-                { id: 14, prod: "כדור", cost: 25, src: ball_btr, team_name: "ביתר ירושלים" },
-                { id: 15, prod: "חולצה", cost: 25, src: shirt_btr, team_name: "ביתר ירושלים" },
-                { id: 16, prod: "כובע", cost: 25, src: hat_btr, team_name: "ביתר ירושלים" },
-                { id: 17, prod: "צעיף", cost: 25, src: tezif_hp_sheva, team_name: "הפועל באר שבע" },
-                { id: 18, prod: "כדור", cost: 25, src: ball_hp_sheva, team_name: "הפועל באר שבע" },
-                { id: 19, prod: "חולצה", cost: 25, src: shirt_hp_sheva, team_name: "הפועל באר שבע" },
-                { id: 20, prod: "כובע", cost: 25, src: hat_hp_sheva, team_name: "הפועל באר שבע" }
+                { id: 1, prod: "צעיף", cost: 30, src: tezif_mc_pt, team_name: 'מכבי פתח תקווה', quantity: 0 },
+                { id: 2, prod: "כדור", cost: 80, src: ball_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
+                { id: 3, prod: "חולצה", cost: 50, src: shirt_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
+                { id: 4, prod: "כובע", cost: 25, src: hat_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
+                { id: 5, prod: "צעיף", cost: 25, src: tezif_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
+                { id: 6, prod: "כדור", cost: 25, src: ball_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
+                { id: 7, prod: "חולצה", cost: 25, src: shirt_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
+                { id: 8, prod: "כובע", cost: 25, src: hat_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
+                { id: 9, prod: "צעיף", cost: 25, src: tezif_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
+                { id: 10, prod: "כדור", cost: 25, src: ball_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
+                { id: 11, prod: "חולצה", cost: 25, src: shirt_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
+                { id: 12, prod: "כובע", cost: 25, src: hat_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
+                { id: 13, prod: "צעיף", cost: 25, src: tezif_btr, team_name: "ביתר ירושלים", quantity: 0 },
+                { id: 14, prod: "כדור", cost: 25, src: ball_btr, team_name: "ביתר ירושלים", quantity: 0 },
+                { id: 15, prod: "חולצה", cost: 25, src: shirt_btr, team_name: "ביתר ירושלים", quantity: 0 },
+                { id: 16, prod: "כובע", cost: 25, src: hat_btr, team_name: "ביתר ירושלים", quantity: 0 },
+                { id: 17, prod: "צעיף", cost: 25, src: tezif_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
+                { id: 18, prod: "כדור", cost: 25, src: ball_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
+                { id: 19, prod: "חולצה", cost: 25, src: shirt_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
+                { id: 20, prod: "כובע", cost: 25, src: hat_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 }
             ],
-            cartItems: []
-
+            cartItems: [],
+            total_price: 0
         }
     }
 
@@ -109,36 +109,67 @@ class Manager extends Component {
         })
     }
 
-    addToCart = (index) => {
-        console.log(index);
-        let item = [...this.state.cartItems, this.state.items[index]];
-        this.setState({ cartItems: item })
+    UpdateIncrement = (id) => {
+        let item = this.state.items.find(item => item.id === id);
+        let qua = item.quantity++
+        this.setState({ quantity: qua })
+    }
+
+    UpdateDecrement = (id) => {
+        let item = this.state.items.find(item => item.id === id);
+        if (item.quantity === 0) return;
+        let qua = item.quantity--
+        this.setState({ quantity: qua })
+
+    }
+    addToCart = (id) => {
+        // console.log(id);
+        // debugger
+        // let check = this.state.cartItems.find(item => item.id === id)
+        // if (check) {
+        //     check.quantity++
+        //     let sameItem = check.cost * check.quantity
+        //     this.setState({ total_price: sameItem })
+        // }
+        // else {
+        //     let item = this.state.items.find(item => item.id === id)
+        //     let add_item = [...this.state.cartItems, item];
+        //     let items_price = this.state.total_price + item.cost
+        //     this.setState({ cartItems: add_item, total_price: items_price })
+        // }
     }
 
     RemoveItem = (id) => {
         console.log(id);
-        debugger
         let cartItems = this.state.cartItems.filter(item => item.id !== id);
-        this.setState({ cartItems: cartItems })
+        let item = this.state.cartItems.find(item => item.id === id);
+        let items_price = this.state.total_price - item.cost
+        this.setState({ cartItems: cartItems, total_price: items_price })
     }
 
     ConfirmOrder = () => {
         if (this.state.cartItems.length > 0) {
             alert("Your order confirm on our system,email with the order details will sent to you :) !")
-            this.setState({ cartItems: [] })
+            this.setState({ cartItems: [], total_price: 0 })
             return
         }
         alert("No items added")
     }
-    render() {
 
+
+
+
+
+    render() {
+        console.log(this.state.items[0].quantity)
+        console.log(this.state.total_price);
         console.log(this.state.cartItems)
         return (
             <Switch>
                 <Route exact path="/" component={Home}></Route>
                 <Route path="/teams" render={() => <Teams teams={this.state.teams} sendToParent={this.getTeamFromChild} />}></Route>
                 <Route path="/table_rank"></Route>
-                <Route path="/store" render={() => <StoreTeams items={this.state.items} addToCart={this.addToCart} cartItems={this.state.cartItems} RemoveItem={this.RemoveItem} ConfirmOrder={this.ConfirmOrder} />}></Route>
+                <Route path="/store" render={() => <StoreTeams items={this.state.items} addToCart={this.addToCart} cartItems={this.state.cartItems} RemoveItem={this.RemoveItem} ConfirmOrder={this.ConfirmOrder} total_price={this.state.total_price} handleIncrement={this.UpdateIncrement} handleDecrement={this.UpdateDecrement} />}></Route>
                 <Route path="/cart"></Route>
                 <Route path="/gamble"></Route>
                 <Route path="/team" render={() => <Team />}></Route>
