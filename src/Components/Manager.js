@@ -93,7 +93,7 @@ class Manager extends Component {
                 { id: 19, prod: "חולצה", cost: 25, src: shirt_hp_sheva, team_name: "הפועל באר שבע" },
                 { id: 20, prod: "כובע", cost: 25, src: hat_hp_sheva, team_name: "הפועל באר שבע" }
             ],
-            cartItems:[]
+            cartItems: []
 
         }
     }
@@ -111,18 +111,34 @@ class Manager extends Component {
 
     addToCart = (index) => {
         console.log(index);
-        let item=[...this.state.cartItems,this.state.items[index]];
-        this.setState({cartItems:item})
+        let item = [...this.state.cartItems, this.state.items[index]];
+        this.setState({ cartItems: item })
     }
 
+    RemoveItem = (id) => {
+        console.log(id);
+        debugger
+        let cartItems = this.state.cartItems.filter(item => item.id !== id);
+        this.setState({ cartItems: cartItems })
+    }
+
+    ConfirmOrder = () => {
+        if (this.state.cartItems.length > 0) {
+            alert("Your order confirm on our system,email with the order details will sent to you :) !")
+            this.setState({ cartItems: [] })
+            return
+        }
+        alert("No items added")
+    }
     render() {
+
         console.log(this.state.cartItems)
         return (
             <Switch>
                 <Route exact path="/" component={Home}></Route>
                 <Route path="/teams" render={() => <Teams teams={this.state.teams} sendToParent={this.getTeamFromChild} />}></Route>
                 <Route path="/table_rank"></Route>
-                <Route path="/store" render={() => <StoreTeams items={this.state.items} addToCart={this.addToCart} cartItems={this.state.cartItems} />}></Route>
+                <Route path="/store" render={() => <StoreTeams items={this.state.items} addToCart={this.addToCart} cartItems={this.state.cartItems} RemoveItem={this.RemoveItem} ConfirmOrder={this.ConfirmOrder} />}></Route>
                 <Route path="/cart"></Route>
                 <Route path="/gamble"></Route>
                 <Route path="/team" render={() => <Team />}></Route>

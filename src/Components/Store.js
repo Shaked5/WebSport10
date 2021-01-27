@@ -32,16 +32,14 @@ class StoreTeams extends Component {
         this.props.addToCart(index)
     }
 
-    showCart = () => {
-        debugger;
-        {this.props.cartItems.map((item, index) => {
-            return <div key={index}>
-                 <p> שם מוצר:{item.prod}{item.cost}</p>
-             </div>
-         })}
 
+    HandleConfirmOrder = () => {
+        this.props.ConfirmOrder()
     }
 
+    RemoveItem = (id) => {
+        this.props.RemoveItem(id)
+    }
 
     render() {
         console.log(this.state.searchInput)
@@ -51,8 +49,8 @@ class StoreTeams extends Component {
             <div>
                 <>
                     <Button variant="btn-container secondary" onClick={this.SetModalShow}>
-                        <img className="cart" src={cart} />
-                        <span>1</span>
+                        <span style={{ color: 'red', fontSize: '1rem', fontWeight: 'bold' }}>{this.props.cartItems.length}</span>
+                        <img style={{ position: 'absolute',top: '' ,left: '5.8%' }} className="cart" src={cart} />
                     </Button>
 
                     <Modal
@@ -63,22 +61,30 @@ class StoreTeams extends Component {
                     >
                         <Modal.Header>
                             <Modal.Title>עגלת קניות</Modal.Title>
+                            <Button variant="secondary" onClick={this.SetCloseModal}>X</Button>
                         </Modal.Header>
                         <Modal.Body>
-                            {()=>this.showCart()}                         
+                            <div>
+                                {this.props.cartItems.map((item, index) => {
+                                    return <div key={index}>
+                                        <p style={{ textAlign: 'right' }}>
+                                            <b>שם מוצר: {item.prod}<br /> מחיר: ₪{item.cost} </b>
+                                            <img width="11%" height="3%" src={item.src}></img>
+                                            <Button className="btn btn-sm m-4" variant="danger"
+                                                onClick={() => this.RemoveItem(item.id)}>-</Button></p>
+                                    </div>
+                                })}
+                            </div>
                         </Modal.Body>
 
                         <Modal.Footer>
-                            <Button variant="secondary" onClick={this.SetCloseModal}>
-                                סגור
-                            </Button>
-                            <Button variant="primary">תשלום</Button>
+                            <Button variant="success" onClick={this.HandleConfirmOrder}>לתשלום</Button>
                         </Modal.Footer>
                     </Modal>
                 </>
             </div>
             <div style={{ textAlign: 'right' }}>
-                <b>חיפוש מוצר על פי שם קבוצה :</b> <input style={{ height: '28px' }} type="text" onChange={this.inputTeam} /> <Button variant="outline-info" size="sm" onClick={this.searchButton}>חפש</Button>
+                <b>חיפוש מוצר על פי שם קבוצה :</b> <input style={{ height: '28px' }} type="text" onChange={this.inputTeam} />
             </div>
             <h2 style={{ textAlign: 'center' }}>חנות המועדון</h2>
             <div>
