@@ -72,7 +72,7 @@ class Manager extends Component {
                 }
             ],
             items: [
-                { id: 1, prod: "צעיף", cost: 30, src: tezif_mc_pt, team_name: "מכבי פתח תקווה" },
+                { id: 1, prod: "צעיף", cost: 30, src: tezif_mc_pt, team_name: 'מכבי פתח תקווה' },
                 { id: 2, prod: "כדור", cost: 80, src: ball_mc_pt, team_name: "מכבי פתח תקווה" },
                 { id: 3, prod: "חולצה", cost: 50, src: shirt_mc_pt, team_name: "מכבי פתח תקווה" },
                 { id: 4, prod: "כובע", cost: 25, src: hat_mc_pt, team_name: "מכבי פתח תקווה" },
