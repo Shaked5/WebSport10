@@ -112,38 +112,34 @@ class Manager extends Component {
     UpdateIncrement = (id) => {
         let item = this.state.items.find(item => item.id === id);
         let qua = item.quantity++
-        this.setState({ quantity: qua })
+        let total = this.state.total_price + item.cost;
+        this.setState({ quantity: qua, total_price: total })
     }
 
     UpdateDecrement = (id) => {
         let item = this.state.items.find(item => item.id === id);
         if (item.quantity === 0) return;
         let qua = item.quantity--
-        this.setState({ quantity: qua })
+        let total = this.state.total_price - item.cost;
+        this.setState({ quantity: qua, total_price: total })
 
     }
     addToCart = (id) => {
-        // console.log(id);
-        // debugger
-        // let check = this.state.cartItems.find(item => item.id === id)
-        // if (check) {
-        //     check.quantity++
-        //     let sameItem = check.cost * check.quantity
-        //     this.setState({ total_price: sameItem })
-        // }
-        // else {
-        //     let item = this.state.items.find(item => item.id === id)
-        //     let add_item = [...this.state.cartItems, item];
-        //     let items_price = this.state.total_price + item.cost
-        //     this.setState({ cartItems: add_item, total_price: items_price })
-        // }
+        console.log(id);
+        debugger
+        let item = this.state.items.find(item => item.id === id)
+        if (item.quantity === 0) return;
+        if (this.state.cartItems.find(item => item.id === id)) return;
+        let newCart = [...this.state.cartItems, item]
+        //let total = (item.cost * item.quantity) + this.state.total_price;
+        this.setState({ cartItems: newCart })
     }
 
     RemoveItem = (id) => {
         console.log(id);
         let cartItems = this.state.cartItems.filter(item => item.id !== id);
         let item = this.state.cartItems.find(item => item.id === id);
-        let items_price = this.state.total_price - item.cost
+        let items_price = this.state.total_price - item.cost * item.quantity;
         this.setState({ cartItems: cartItems, total_price: items_price })
     }
 
