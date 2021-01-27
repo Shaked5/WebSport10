@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import { Card, Button, Modal } from 'react-bootstrap/';
 import '../index.css';
 import '../CSSWeb/Store.css'
-import myModal from './myModal'
 import cart from '../images/cart.png';
 
 
@@ -13,7 +12,6 @@ class StoreTeams extends Component {
         super(props);
         this.state = {
             searchInput: '',
-            src: cart,
             modalShow: false
         }
     }
@@ -22,8 +20,11 @@ class StoreTeams extends Component {
         this.setState({ searchInput: e.target.value });
     }
 
-    SetModalShow=()=>{
-        this.setState({ modalShow: !this.state.modalShow });
+    SetModalShow = () => {
+        this.setState({ modalShow: true });
+    }
+    SetCloseModal = () => {
+        this.setState({ modalShow: false })
     }
 
 
@@ -31,24 +32,50 @@ class StoreTeams extends Component {
         this.props.addToCart(index)
     }
 
-    
+    showCart = () => {
+        debugger;
+        {this.props.cartItems.map((item, index) => {
+            return <div key={index}>
+                 <p> שם מוצר:{item.prod}{item.cost}</p>
+             </div>
+         })}
+
+    }
+
 
     render() {
         console.log(this.state.searchInput)
         return (<div>
             <NavWeb />
             <br />
-            <div><img className="cart" src={cart} />
-                {/* <>
-                    <Button variant="primary" onClick={this.SetModalShow}>
-                        cart
-                          </Button>
+            <div>
+                <>
+                    <Button variant="btn-container secondary" onClick={this.SetModalShow}>
+                        <img className="cart" src={cart} />
+                        <span>1</span>
+                    </Button>
 
-                      <myModal
+                    <Modal
                         show={this.state.modalShow}
-                        onHide={this.SetModalShow}
-                      />
-                </> */}
+                        onHide={this.SetCloseModal}
+                        backdrop="static"
+                        keyboard={false}
+                    >
+                        <Modal.Header>
+                            <Modal.Title>עגלת קניות</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            {()=>this.showCart()}                         
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={this.SetCloseModal}>
+                                סגור
+                            </Button>
+                            <Button variant="primary">תשלום</Button>
+                        </Modal.Footer>
+                    </Modal>
+                </>
             </div>
             <div style={{ textAlign: 'right' }}>
                 <b>חיפוש מוצר על פי שם קבוצה :</b> <input style={{ height: '28px' }} type="text" onChange={this.inputTeam} /> <Button variant="outline-info" size="sm" onClick={this.searchButton}>חפש</Button>

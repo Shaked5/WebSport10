@@ -92,7 +92,8 @@ class Manager extends Component {
                 { id: 18, prod: "כדור", cost: 25, src: ball_hp_sheva, team_name: "הפועל באר שבע" },
                 { id: 19, prod: "חולצה", cost: 25, src: shirt_hp_sheva, team_name: "הפועל באר שבע" },
                 { id: 20, prod: "כובע", cost: 25, src: hat_hp_sheva, team_name: "הפועל באר שבע" }
-            ]
+            ],
+            cartItems:[]
 
         }
     }
@@ -109,16 +110,19 @@ class Manager extends Component {
     }
 
     addToCart = (index) => {
-        
+        console.log(index);
+        let item=[...this.state.cartItems,this.state.items[index]];
+        this.setState({cartItems:item})
     }
 
     render() {
+        console.log(this.state.cartItems)
         return (
             <Switch>
                 <Route exact path="/" component={Home}></Route>
                 <Route path="/teams" render={() => <Teams teams={this.state.teams} sendToParent={this.getTeamFromChild} />}></Route>
                 <Route path="/table_rank"></Route>
-                <Route path="/store" render={() => <StoreTeams items={this.state.items} addToCart={this.addToCart} />}></Route>
+                <Route path="/store" render={() => <StoreTeams items={this.state.items} addToCart={this.addToCart} cartItems={this.state.cartItems} />}></Route>
                 <Route path="/cart"></Route>
                 <Route path="/gamble"></Route>
                 <Route path="/team" render={() => <Team />}></Route>
