@@ -98,7 +98,7 @@ class StoreTeams extends Component {
                 </>
             </div>
             <div style={{ textAlign: 'right' }}>
-                <b>חיפוש מוצר על פי שם קבוצה :</b> <input style={{ height: '28px' }} type="text" onChange={this.inputTeam} />
+                <b>חיפוש מוצר על פי קבוצה :</b> <input style={{ height: '28px' }} type="text" onChange={this.inputTeam} />
             </div>
             <h2 style={{ textAlign: 'center' }}>חנות האוהדים</h2>
             <div>

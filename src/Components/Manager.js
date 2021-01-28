@@ -166,7 +166,6 @@ class Manager extends Component {
                 <Route path="/teams" render={() => <Teams teams={this.state.teams} sendToParent={this.getTeamFromChild} />}></Route>
                 <Route path="/table_rank"></Route>
                 <Route path="/store" render={() => <StoreTeams items={this.state.items} addToCart={this.addToCart} cartItems={this.state.cartItems} RemoveItem={this.RemoveItem} ConfirmOrder={this.ConfirmOrder} total_price={this.state.total_price} handleIncrement={this.UpdateIncrement} handleDecrement={this.UpdateDecrement} />}></Route>
-                <Route path="/cart"></Route>
                 <Route path="/gamble"></Route>
                 <Route path="/team" render={() => <Team />}></Route>
             </Switch>
