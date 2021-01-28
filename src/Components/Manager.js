@@ -4,6 +4,7 @@ import Home from './Home';
 import StoreTeams from './Store';
 import Teams from './Teams';
 import Team from './Team';
+import TableTeams from './TableTeams';
 import ball_mc_pt from '../images/shop/ball_mc_pt.jpg';
 import tezif_mc_pt from '../images/shop/tezif_mc_pt.jpg'
 import shirt_mc_pt from '../images/shop/shirt_mc_pt.jpg';
@@ -41,7 +42,7 @@ class Manager extends Component {
                     info: "מכבי תל אביב הוא מועדון כדורגל ישראלי מהעיר תל אביב, הנמנה עם מועדוני הכדורגל הוותיקים והמובילים בישראל ומשחק בליגת העל ובליגה האירופית. המועדון הוקם בשנת 1906, ומאז 2009 הוא בבעלות המיליארדר היהודי-קנדי מיטשל גולדהאר. המועדון חבר מן המניין בארגון המועדונים האירופיים ומנכלית הקבוצה שרון תמם מכהנת בדירקטוריון הארגון.",
                     imgClub: "https://upload.wikimedia.org/wikipedia/he/thumb/8/82/Maccabi_tlv_fc.png/250px-Maccabi_tlv_fc.png",
                     players: [{ id: 1, name: "שרן ייני", age: 34 }, { id: 2, name: "אייל גולסה", age: 30 }, { id: 3, name: "דור פרץ", age: 25 }, { id: 4, name: "יונתן כהן", age: 24 }, { id: 5, name: "איתי שכטר", age: 33 }],
-                    win:0 ,draw:0 ,loss:0 ,points:0
+                    win: 2, draw: 2, loss: 1, points: 8
                 },
                 {
                     id: 2,
@@ -49,7 +50,7 @@ class Manager extends Component {
                     info: "מכבי חיפה הוא מועדון כדורגל ישראלי מהעיר חיפה, המשחק בליגת העל הישראלית. המועדון הוקם בשנת 1913, ומאז 1992 הוא מנוהל על ידי איש העסקים יעקב שחר, שמכהן כנשיא המועדון. המועדון כולל גם קבוצות נוער, נערים וילדים, ובתי ספר לכדורגל. המועדון חבר שותף בארגון המועדונים האירופיים.",
                     imgClub: "https://newshaifakrayot.net/wp-content/uploads/2019/08/214px-Maccabi-h.png",
                     players: [{ id: 1, name: "טאלב טואטחה", age: 28 }, { id: 2, name: "רמי גרשון", age: 32 }, { id: 3, name: "ניקיטה רוקאביצה", age: 33 }, { id: 4, name: "דולב חזיזה", age: 24 }],
-                    win:0 ,draw:0 ,loss:0 ,points:0
+                    win: 1, draw: 3, loss: 1, points: 6
                 },
                 {
                     id: 3,
@@ -57,7 +58,7 @@ class Manager extends Component {
                     info: " מכבי עירוני פתח תקווה (השם המלא: מועדון ספורט מכבי אבשלום עירוני פתח תקווה) היא קבוצת כדורגל ישראלית מהעיר פתח תקווה, המשחקת בליגת העל.",
                     imgClub: "https://m-pt.co.il/wp-content/uploads/2020/10/maccabi_petah-tikva.png",
                     players: [{ id: 1, name: "אריק יאנקו", age: 30 }, { id: 2, name: "תומר לוי", age: 27 }, { id: 3, name: "ינון אליהו", age: 27 }, { id: 4, name: "מוחמד סרסור", age: 21 }],
-                    win:0 ,draw:0 ,loss:0 ,points:0
+                    win: 2, draw: 1, loss: 2, points: 7
                 },
                 {
                     id: 4,
@@ -65,7 +66,7 @@ class Manager extends Component {
                     info: "ביתר ירושלים היא קבוצת כדורגל מירושלים המשתייכת לאגודת הספורט ביתר, ומשחקת בליגת העל – ליגת הכדורגל הבכירה בישראל. הקבוצה הוקמה ב-1936, והחל משנות השבעים, נחשבת הקבוצה לאחת הקבוצות הבכירות והאהודות ביותר בכדורגל הישראלי. לזכות ביתר שש אליפויות ושבעה גביעי מדינה. כמו כן, זכתה הקבוצה שלוש פעמים בגביע הטוטו ופעמיים בתואר אלוף האלופים.",
                     imgClub: "https://sheva7.co.il/wp-content/uploads/2018/10/%D7%9C%D7%95%D7%92%D7%95-%D7%91%D7%99%D7%AA%D7%A8-%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D.png",
                     players: [{ id: 1, name: "ירדן שועה", age: 22 }, { id: 2, name: "אלירן עטר", age: 33 }, { id: 3, name: "דוד דגו", age: 20 }, { id: 4, name: "טל בן חיים", age: 39 }, { id: 5, name: "אנטואן קונטה", age: 26 }],
-                    win:0 ,draw:0 ,loss:0 ,points:0
+                    win: 3, draw: 1, loss: 1, points: 10
                 },
                 {
                     id: 5,
@@ -73,7 +74,7 @@ class Manager extends Component {
                     info: "הפועל באר שבע הוא מועדון כדורגל ישראלי מהעיר באר שבע, המשחק בליגת העל הישראלית. המועדון הוקם בשנת 1949, ומאז 2007 הוא מנוהל על ידי אשת העסקים אלונה ברקת, שמכהנת כבעלי המועדון. המועדון כולל גם קבוצות נוער, נערים וילדים, ובתי ספר לכדורגל. המועדון חבר מן המניין בארגון המועדונים האירופיים.",
                     imgClub: "https://upload.wikimedia.org/wikipedia/he/2/27/HBSBC.png",
                     players: [{ id: 1, name: "מיגל ויטור", age: 32 }, { id: 2, name: "מרוואן קבהא", age: 30 }, { id: 3, name: "לואי טאהא", age: 32 }, { id: 4, name: "שון גולדברג", age: 25 }],
-                    win:0 ,draw:0 ,loss:0 ,points:0
+                    win: 2, draw: 3, loss: 0, points: 9
                 }
             ],
             items: [
@@ -99,13 +100,19 @@ class Manager extends Component {
                 { id: 20, prod: "כובע", cost: 25, src: hat_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 }
             ],
             cartItems: [],
-            total_price: 0
+            total_price: 0,
+            pointA: '',
+            pointsB: ''
         }
     }
 
     getTeamFromChild = (data) => {
         debugger;
-        let newTeam = { id: ++this.counter, club: data.club, items: [], info: data.info, imgClub: data.imgClub, players: data.players }
+        let rWin = Math.floor(Math.random() * 4)
+        let rDraw = Math.floor(Math.random() * 4)
+        let rLoss = Math.floor(Math.random() * 4)
+        let points = rWin * 3 + rDraw
+        let newTeam = { id: ++this.counter, club: data.club, items: [], info: data.info, imgClub: data.imgClub, players: data.players, win: rWin, draw: rDraw, loss: rLoss, points: points }
         this.setState({
             teams: [...this.state.teams, newTeam]
 
@@ -143,10 +150,10 @@ class Manager extends Component {
     RemoveItem = (id) => {
         console.log(id);
         let cartItems = this.state.cartItems.filter(item => item.id !== id);
-        let item = this.state.cartItems.find(item => item.id === id);       
+        let item = this.state.cartItems.find(item => item.id === id);
         let items_price = this.state.total_price - item.cost * item.quantity;
-        item.quantity=item.quantity-item.quantity
-        this.setState({ cartItems: cartItems, total_price: items_price,quantity:item.quantity })
+        item.quantity = item.quantity - item.quantity
+        this.setState({ cartItems: cartItems, total_price: items_price, quantity: item.quantity })
     }
 
     ConfirmOrder = () => {
@@ -159,18 +166,48 @@ class Manager extends Component {
     }
 
 
+    //table games
+    handleGameBtn = (teamA, teamB) => {
+        debugger
+
+        const teamAObj = this.state.teams.find(team => team.id == teamA)
+        console.log(teamAObj)
+        const teamBObj = this.state.teams.find(team => team.id == teamB)
+        let rndA = Math.floor(Math.random() * 7)
+        let rndB = Math.floor(Math.random() * 7)
+        if (rndA > rndB) {
+            let w = teamAObj.win++
+            let l = teamBObj.lose++
+            let teams = [...this.state.teams]
+            //let indexA = this.state.teams.findIndex(obj => obj.id === teamAObj.id)
+            teams[teamA-1].win = w
+            //let indexB = this.state.teams.findIndex(obj => obj.id === teamBObj.id)
+            teams[teamB-1].loss = l
+            console.log(teamAObj);
+            console.log(teamBObj);
+            this.setState({ teams })
+        }
+        else if (rndA == rndB) {
+            teamAObj.draw++
+            teamBObj.draw++
+        }
+        else {
+            teamBObj.win++
+            teamAObj.loss++
+        }
+        console.log(teamAObj)
+
+        this.setState({ pointA: rndA, pointsB: rndB })
+    }
 
 
 
     render() {
-        console.log(this.state.items[0].quantity)
-        console.log(this.state.total_price);
-        console.log(this.state.cartItems)
         return (
             <Switch>
-                <Route exact path="/" component={Home}></Route>
+                <Route exact path="/" render={() => <Home teams={this.state.teams} handleGameBtn={this.handleGameBtn} pointsA={this.state.pointA} pointsB={this.state.pointsB} />}></Route>
                 <Route path="/teams" render={() => <Teams teams={this.state.teams} sendToParent={this.getTeamFromChild} />}></Route>
-                <Route path="/table_rank"></Route>
+                <Route path="/table" render={() => <TableTeams teams={this.state.teams} />}></Route>
                 <Route path="/store" render={() => <StoreTeams items={this.state.items} addToCart={this.addToCart} cartItems={this.state.cartItems} RemoveItem={this.RemoveItem} ConfirmOrder={this.ConfirmOrder} total_price={this.state.total_price} handleIncrement={this.UpdateIncrement} handleDecrement={this.UpdateDecrement} />}></Route>
                 <Route path="/gamble"></Route>
                 <Route path="/team" render={() => <Team />}></Route>

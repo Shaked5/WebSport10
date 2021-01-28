@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import NavWeb from './Nav';
 import Carousel from 'react-bootstrap/Carousel';
-import { Card, Button } from 'react-bootstrap/';
+import '../CSSWeb/home.css'
+import { Card, Button, DropdownButton, Dropdown } from 'react-bootstrap/';
 import rokaviza from '../images/rokaviza.jpg';
 import coach from '../images/1067598.jpg'
 import card1 from '../images/1067766.jpg'
@@ -9,9 +10,32 @@ import card1 from '../images/1067766.jpg'
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams')),
+      teamA: '',
+      teamB: ''
+    }
+  }
+
+  handleTeamA = (e) => {
+    let event = e.target.value
+    if (this.state.teamB == event)
+      alert('error')
+    this.setState({ teamA: e.target.value })
+  }
+  handleTeamB = (e) => {
+    let event = e.target.value
+    if (this.state.teamA == event)
+      alert('error')
+    this.setState({ teamB: e.target.value })
+  }
+
+  handleGameBtn=()=>{
+   this.props.handleGameBtn(this.state.teamA,this.state.teamB)
   }
   render() {
+    console.log(this.state.teamA)
+    console.log(this.state.teamB)
     return (
       <div>
         <NavWeb />
@@ -52,7 +76,7 @@ class Home extends Component {
           </Carousel>
         </center>
 
-        <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '5%', textAlign: 'right' ,backgroundColor: 'rgba(117, 133, 145, 0.1)'}}>
+        <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '5%', textAlign: 'right', backgroundColor: 'rgba(117, 133, 145, 0.1)' }}>
 
           <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={rokaviza} width='150px' height='130px' />
@@ -84,6 +108,44 @@ class Home extends Component {
             </Card.Body>
           </Card>
         </div>
+        <br />
+        <div>
+          <Card className="text-center">
+            <Card.Header>הגרל משחק</Card.Header>
+            <Card.Body>
+              <Card.Title>Special title treatment</Card.Title>
+              <Card.Text className="containerDropdown">
+                <div className="inputgame">
+                  <select onChange={this.handleTeamA}>
+                    <option value=''>בחר קבוצה</option>
+                    {this.props.teams.map((team, index) => <option key={index} value={team.id} >
+                      {team.club}
+                    </option>
+
+                    )}
+                  </select>
+                  {this.props.pointsB}:{this.props.pointsA}
+                </div>
+
+                <div className="inputgame">
+                  <select onChange={this.handleTeamB}>
+                    <option value=''>בחר קבוצה</option>
+                    {this.props.teams.map((team, index) => <option key={index} value={team.id}>
+                      {team.club}
+                    </option>
+
+                    )}
+                  </select>
+
+                </div>
+              </Card.Text>
+
+              <Button variant="primary" onClick={this.handleGameBtn}>Go somewhere</Button>
+            </Card.Body>
+            <Card.Footer className="text-muted">2 days ago</Card.Footer>
+          </Card>
+        </div>
+
       </div>
     );
   }
