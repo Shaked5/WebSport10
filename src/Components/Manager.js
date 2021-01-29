@@ -168,13 +168,38 @@ class Manager extends Component {
 
     //table games
     handleGameBtn = (teamA, teamB) => {
-        debugger
+    
+        let rndA = Math.floor(Math.random() * 7)
+        let rndB = Math.floor(Math.random() * 7)
+        
+        this.state.teams.map((team,index)=>{
+            let win
+            let loss
+            let draw
+            debugger
+            if(team.id===teamA||team.id===teamB){
+                if(rndA> rndB){
+                    //team A won
+                   team.win++
+                  this.setState({team})
+                }else if(rndB>rndA){
+                   //teamA lost
+                   team.loss++
+                   this.setState({team})
+                    
+                }else{
+                    //equal score
+                    team.draw++
+                    this.setState({team})
 
+                }
+            }
+        })
+        debugger
         const teamAObj = this.state.teams.find(team => team.id == teamA)
         console.log(teamAObj)
         const teamBObj = this.state.teams.find(team => team.id == teamB)
-        let rndA = Math.floor(Math.random() * 7)
-        let rndB = Math.floor(Math.random() * 7)
+     
         if (rndA > rndB) {
             let w = teamAObj.win++
             let l = teamBObj.lose++

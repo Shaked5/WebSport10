@@ -31,7 +31,7 @@ class Home extends Component {
   }
 
   handleGameBtn=()=>{
-   this.props.handleGameBtn(this.state.teamA,this.state.teamB)
+   this.props.handleGameBtn(parseInt(this.state.teamA),parseInt(this.state.teamB))
   }
   render() {
     console.log(this.state.teamA)
