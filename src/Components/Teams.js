@@ -11,7 +11,7 @@ class Teams extends Component {
       open: false,
       club: "",
       imgClub: "",
-      info:"",
+      info: "",
       players: [],
       playerName: "",
       age: 0,
@@ -29,9 +29,9 @@ class Teams extends Component {
   }
 
   sendTeamToParent = () => {
-    if (this.state.club !== "" && this.state.imgClub !== "" && this.state.players !== []&&this.state.info!==""){
-      this.props.sendToParent({ club: this.state.club, imgClub: this.state.imgClub,info:this.state.info, players: this.state.players })
-      this.setState({club:"", imgClub:"",info:""})
+    if (this.state.club !== "" && this.state.imgClub !== "" && this.state.players !== [] && this.state.info !== "") {
+      this.props.sendToParent({ club: this.state.club, imgClub: this.state.imgClub, info: this.state.info, players: this.state.players })
+      this.setState({ club: "", imgClub: "", info: "" })
     }
 
     else {
@@ -56,7 +56,7 @@ class Teams extends Component {
       })
     }
   }
-  
+
   render() {
     return (
       <div>
@@ -67,13 +67,15 @@ class Teams extends Component {
         <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
           {this.state.teamsFromLocalstorage && this.state.teamsFromLocalstorage.map((team, index) =>
             <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
-              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200" onClick={() => this.sendTeamToPrint(team.id)} />
+              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200"
+                onClick={() => this.sendTeamToPrint(team.id)} />
               <p index={team.id}> {team.club} </p>
             </div>
           )}
           {!this.state.teamsFromLocalstorage && this.props.teams.map((team, index) =>
             <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
-              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200" onClick={() => this.sendTeamToPrint(team.id)} />
+              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200"
+                onClick={() => this.sendTeamToPrint(team.id)} />
               <p index={team.id}> {team.club} </p>
             </div>
           )}
@@ -124,8 +126,8 @@ class Teams extends Component {
 
               <Form.Group>
                 <Form.Label>מידע על הקבוצה</Form.Label>
-                <Form.Control as="textarea" rows={3}   value={this.state.info}
-                    onChange={e => this.setState({ info: e.target.value })} ></Form.Control>
+                <Form.Control as="textarea" rows={3} value={this.state.info}
+                  onChange={e => this.setState({ info: e.target.value })} ></Form.Control>
               </Form.Group>
               <Button variant="primary" onClick={this.sendTeamToParent}>
                 אישור

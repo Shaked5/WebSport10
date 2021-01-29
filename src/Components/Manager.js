@@ -143,7 +143,6 @@ class Manager extends Component {
         if (item.quantity === 0) return;
         if (this.state.cartItems.find(item => item.id === id)) return;
         let newCart = [...this.state.cartItems, item]
-        //let total = (item.cost * item.quantity) + this.state.total_price;
         this.setState({ cartItems: newCart })
     }
 
@@ -165,11 +164,9 @@ class Manager extends Component {
         alert("No items added")
     }
 
-
-    //table games
+    //table games - to fix
     handleGameBtn = (teamA, teamB) => {
         debugger
-
         const teamAObj = this.state.teams.find(team => team.id == teamA)
         console.log(teamAObj)
         const teamBObj = this.state.teams.find(team => team.id == teamB)
@@ -180,9 +177,9 @@ class Manager extends Component {
             let l = teamBObj.lose++
             let teams = [...this.state.teams]
             //let indexA = this.state.teams.findIndex(obj => obj.id === teamAObj.id)
-            teams[teamA-1].win = w
+            teams[teamA - 1].win = w
             //let indexB = this.state.teams.findIndex(obj => obj.id === teamBObj.id)
-            teams[teamB-1].loss = l
+            teams[teamB - 1].loss = l
             console.log(teamAObj);
             console.log(teamBObj);
             this.setState({ teams })
@@ -200,17 +197,30 @@ class Manager extends Component {
         this.setState({ pointA: rndA, pointsB: rndB })
     }
 
-
-
     render() {
         return (
             <Switch>
-                <Route exact path="/" render={() => <Home teams={this.state.teams} handleGameBtn={this.handleGameBtn} pointsA={this.state.pointA} pointsB={this.state.pointsB} />}></Route>
-                <Route path="/teams" render={() => <Teams teams={this.state.teams} sendToParent={this.getTeamFromChild} />}></Route>
-                <Route path="/table" render={() => <TableTeams teams={this.state.teams} />}></Route>
-                <Route path="/store" render={() => <StoreTeams items={this.state.items} addToCart={this.addToCart} cartItems={this.state.cartItems} RemoveItem={this.RemoveItem} ConfirmOrder={this.ConfirmOrder} total_price={this.state.total_price} handleIncrement={this.UpdateIncrement} handleDecrement={this.UpdateDecrement} />}></Route>
-                <Route path="/gamble"></Route>
-                <Route path="/team" render={() => <Team />}></Route>
+                <Route exact path="/" render={() =>
+                    <Home teams={this.state.teams}
+                        handleGameBtn={this.handleGameBtn}
+                        pointsA={this.state.pointA}
+                        pointsB={this.state.pointsB} />}></Route>
+                <Route path="/teams" render={() =>
+                    <Teams teams={this.state.teams}
+                        sendToParent={this.getTeamFromChild} />}></Route>
+                <Route path="/table" render={() =>
+                    <TableTeams teams={this.state.teams} />}></Route>
+                <Route path="/store" render={() =>
+                    <StoreTeams items={this.state.items}
+                        addToCart={this.addToCart}
+                        cartItems={this.state.cartItems}
+                        RemoveItem={this.RemoveItem}
+                        ConfirmOrder={this.ConfirmOrder}
+                        total_price={this.state.total_price}
+                        handleIncrement={this.UpdateIncrement}
+                        handleDecrement={this.UpdateDecrement} />}></Route>
+                <Route path="/team" render={() =>
+                    <Team />}></Route>
             </Switch>
         );
     }
