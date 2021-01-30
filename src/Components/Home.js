@@ -19,13 +19,13 @@ class Home extends Component {
 
   handleTeamA = (e) => {
     let event = e.target.value
-    if (this.state.teamB == event)
+    if (this.state.teamA == event)
       alert('error')
     this.setState({ teamA: e.target.value })
   }
   handleTeamB = (e) => {
     let event = e.target.value
-    if (this.state.teamA == event)
+    if (this.state.teamB == event)
       alert('error')
     this.setState({ teamB: e.target.value })
   }
@@ -124,7 +124,7 @@ class Home extends Component {
 
                     )}
                   </select>
-                  {this.props.pointsB}:{this.props.pointsA}
+                  {this.props.pointB}:{this.props.pointA}
                 </div>
 
                 <div className="inputgame">

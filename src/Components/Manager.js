@@ -31,228 +31,237 @@ import shirt_hp_sheva from '../images/shop/shirt_hp_sheva.jpeg';
 import hat_hp_sheva from '../images/shop/hat_hp_sheva.jpeg';
 
 class Manager extends Component {
-    constructor(props) {
-        super(props);
-        this.counter = 5;
-        this.state = {
-            teams: [
-                {
-                    id: 1,
-                    club: "מכבי תל אביב",
-                    info: "מכבי תל אביב הוא מועדון כדורגל ישראלי מהעיר תל אביב, הנמנה עם מועדוני הכדורגל הוותיקים והמובילים בישראל ומשחק בליגת העל ובליגה האירופית. המועדון הוקם בשנת 1906, ומאז 2009 הוא בבעלות המיליארדר היהודי-קנדי מיטשל גולדהאר. המועדון חבר מן המניין בארגון המועדונים האירופיים ומנכלית הקבוצה שרון תמם מכהנת בדירקטוריון הארגון.",
-                    imgClub: "https://upload.wikimedia.org/wikipedia/he/thumb/8/82/Maccabi_tlv_fc.png/250px-Maccabi_tlv_fc.png",
-                    players: [{ id: 1, name: "שרן ייני", age: 34 }, { id: 2, name: "אייל גולסה", age: 30 }, { id: 3, name: "דור פרץ", age: 25 }, { id: 4, name: "יונתן כהן", age: 24 }, { id: 5, name: "איתי שכטר", age: 33 }],
-                    win: 2, draw: 2, loss: 1, points: 8
-                },
-                {
-                    id: 2,
-                    club: "מכבי חיפה",
-                    info: "מכבי חיפה הוא מועדון כדורגל ישראלי מהעיר חיפה, המשחק בליגת העל הישראלית. המועדון הוקם בשנת 1913, ומאז 1992 הוא מנוהל על ידי איש העסקים יעקב שחר, שמכהן כנשיא המועדון. המועדון כולל גם קבוצות נוער, נערים וילדים, ובתי ספר לכדורגל. המועדון חבר שותף בארגון המועדונים האירופיים.",
-                    imgClub: "https://newshaifakrayot.net/wp-content/uploads/2019/08/214px-Maccabi-h.png",
-                    players: [{ id: 1, name: "טאלב טואטחה", age: 28 }, { id: 2, name: "רמי גרשון", age: 32 }, { id: 3, name: "ניקיטה רוקאביצה", age: 33 }, { id: 4, name: "דולב חזיזה", age: 24 }],
-                    win: 1, draw: 3, loss: 1, points: 6
-                },
-                {
-                    id: 3,
-                    club: "מכבי פתח תקווה",
-                    info: " מכבי עירוני פתח תקווה (השם המלא: מועדון ספורט מכבי אבשלום עירוני פתח תקווה) היא קבוצת כדורגל ישראלית מהעיר פתח תקווה, המשחקת בליגת העל.",
-                    imgClub: "https://m-pt.co.il/wp-content/uploads/2020/10/maccabi_petah-tikva.png",
-                    players: [{ id: 1, name: "אריק יאנקו", age: 30 }, { id: 2, name: "תומר לוי", age: 27 }, { id: 3, name: "ינון אליהו", age: 27 }, { id: 4, name: "מוחמד סרסור", age: 21 }],
-                    win: 2, draw: 1, loss: 2, points: 7
-                },
-                {
-                    id: 4,
-                    club: "ביתר ירושלים",
-                    info: "ביתר ירושלים היא קבוצת כדורגל מירושלים המשתייכת לאגודת הספורט ביתר, ומשחקת בליגת העל – ליגת הכדורגל הבכירה בישראל. הקבוצה הוקמה ב-1936, והחל משנות השבעים, נחשבת הקבוצה לאחת הקבוצות הבכירות והאהודות ביותר בכדורגל הישראלי. לזכות ביתר שש אליפויות ושבעה גביעי מדינה. כמו כן, זכתה הקבוצה שלוש פעמים בגביע הטוטו ופעמיים בתואר אלוף האלופים.",
-                    imgClub: "https://sheva7.co.il/wp-content/uploads/2018/10/%D7%9C%D7%95%D7%92%D7%95-%D7%91%D7%99%D7%AA%D7%A8-%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D.png",
-                    players: [{ id: 1, name: "ירדן שועה", age: 22 }, { id: 2, name: "אלירן עטר", age: 33 }, { id: 3, name: "דוד דגו", age: 20 }, { id: 4, name: "טל בן חיים", age: 39 }, { id: 5, name: "אנטואן קונטה", age: 26 }],
-                    win: 3, draw: 1, loss: 1, points: 10
-                },
-                {
-                    id: 5,
-                    club: "הפועל באר שבע",
-                    info: "הפועל באר שבע הוא מועדון כדורגל ישראלי מהעיר באר שבע, המשחק בליגת העל הישראלית. המועדון הוקם בשנת 1949, ומאז 2007 הוא מנוהל על ידי אשת העסקים אלונה ברקת, שמכהנת כבעלי המועדון. המועדון כולל גם קבוצות נוער, נערים וילדים, ובתי ספר לכדורגל. המועדון חבר מן המניין בארגון המועדונים האירופיים.",
-                    imgClub: "https://upload.wikimedia.org/wikipedia/he/2/27/HBSBC.png",
-                    players: [{ id: 1, name: "מיגל ויטור", age: 32 }, { id: 2, name: "מרוואן קבהא", age: 30 }, { id: 3, name: "לואי טאהא", age: 32 }, { id: 4, name: "שון גולדברג", age: 25 }],
-                    win: 2, draw: 3, loss: 0, points: 9
-                }
-            ],
-            items: [
-                { id: 1, prod: "צעיף", cost: 30, src: tezif_mc_pt, team_name: 'מכבי פתח תקווה', quantity: 0 },
-                { id: 2, prod: "כדור", cost: 80, src: ball_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
-                { id: 3, prod: "חולצה", cost: 50, src: shirt_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
-                { id: 4, prod: "כובע", cost: 25, src: hat_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
-                { id: 5, prod: "צעיף", cost: 25, src: tezif_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
-                { id: 6, prod: "כדור", cost: 25, src: ball_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
-                { id: 7, prod: "חולצה", cost: 25, src: shirt_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
-                { id: 8, prod: "כובע", cost: 25, src: hat_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
-                { id: 9, prod: "צעיף", cost: 25, src: tezif_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
-                { id: 10, prod: "כדור", cost: 25, src: ball_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
-                { id: 11, prod: "חולצה", cost: 25, src: shirt_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
-                { id: 12, prod: "כובע", cost: 25, src: hat_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
-                { id: 13, prod: "צעיף", cost: 25, src: tezif_btr, team_name: "ביתר ירושלים", quantity: 0 },
-                { id: 14, prod: "כדור", cost: 25, src: ball_btr, team_name: "ביתר ירושלים", quantity: 0 },
-                { id: 15, prod: "חולצה", cost: 25, src: shirt_btr, team_name: "ביתר ירושלים", quantity: 0 },
-                { id: 16, prod: "כובע", cost: 25, src: hat_btr, team_name: "ביתר ירושלים", quantity: 0 },
-                { id: 17, prod: "צעיף", cost: 25, src: tezif_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
-                { id: 18, prod: "כדור", cost: 25, src: ball_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
-                { id: 19, prod: "חולצה", cost: 25, src: shirt_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
-                { id: 20, prod: "כובע", cost: 25, src: hat_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 }
-            ],
-            cartItems: [],
-            total_price: 0,
-            pointA: '',
-            pointsB: ''
+  constructor(props) {
+    super(props);
+    this.counter = 5;
+    this.state = {
+      teams: [
+        {
+          id: 1,
+          club: "מכבי תל אביב",
+          info: "מכבי תל אביב הוא מועדון כדורגל ישראלי מהעיר תל אביב, הנמנה עם מועדוני הכדורגל הוותיקים והמובילים בישראל ומשחק בליגת העל ובליגה האירופית. המועדון הוקם בשנת 1906, ומאז 2009 הוא בבעלות המיליארדר היהודי-קנדי מיטשל גולדהאר. המועדון חבר מן המניין בארגון המועדונים האירופיים ומנכלית הקבוצה שרון תמם מכהנת בדירקטוריון הארגון.",
+          imgClub: "https://upload.wikimedia.org/wikipedia/he/thumb/8/82/Maccabi_tlv_fc.png/250px-Maccabi_tlv_fc.png",
+          players: [{ id: 1, name: "שרן ייני", age: 34 }, { id: 2, name: "אייל גולסה", age: 30 }, { id: 3, name: "דור פרץ", age: 25 }, { id: 4, name: "יונתן כהן", age: 24 }, { id: 5, name: "איתי שכטר", age: 33 }],
+          win: 2, draw: 2, loss: 1, points: 8
+        },
+        {
+          id: 2,
+          club: "מכבי חיפה",
+          info: "מכבי חיפה הוא מועדון כדורגל ישראלי מהעיר חיפה, המשחק בליגת העל הישראלית. המועדון הוקם בשנת 1913, ומאז 1992 הוא מנוהל על ידי איש העסקים יעקב שחר, שמכהן כנשיא המועדון. המועדון כולל גם קבוצות נוער, נערים וילדים, ובתי ספר לכדורגל. המועדון חבר שותף בארגון המועדונים האירופיים.",
+          imgClub: "https://newshaifakrayot.net/wp-content/uploads/2019/08/214px-Maccabi-h.png",
+          players: [{ id: 1, name: "טאלב טואטחה", age: 28 }, { id: 2, name: "רמי גרשון", age: 32 }, { id: 3, name: "ניקיטה רוקאביצה", age: 33 }, { id: 4, name: "דולב חזיזה", age: 24 }],
+          win: 1, draw: 3, loss: 1, points: 6
+        },
+        {
+          id: 3,
+          club: "מכבי פתח תקווה",
+          info: " מכבי עירוני פתח תקווה (השם המלא: מועדון ספורט מכבי אבשלום עירוני פתח תקווה) היא קבוצת כדורגל ישראלית מהעיר פתח תקווה, המשחקת בליגת העל.",
+          imgClub: "https://m-pt.co.il/wp-content/uploads/2020/10/maccabi_petah-tikva.png",
+          players: [{ id: 1, name: "אריק יאנקו", age: 30 }, { id: 2, name: "תומר לוי", age: 27 }, { id: 3, name: "ינון אליהו", age: 27 }, { id: 4, name: "מוחמד סרסור", age: 21 }],
+          win: 2, draw: 1, loss: 2, points: 7
+        },
+        {
+          id: 4,
+          club: "ביתר ירושלים",
+          info: "ביתר ירושלים היא קבוצת כדורגל מירושלים המשתייכת לאגודת הספורט ביתר, ומשחקת בליגת העל – ליגת הכדורגל הבכירה בישראל. הקבוצה הוקמה ב-1936, והחל משנות השבעים, נחשבת הקבוצה לאחת הקבוצות הבכירות והאהודות ביותר בכדורגל הישראלי. לזכות ביתר שש אליפויות ושבעה גביעי מדינה. כמו כן, זכתה הקבוצה שלוש פעמים בגביע הטוטו ופעמיים בתואר אלוף האלופים.",
+          imgClub: "https://sheva7.co.il/wp-content/uploads/2018/10/%D7%9C%D7%95%D7%92%D7%95-%D7%91%D7%99%D7%AA%D7%A8-%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D.png",
+          players: [{ id: 1, name: "ירדן שועה", age: 22 }, { id: 2, name: "אלירן עטר", age: 33 }, { id: 3, name: "דוד דגו", age: 20 }, { id: 4, name: "טל בן חיים", age: 39 }, { id: 5, name: "אנטואן קונטה", age: 26 }],
+          win: 3, draw: 1, loss: 1, points: 10
+        },
+        {
+          id: 5,
+          club: "הפועל באר שבע",
+          info: "הפועל באר שבע הוא מועדון כדורגל ישראלי מהעיר באר שבע, המשחק בליגת העל הישראלית. המועדון הוקם בשנת 1949, ומאז 2007 הוא מנוהל על ידי אשת העסקים אלונה ברקת, שמכהנת כבעלי המועדון. המועדון כולל גם קבוצות נוער, נערים וילדים, ובתי ספר לכדורגל. המועדון חבר מן המניין בארגון המועדונים האירופיים.",
+          imgClub: "https://upload.wikimedia.org/wikipedia/he/2/27/HBSBC.png",
+          players: [{ id: 1, name: "מיגל ויטור", age: 32 }, { id: 2, name: "מרוואן קבהא", age: 30 }, { id: 3, name: "לואי טאהא", age: 32 }, { id: 4, name: "שון גולדברג", age: 25 }],
+          win: 2, draw: 3, loss: 0, points: 9
         }
+      ],
+      items: [
+        { id: 1, prod: "צעיף", cost: 30, src: tezif_mc_pt, team_name: 'מכבי פתח תקווה', quantity: 0 },
+        { id: 2, prod: "כדור", cost: 80, src: ball_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
+        { id: 3, prod: "חולצה", cost: 50, src: shirt_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
+        { id: 4, prod: "כובע", cost: 25, src: hat_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
+        { id: 5, prod: "צעיף", cost: 25, src: tezif_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
+        { id: 6, prod: "כדור", cost: 25, src: ball_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
+        { id: 7, prod: "חולצה", cost: 25, src: shirt_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
+        { id: 8, prod: "כובע", cost: 25, src: hat_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
+        { id: 9, prod: "צעיף", cost: 25, src: tezif_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
+        { id: 10, prod: "כדור", cost: 25, src: ball_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
+        { id: 11, prod: "חולצה", cost: 25, src: shirt_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
+        { id: 12, prod: "כובע", cost: 25, src: hat_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
+        { id: 13, prod: "צעיף", cost: 25, src: tezif_btr, team_name: "ביתר ירושלים", quantity: 0 },
+        { id: 14, prod: "כדור", cost: 25, src: ball_btr, team_name: "ביתר ירושלים", quantity: 0 },
+        { id: 15, prod: "חולצה", cost: 25, src: shirt_btr, team_name: "ביתר ירושלים", quantity: 0 },
+        { id: 16, prod: "כובע", cost: 25, src: hat_btr, team_name: "ביתר ירושלים", quantity: 0 },
+        { id: 17, prod: "צעיף", cost: 25, src: tezif_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
+        { id: 18, prod: "כדור", cost: 25, src: ball_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
+        { id: 19, prod: "חולצה", cost: 25, src: shirt_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
+        { id: 20, prod: "כובע", cost: 25, src: hat_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 }
+      ],
+      cartItems: [],
+      total_price: 0,
+      pointA: '',
+      pointB: ''
     }
+  }
 
-    getTeamFromChild = (data) => {
-        debugger;
-        let rWin = Math.floor(Math.random() * 4)
-        let rDraw = Math.floor(Math.random() * 4)
-        let rLoss = Math.floor(Math.random() * 4)
-        let points = rWin * 3 + rDraw
-        let newTeam = { id: ++this.counter, club: data.club, items: [], info: data.info, imgClub: data.imgClub, players: data.players, win: rWin, draw: rDraw, loss: rLoss, points: points }
-        this.setState({
-            teams: [...this.state.teams, newTeam]
+  getTeamFromChild = (data) => {
+    debugger;
+    let rWin = Math.floor(Math.random() * 4)
+    let rDraw = Math.floor(Math.random() * 4)
+    let rLoss = Math.floor(Math.random() * 4)
+    let points = rWin * 3 + rDraw
+    let newTeam = { id: ++this.counter, club: data.club, items: [], info: data.info, imgClub: data.imgClub, players: data.players, win: rWin, draw: rDraw, loss: rLoss, points: points }
+    this.setState({
+      teams: [...this.state.teams, newTeam]
 
-        }, () => {
-            localStorage.setItem('teams', JSON.stringify(this.state.teams))
-        })
+    }, () => {
+      localStorage.setItem('teams', JSON.stringify(this.state.teams))
+    })
+  }
+
+  UpdateIncrement = (id) => {
+    let item = this.state.items.find(item => item.id === id);
+    let qua = item.quantity++
+    let total = this.state.total_price + item.cost;
+    this.setState({ quantity: qua, total_price: total })
+  }
+
+  UpdateDecrement = (id) => {
+    let item = this.state.items.find(item => item.id === id);
+    if (item.quantity === 0) return;
+    let qua = item.quantity--
+    let total = this.state.total_price - item.cost;
+    this.setState({ quantity: qua, total_price: total })
+
+  }
+  addToCart = (id) => {
+    console.log(id);
+    debugger
+    let item = this.state.items.find(item => item.id === id)
+    if (item.quantity === 0) return;
+    if (this.state.cartItems.find(item => item.id === id)) return;
+    let newCart = [...this.state.cartItems, item]
+    this.setState({ cartItems: newCart })
+  }
+
+  RemoveItem = (id) => {
+    console.log(id);
+    let cartItems = this.state.cartItems.filter(item => item.id !== id);
+    let item = this.state.cartItems.find(item => item.id === id);
+    let items_price = this.state.total_price - item.cost * item.quantity;
+    item.quantity = item.quantity - item.quantity
+    this.setState({ cartItems: cartItems, total_price: items_price, quantity: item.quantity })
+  }
+
+  ConfirmOrder = () => {
+    if (this.state.cartItems.length > 0) {
+      alert("Your order confirm on our system,email with the order details will sent to you :) !")
+      this.setState({ cartItems: [], total_price: 0 })
+      return
     }
+    alert("No items added")
+  }
 
-    UpdateIncrement = (id) => {
-        let item = this.state.items.find(item => item.id === id);
-        let qua = item.quantity++
-        let total = this.state.total_price + item.cost;
-        this.setState({ quantity: qua, total_price: total })
-    }
-
-    UpdateDecrement = (id) => {
-        let item = this.state.items.find(item => item.id === id);
-        if (item.quantity === 0) return;
-        let qua = item.quantity--
-        let total = this.state.total_price - item.cost;
-        this.setState({ quantity: qua, total_price: total })
-
-    }
-    addToCart = (id) => {
-        console.log(id);
-        debugger
-        let item = this.state.items.find(item => item.id === id)
-        if (item.quantity === 0) return;
-        if (this.state.cartItems.find(item => item.id === id)) return;
-        let newCart = [...this.state.cartItems, item]
-        this.setState({ cartItems: newCart })
-    }
-
-    RemoveItem = (id) => {
-        console.log(id);
-        let cartItems = this.state.cartItems.filter(item => item.id !== id);
-        let item = this.state.cartItems.find(item => item.id === id);
-        let items_price = this.state.total_price - item.cost * item.quantity;
-        item.quantity = item.quantity - item.quantity
-        this.setState({ cartItems: cartItems, total_price: items_price, quantity: item.quantity })
-    }
-
-    ConfirmOrder = () => {
-        if (this.state.cartItems.length > 0) {
-            alert("Your order confirm on our system,email with the order details will sent to you :) !")
-            this.setState({ cartItems: [], total_price: 0 })
-            return
-        }
-        alert("No items added")
-    }
-
-    //table games - to fix
-    handleGameBtn = (teamA, teamB) => {
-<<<<<<< HEAD
-    
-        let rndA = Math.floor(Math.random() * 7)
-        let rndB = Math.floor(Math.random() * 7)
-        
-        this.state.teams.map((team,index)=>{
-            let win
-            let loss
-            let draw
-            debugger
-            if(team.id===teamA||team.id===teamB){
-                if(rndA> rndB){
-                    //team A won
-                   team.win++
-                  this.setState({team})
-                }else if(rndB>rndA){
-                   //teamA lost
-                   team.loss++
-                   this.setState({team})
-                    
-                }else{
-                    //equal score
-                    team.draw++
-                    this.setState({team})
-
-                }
-            }
-        })
-=======
->>>>>>> ad98ce72a58fdfa5a71e5b8f128fdb1cdfb93421
-        debugger
-        const teamAObj = this.state.teams.find(team => team.id == teamA)
-        console.log(teamAObj)
-        const teamBObj = this.state.teams.find(team => team.id == teamB)
-     
+  //table games - to fix
+  handleGameBtn = (teamA, teamB) => {
+    debugger
+    let rndA = Math.floor(Math.random() * 7)
+    let rndB = Math.floor(Math.random() * 7)
+    this.state.teams.map((team, index) => {
+      let win
+      let loss
+      let draw
+      if (team.id == teamA) {
         if (rndA > rndB) {
-            let w = teamAObj.win++
-            let l = teamBObj.lose++
-            let teams = [...this.state.teams]
-            //let indexA = this.state.teams.findIndex(obj => obj.id === teamAObj.id)
-            teams[teamA - 1].win = w
-            //let indexB = this.state.teams.findIndex(obj => obj.id === teamBObj.id)
-            teams[teamB - 1].loss = l
-            console.log(teamAObj);
-            console.log(teamBObj);
-            this.setState({ teams })
+          //team A won
+          team.win = team.win + 1
+          this.setState({ win: team.win })
+        } else if (rndB > rndA) {
+          //teamA lost
+          team.loss = team.loss + 1
+          this.setState({ loss: team.loss })
+        } else {
+          //equal score
+          team.draw = team.draw + 1
+          this.setState({ draw: team.draw })
         }
-        else if (rndA == rndB) {
-            teamAObj.draw++
-            teamBObj.draw++
+      }
+      if (team.id == teamB) {
+        if (rndA < rndB) {
+          //team A won
+          team.win = team.win + 1
+          this.setState({ win: team.win })
+        } else if (rndB < rndA) {
+          //teamA lost
+          team.loss = team.loss + 1
+          this.setState({ loss: team.loss })
+        } else {
+          //equal score
+          team.draw = team.draw + 1
+          this.setState({ draw: team.draw })
         }
-        else {
-            teamBObj.win++
-            teamAObj.loss++
-        }
-        console.log(teamAObj)
+      }
+    })
+    this.setState({ pointA: rndA, pointB: rndB })
+  }
+  //     debugger
+  //     const teamAObj = this.state.teams.find(team => team.id == teamA)
+  //     console.log(teamAObj)
+  //     const teamBObj = this.state.teams.find(team => team.id == teamB)
 
-        this.setState({ pointA: rndA, pointsB: rndB })
-    }
+  //     if (rndA > rndB) {
+  //         let w = teamAObj.win++
+  //         let l = teamBObj.lose++
+  //         let teams = [...this.state.teams]
+  //         //let indexA = this.state.teams.findIndex(obj => obj.id === teamAObj.id)
+  //         teams[teamA - 1].win = w
+  //         //let indexB = this.state.teams.findIndex(obj => obj.id === teamBObj.id)
+  //         teams[teamB - 1].loss = l
+  //         console.log(teamAObj);
+  //         console.log(teamBObj);
+  //         this.setState({ teams })
+  //     }
+  //     else if (rndA == rndB) {
+  //         teamAObj.draw++
+  //         teamBObj.draw++
+  //     }
+  //     else {
+  //         teamBObj.win++
+  //         teamAObj.loss++
+  //     }
+  //     console.log(teamAObj)
 
-    render() {
-        return (
-            <Switch>
-                <Route exact path="/" render={() =>
-                    <Home teams={this.state.teams}
-                        handleGameBtn={this.handleGameBtn}
-                        pointsA={this.state.pointA}
-                        pointsB={this.state.pointsB} />}></Route>
-                <Route path="/teams" render={() =>
-                    <Teams teams={this.state.teams}
-                        sendToParent={this.getTeamFromChild} />}></Route>
-                <Route path="/table" render={() =>
-                    <TableTeams teams={this.state.teams} />}></Route>
-                <Route path="/store" render={() =>
-                    <StoreTeams items={this.state.items}
-                        addToCart={this.addToCart}
-                        cartItems={this.state.cartItems}
-                        RemoveItem={this.RemoveItem}
-                        ConfirmOrder={this.ConfirmOrder}
-                        total_price={this.state.total_price}
-                        handleIncrement={this.UpdateIncrement}
-                        handleDecrement={this.UpdateDecrement} />}></Route>
-                <Route path="/team" render={() =>
-                    <Team />}></Route>
-            </Switch>
-        );
-    }
+  // }
+
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/" render={() =>
+          <Home teams={this.state.teams}
+            handleGameBtn={this.handleGameBtn}
+            pointA={this.state.pointA}
+            pointB={this.state.pointB} />}></Route>
+        <Route path="/teams" render={() =>
+          <Teams teams={this.state.teams}
+            sendToParent={this.getTeamFromChild} />}></Route>
+        <Route path="/table" render={() =>
+          <TableTeams teams={this.state.teams} />}></Route>
+        <Route path="/store" render={() =>
+          <StoreTeams items={this.state.items}
+            addToCart={this.addToCart}
+            cartItems={this.state.cartItems}
+            RemoveItem={this.RemoveItem}
+            ConfirmOrder={this.ConfirmOrder}
+            total_price={this.state.total_price}
+            handleIncrement={this.UpdateIncrement}
+            handleDecrement={this.UpdateDecrement} />}></Route>
+        <Route path="/team" render={() =>
+          <Team />}></Route>
+      </Switch>
+    );
+  }
 }
 
 export default withRouter(Manager);
