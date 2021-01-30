@@ -5,6 +5,7 @@ import StoreTeams from './Store';
 import Teams from './Teams';
 import Team from './Team';
 import TableTeams from './TableTeams';
+
 import ball_mc_pt from '../images/shop/ball_mc_pt.jpg';
 import tezif_mc_pt from '../images/shop/tezif_mc_pt.jpg'
 import shirt_mc_pt from '../images/shop/shirt_mc_pt.jpg';
@@ -102,12 +103,12 @@ class Manager extends Component {
       cartItems: [],
       total_price: 0,
       pointA: '',
-      pointB: ''
+      pointB: '',
+      teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams'))
     }
   }
 
   getTeamFromChild = (data) => {
-    debugger;
     let rWin = Math.floor(Math.random() * 4)
     let rDraw = Math.floor(Math.random() * 4)
     let rLoss = Math.floor(Math.random() * 4)
@@ -219,7 +220,9 @@ class Manager extends Component {
     this.setState({
       pointA: rndA, pointB: rndB
     }, () => {
+      debugger
       localStorage.setItem('teams', JSON.stringify(this.state.teams))
+      this.setState({teams:this.state.teamsFromLocalstorage})
     })
   }
 
@@ -228,15 +231,14 @@ class Manager extends Component {
     return (
       <Switch>
         <Route exact path="/" render={() =>
-          <Home teams={this.state.teams}
-          />}></Route>
+          <Home teams={this.state.teams} handleGameBtn={this.handleGameBtn}
+            pointA={this.state.pointA}
+            pointB={this.state.pointB} />}></Route>
         <Route path="/teams" render={() =>
           <Teams teams={this.state.teams}
             sendToParent={this.getTeamFromChild} />}></Route>
         <Route path="/table" render={() =>
-          <TableTeams teams={this.state.teams} handleGameBtn={this.handleGameBtn}
-            pointA={this.state.pointA}
-            pointB={this.state.pointB} />}></Route>
+          <TableTeams teams={this.state.teams} />}></Route>
         <Route path="/store" render={() =>
           <StoreTeams items={this.state.items}
             addToCart={this.addToCart}

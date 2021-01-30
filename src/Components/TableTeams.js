@@ -8,38 +8,24 @@ class TableTeams extends Component {
     this.id = 1;
     this.state = {
       teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams')),
-      teamA: '',
-      teamB: ''
+      teamA: 0,
+      teamB: 0
     }
   }
 
-  handleTeamA = (e) => {
-    let event = e.target.value
-    if (this.state.teamA == event)
-      alert('error')
-    this.setState({ teamA: e.target.value })
-  }
-  handleTeamB = (e) => {
-    let event = e.target.value
-    if (this.state.teamB == event)
-      alert('error')
-    this.setState({ teamB: e.target.value })
-  }
+  
 
-  handleGameBtn=()=>{
-   this.props.handleGameBtn(parseInt(this.state.teamA),parseInt(this.state.teamB))
-  }
-
-  sendTeamToPrint = (index) => {
+  sendTeamToPrint = (id) => {
+    let newTeam;
     if (this.state.teamsFromLocalstorage === null) {
-      let newTeam = this.props.teams.find(team => team.id === index);
+      newTeam = this.props.teams.find(team => team.id === id);
 
       this.props.history.push({
         pathname: '/team',
         state: { newTeam: newTeam }
       })
     } else {
-      let newTeam = this.props.teamsFromLocalstorage.find(team => team.id === index);
+      newTeam = this.state.teamsFromLocalstorage.find(team => team.id === id);
       console.log(newTeam);
       this.props.history.push({
         pathname: '/team',
@@ -49,6 +35,7 @@ class TableTeams extends Component {
   }
 
   renderTableData = () => {
+    debugger
     if (this.state.teamsFromLocalstorage === null) {
       return this.props.teams.sort((a, b) => a.points < b.points ? 1 : -1).map((team, index) => {
         return (
@@ -98,46 +85,6 @@ class TableTeams extends Component {
                 {this.renderTableData()}
               </tbody>
             </table>
-          </div>
-          <br />
-          <div>
-            <Card className="text-center">
-              <Card.Header style={{ fontSize: 20 }}><b>פינת ההגרלה</b></Card.Header>
-              <Card.Body>
-                <Card.Title style={{ textAlign: 'center' }}>בחר קבוצות ולחץ על אישור כדי לראות את תוצאת המשחק</Card.Title>
-                <br />
-                <Card.Text>
-                  <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                    <div>
-                      <select onChange={this.handleTeamA}>
-                        <option value=''>בחר קבוצה</option>
-                        {this.props.teams.map((team, index) => <option key={index} value={team.id} >
-                          {team.club}
-                        </option>
-
-                        )}
-                      </select>
-                    </div>
-
-                    <div style={{}}>
-                      <select onChange={this.handleTeamB}>
-                        <option value=''>בחר קבוצה</option>
-                        {this.props.teams.map((team, index) => <option key={index} value={team.id}>
-                          {team.club}
-                        </option>
-
-                        )}
-                      </select>
-
-                    </div>
-                  </div>
-                </Card.Text>
-
-                <Button variant="success" onClick={this.handleGameBtn}>אשר בחירה</Button><br /><br />
-                {this.props.pointsB}:{this.props.pointsA}
-              </Card.Body>
-              <Card.Footer className="text-muted"></Card.Footer>
-            </Card>
           </div>
         </center>
       </div>
