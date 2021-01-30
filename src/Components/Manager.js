@@ -179,20 +179,20 @@ class Manager extends Component {
         if (rndA > rndB) {
           //team A won
           //   team.win = team.win + 1
-          points=newArray[indexA].win*3+newArray[indexA].draw
-          newArray[indexA] = { ...newArray[indexA],win: newArray[indexA].win++,points }
-          newArray[indexA]=team
-          
+          points = newArray[indexA].win * 3 + newArray[indexA].draw
+          newArray[indexA] = { ...newArray[indexA], win: newArray[indexA].win++, points }
+          newArray[indexA] = team
+
           this.setState({ teams: newArray })
         } else if (rndB > rndA) {
           //teamA lost
-          newArray[indexA] = { ...newArray[indexA], loss: newArray[indexA].loss++,points }
-          newArray[indexA]=team
+          newArray[indexA] = { ...newArray[indexA], loss: newArray[indexA].loss++, points }
+          newArray[indexA] = team
           this.setState({ teams: newArray })
         } else {
           //equal score
-          newArray[indexA] = { ...newArray[indexA], draw: newArray[indexA].draw++,points }
-          newArray[indexA]=team
+          newArray[indexA] = { ...newArray[indexA], draw: newArray[indexA].draw++, points }
+          newArray[indexA] = team
           this.setState({ teams: newArray })
         }
       }
@@ -200,55 +200,28 @@ class Manager extends Component {
         if (rndA < rndB) {
           //team B won
           //   team.win = team.win + 1
-          newArray[indexB] = { ...newArray[indexB], win: newArray[indexB].win++,points }
-          newArray[indexB]=team
+          newArray[indexB] = { ...newArray[indexB], win: newArray[indexB].win++, points }
+          newArray[indexB] = team
           this.setState({ teams: newArray })
         } else if (rndB < rndA) {
           //teamA lost
-          newArray[indexB] = { ...newArray[indexB], loss: newArray[indexB].loss++,points }
-          newArray[indexB]=team
+          newArray[indexB] = { ...newArray[indexB], loss: newArray[indexB].loss++, points }
+          newArray[indexB] = team
           this.setState({ teams: newArray })
         } else {
           //equal score
-          newArray[indexB] = { ...newArray[indexB], draw: newArray[indexB].draw++,points }
-          newArray[indexB]=team
+          newArray[indexB] = { ...newArray[indexB], draw: newArray[indexB].draw++, points }
+          newArray[indexB] = team
           this.setState({ teams: newArray })
         }
       }
     })
-    this.setState({ pointA: rndA, pointB: rndB 
-      }, () => {
+    this.setState({
+      pointA: rndA, pointB: rndB
+    }, () => {
       localStorage.setItem('teams', JSON.stringify(this.state.teams))
     })
   }
-  //     debugger
-  //     const teamAObj = this.state.teams.find(team => team.id == teamA)
-  //     console.log(teamAObj)
-  //     const teamBObj = this.state.teams.find(team => team.id == teamB)
-
-  //     if (rndA > rndB) {
-  //         let w = teamAObj.win++
-  //         let l = teamBObj.lose++
-  //         let teams = [...this.state.teams]
-  //         //let indexA = this.state.teams.findIndex(obj => obj.id === teamAObj.id)
-  //         teams[teamA - 1].win = w
-  //         //let indexB = this.state.teams.findIndex(obj => obj.id === teamBObj.id)
-  //         teams[teamB - 1].loss = l
-  //         console.log(teamAObj);
-  //         console.log(teamBObj);
-  //         this.setState({ teams })
-  //     }
-  //     else if (rndA == rndB) {
-  //         teamAObj.draw++
-  //         teamBObj.draw++
-  //     }
-  //     else {
-  //         teamBObj.win++
-  //         teamAObj.loss++
-  //     }
-  //     console.log(teamAObj)
-
-  // }
 
   render() {
     console.log(this.state.teams)
@@ -256,14 +229,14 @@ class Manager extends Component {
       <Switch>
         <Route exact path="/" render={() =>
           <Home teams={this.state.teams}
-            handleGameBtn={this.handleGameBtn}
-            pointA={this.state.pointA}
-            pointB={this.state.pointB} />}></Route>
+          />}></Route>
         <Route path="/teams" render={() =>
           <Teams teams={this.state.teams}
             sendToParent={this.getTeamFromChild} />}></Route>
         <Route path="/table" render={() =>
-          <TableTeams teams={this.state.teams} />}></Route>
+          <TableTeams teams={this.state.teams} handleGameBtn={this.handleGameBtn}
+            pointA={this.state.pointA}
+            pointB={this.state.pointB} />}></Route>
         <Route path="/store" render={() =>
           <StoreTeams items={this.state.items}
             addToCart={this.addToCart}

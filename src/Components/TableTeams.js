@@ -8,10 +8,28 @@ class TableTeams extends Component {
     this.id = 1;
     this.state = {
       teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams')),
+      teamA: '',
+      teamB: ''
     }
   }
 
- 
+  handleTeamA = (e) => {
+    let event = e.target.value
+    if (this.state.teamA == event)
+      alert('error')
+    this.setState({ teamA: e.target.value })
+  }
+  handleTeamB = (e) => {
+    let event = e.target.value
+    if (this.state.teamB == event)
+      alert('error')
+    this.setState({ teamB: e.target.value })
+  }
+
+  handleGameBtn=()=>{
+   this.props.handleGameBtn(parseInt(this.state.teamA),parseInt(this.state.teamB))
+  }
+
   sendTeamToPrint = (index) => {
     if (this.state.teamsFromLocalstorage === null) {
       let newTeam = this.props.teams.find(team => team.id === index);

@@ -17,22 +17,7 @@ class Home extends Component {
     }
   }
 
-  handleTeamA = (e) => {
-    let event = e.target.value
-    if (this.state.teamA == event)
-      alert('error')
-    this.setState({ teamA: e.target.value })
-  }
-  handleTeamB = (e) => {
-    let event = e.target.value
-    if (this.state.teamB == event)
-      alert('error')
-    this.setState({ teamB: e.target.value })
-  }
 
-  handleGameBtn=()=>{
-   this.props.handleGameBtn(parseInt(this.state.teamA),parseInt(this.state.teamB))
-  }
   render() {
     console.log(this.state.teamA)
     console.log(this.state.teamB)
@@ -108,44 +93,6 @@ class Home extends Component {
             </Card.Body>
           </Card>
         </div>
-        <br />
-        <div>
-          <Card className="text-center">
-            <Card.Header>הגרל משחק</Card.Header>
-            <Card.Body>
-              <Card.Title>Special title treatment</Card.Title>
-              <Card.Text className="containerDropdown">
-                <div className="inputgame">
-                  <select onChange={this.handleTeamA}>
-                    <option value=''>בחר קבוצה</option>
-                    {this.props.teams.map((team, index) => <option key={index} value={team.id} >
-                      {team.club}
-                    </option>
-
-                    )}
-                  </select>
-                  {this.props.pointB}:{this.props.pointA}
-                </div>
-
-                <div className="inputgame">
-                  <select onChange={this.handleTeamB}>
-                    <option value=''>בחר קבוצה</option>
-                    {this.props.teams.map((team, index) => <option key={index} value={team.id}>
-                      {team.club}
-                    </option>
-
-                    )}
-                  </select>
-
-                </div>
-              </Card.Text>
-
-              <Button variant="primary" onClick={this.handleGameBtn}>Go somewhere</Button>
-            </Card.Body>
-            <Card.Footer className="text-muted">2 days ago</Card.Footer>
-          </Card>
-        </div>
-
       </div>
     );
   }
