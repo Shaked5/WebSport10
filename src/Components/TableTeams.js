@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import NavWeb from './Nav';
 import { withRouter } from 'react-router-dom';
-import { Card, Button } from 'react-bootstrap/';
 class TableTeams extends Component {
   constructor(props) {
     super(props);
     this.id = 1;
     this.state = {
       teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams')),
-      teamA: 0,
-      teamB: 0
+
     }
   }
 
-  
+
 
   sendTeamToPrint = (id) => {
     let newTeam;
@@ -41,7 +39,7 @@ class TableTeams extends Component {
         return (
           <tr key={index}>
             <td>{this.id++}</td>
-            <td onClick={() => this.sendTeamToPrint(team.id)}>{team.club}</td>
+            <td style={{ cursor: 'pointer' }} onClick={() => this.sendTeamToPrint(team.id)} clickable={true}>{team.club}</td>
             <td>{team.win}</td>
             <td>{team.draw}</td>
             <td>{team.loss}</td>
@@ -54,7 +52,7 @@ class TableTeams extends Component {
         return (
           <tr key={index}>
             <td>{this.id++}</td>
-            <td onClick={() => this.sendTeamToPrint(team.id)}>{team.club}</td>
+            <td style={{ cursor: 'pointer' }} onClick={() => this.sendTeamToPrint(team.id)} >{team.club}</td>
             <td>{team.win}</td>
             <td>{team.draw}</td>
             <td>{team.loss}</td>

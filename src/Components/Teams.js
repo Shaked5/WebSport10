@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 class Teams extends Component {
   constructor(props) {
     super(props);
+    this.id_Player = 1
     this.state = {
       open: false,
       club: "",
@@ -23,7 +24,8 @@ class Teams extends Component {
   }
 
   addPlayer = () => {
-    let player = { name: this.state.playerName, age: this.state.age }
+    let player = { id: this.id_Player, name: this.state.playerName, age: this.state.age }
+    this.id_Player++;
     this.setState({ players: [...this.state.players, player], playerName: "", age: "" })
 
   }

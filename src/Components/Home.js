@@ -118,30 +118,33 @@ class Home extends Component {
                   <div>
                     <select onChange={this.handleTeamA}>
                       <option value=''>בחר קבוצה</option>
-                      {this.props.teams.map((team, index) => <option key={index} value={team.id} >
+                      {this.state.teamsFromLocalstorage === null && this.props.teams.map((team, index) => <option key={index} value={team.id} >
                         {team.club}
                       </option>
-
+                      )}
+                      {this.state.teamsFromLocalstorage !== null && this.state.teamsFromLocalstorage.map((team, index) => <option key={index} value={team.id} >
+                        {team.club}
+                      </option>
                       )}
                     </select>
                   </div>
-
+                  <b>{this.props.pointB}:{this.props.pointA}</b>
                   <div>
                     <select onChange={this.handleTeamB}>
                       <option value=''>בחר קבוצה</option>
-                      {this.props.teams.map((team, index) => <option key={index} value={team.id}>
+                      {this.state.teamsFromLocalstorage === null && this.props.teams.map((team, index) => <option key={index} value={team.id} >
                         {team.club}
                       </option>
-
+                      )}
+                      {this.state.teamsFromLocalstorage !== null && this.state.teamsFromLocalstorage.map((team, index) => <option key={index} value={team.id} >
+                        {team.club}
+                      </option>
                       )}
                     </select>
-
                   </div>
                 </div>
               </Card.Text>
-
               <Button variant="success" onClick={this.handleGameBtn}>אשר בחירה</Button><br /><br />
-              {this.props.pointB}:{this.props.pointA}
             </Card.Body>
             <Card.Footer className="text-muted"></Card.Footer>
           </Card>

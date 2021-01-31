@@ -165,64 +165,56 @@ class Manager extends Component {
     alert("No items added")
   }
 
-  //table games - to fix
   handleGameBtn = (teamA, teamB) => {
-    debugger
-    let newArray = [...this.state.teams]
-    const indexA = this.state.teams.findIndex(team => team.id == teamA)
-    const indexB = this.state.teams.findIndex(team => team.id == teamB)
-    let points
+    let newArray
+    if (localStorage.getItem('teams')) {
+      newArray = JSON.parse(localStorage.getItem('teams'))
+    }
+    else {
+      newArray = [...this.state.teams]
+    }
+    let points, A, B
     let rndA = Math.floor(Math.random() * 7)
     let rndB = Math.floor(Math.random() * 7)
-    this.state.teams.map((team, index) => {
-      debugger
+    newArray.map((team, index) => {
       if (team.id == teamA) {
+        A = team
         if (rndA > rndB) {
           //team A won
-          //   team.win = team.win + 1
-          points = newArray[indexA].win * 3 + newArray[indexA].draw
-          newArray[indexA] = { ...newArray[indexA], win: newArray[indexA].win++, points }
-          newArray[indexA] = team
-
-          this.setState({ teams: newArray })
+          points = (A.win + 1) * 3 + A.draw
+          A = { ...A, win: A.win + 1, points: points }
         } else if (rndB > rndA) {
           //teamA lost
-          newArray[indexA] = { ...newArray[indexA], loss: newArray[indexA].loss++, points }
-          newArray[indexA] = team
-          this.setState({ teams: newArray })
+          A = { ...A, loss: A.loss + 1 }
         } else {
           //equal score
-          newArray[indexA] = { ...newArray[indexA], draw: newArray[indexA].draw++, points }
-          newArray[indexA] = team
-          this.setState({ teams: newArray })
+          points = A.win * 3 + A.draw + 1
+          A = { ...A, draw: A.draw + 1, points: points }
         }
       }
       if (team.id == teamB) {
+        B = team
         if (rndA < rndB) {
-          //team B won
-          //   team.win = team.win + 1
-          newArray[indexB] = { ...newArray[indexB], win: newArray[indexB].win++, points }
-          newArray[indexB] = team
-          this.setState({ teams: newArray })
+          //team A won
+          points = (B.win + 1) * 3 + B.draw
+          B = { ...B, win: B.win + 1, points: points }
         } else if (rndB < rndA) {
           //teamA lost
-          newArray[indexB] = { ...newArray[indexB], loss: newArray[indexB].loss++, points }
-          newArray[indexB] = team
-          this.setState({ teams: newArray })
+          B = { ...B, loss: B.loss + 1 }
         } else {
           //equal score
-          newArray[indexB] = { ...newArray[indexB], draw: newArray[indexB].draw++, points }
-          newArray[indexB] = team
-          this.setState({ teams: newArray })
+          points = B.win * 3 + B.draw + 1
+          B = { ...B, draw: B.draw + 1, points: points }
         }
       }
     })
+    newArray = newArray.filter((team) => team.id != teamA && team.id != teamB)
+    newArray = [...newArray, A, B]
     this.setState({
-      pointA: rndA, pointB: rndB
+      pointA: rndA, pointB: rndB,
+      teams: newArray, teamsFromLocalstorage: newArray
     }, () => {
-      debugger
       localStorage.setItem('teams', JSON.stringify(this.state.teams))
-      this.setState({teams:this.state.teamsFromLocalstorage})
     })
   }
 
