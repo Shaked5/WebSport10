@@ -52,7 +52,7 @@ class TableTeams extends Component {
         return (
           <tr key={index}>
             <td>{this.id++}</td>
-            <td style={{ cursor: 'pointer' }} onClick={() => this.sendTeamToPrint(team.id)} >{team.club}</td>
+            <td style={{cursor:'pointer'}} onClick={() => this.sendTeamToPrint(team.id)} >{team.club}</td>
             <td>{team.win}</td>
             <td>{team.draw}</td>
             <td>{team.loss}</td>
