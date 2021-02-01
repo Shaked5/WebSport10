@@ -6,14 +6,14 @@ import { Card, Button } from 'react-bootstrap/';
 import rokaviza from '../images/rokaviza.jpg';
 import coach from '../images/1067598.jpg'
 import card1 from '../images/1067766.jpg'
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams')),
       teamA: 0,
-      teamB: 0
+      teamB: 0,
     }
   }
   handleTeamA = (e) => {
@@ -33,12 +33,18 @@ class Home extends Component {
     this.props.handleGameBtn(this.state.teamA, this.state.teamB)
   }
 
+
+  //check !!
+  sendIdArtcile = (num) => {
+    this.props.setArticleNum(num)
+  }
+
   render() {
     return (
       <div>
         <NavWeb />
         <center>
-          <h3>ברוכים הבאים לספורט 10</h3>
+          <h1>ברוכים הבאים לספורט 10</h1>
           <Carousel style={{ marginTop: 20, marginBottom: 15 }}>
             <Carousel.Item>
               <img
@@ -73,15 +79,14 @@ class Home extends Component {
             </Carousel.Item>
           </Carousel>
         </center>
-
-        <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '5%', textAlign: 'right', backgroundColor: 'rgba(117, 133, 145, 0.1)' }}>
-
+        <h4 style={{ textAlign: 'right' }}>כתבות חמות</h4>
+        <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '2%', textAlign: 'right', backgroundColor: 'rgba(117, 133, 145, 0.1)' }}>
           <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={rokaviza} width='150px' height='130px' />
             <Card.Body>
               <Card.Title>לצד סון: רוקאביצה בין נבחרי העונה באסיה</Card.Title>
               <Card.Text>
-                <a href="https://www.sport5.co.il/articles.aspx?FolderID=64&docID=358566">לכתבה לחץ כאן</a>
+                <Link to="/article"><Button variant="success" onClick={() => this.sendIdArtcile(0)}>לחץ לפתיחת הכתבה</Button></Link>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -91,7 +96,7 @@ class Home extends Component {
             <Card.Body>
               <Card.Title>מצעד ההעברות הגדולות של ינואר</Card.Title>
               <Card.Text>
-                <a href="https://www.sport5.co.il/articles.aspx?FolderID=64&docID=358545">לכתבה לחץ כאן</a>
+                <Link to="/article"><Button variant="success" onClick={() => this.sendIdArtcile(1)}>לחץ לפתיחת הכתבה</Button></Link>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -101,7 +106,7 @@ class Home extends Component {
             <Card.Body>
               <Card.Title>המאמנים שנמצאים בסכנת הרחקה</Card.Title>
               <Card.Text>
-                <a href="https://www.sport5.co.il/articles.aspx?FolderID=64&docID=358475">לכתבה לחץ כאן</a>
+                <Link to="/article"><Button variant="success" onClick={() => this.sendIdArtcile(2)}>לחץ לפתיחת הכתבה</Button></Link>
               </Card.Text>
             </Card.Body>
           </Card>

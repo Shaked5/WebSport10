@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavWeb from './Nav';
+import '../CSSWeb/table.css';
 import { withRouter } from 'react-router-dom';
 class TableTeams extends Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class TableTeams extends Component {
         return (
           <tr key={index}>
             <td>{this.id++}</td>
-            <td style={{cursor:'pointer'}} onClick={() => this.sendTeamToPrint(team.id)} >{team.club}</td>
+            <td style={{ cursor: 'pointer' }} onClick={() => this.sendTeamToPrint(team.id)} >{team.club}</td>
             <td>{team.win}</td>
             <td>{team.draw}</td>
             <td>{team.loss}</td>
@@ -71,7 +72,7 @@ class TableTeams extends Component {
           <div>
             <h3 id='title'>דירוג הקבוצות</h3>
             <table id="containerTable">
-              <tbody style={{ alignItems: 'center' }}>
+              <tbody>
                 <tr style={{ color: 'blue', backgroundColor: 'lightblue' }}>
                   <th>מקום</th>
                   <th>שם הקבוצה</th>

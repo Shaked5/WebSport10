@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NavWeb from './Nav';
 import { withRouter } from 'react-router-dom';
-import { Card, Button, Modal } from 'react-bootstrap/';
+import { Card, Button, Modal, Alert } from 'react-bootstrap/';
 import '../index.css';
 import '../CSSWeb/Store.css'
 import cart from '../images/cart.png';
@@ -69,7 +69,7 @@ class StoreTeams extends Component {
             <div style={{ backgroundColor: 'rgba(117, 133, 145, 0.1)' }}>
               <Modal.Header >
                 <Modal.Title>עגלת קניות</Modal.Title>
-                <Button variant="secondary" onClick={this.SetCloseModal}>X</Button>
+                <Button size="sm" variant="secondary" onClick={this.SetCloseModal}>X</Button>
               </Modal.Header>
               <Modal.Body >
                 <div>
@@ -91,8 +91,14 @@ class StoreTeams extends Component {
               </Modal.Body>
 
               <Modal.Footer>
-                <Button variant="success" onClick={this.HandleConfirmOrder}>לתשלום</Button>
+                <Button variant="success" onClick={this.HandleConfirmOrder}>לתשלום</Button><br />
               </Modal.Footer>
+              <Alert id="su" variant="success" style={{ display: 'none' }}>
+                This is a alert—check it out!
+                </Alert>
+              <Alert id="wr" variant="danger" style={{ display: 'none' }}>
+                This is a alert—check it out!
+                </Alert>
             </div>
           </Modal>
         </>

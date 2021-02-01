@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import Home from './Home';
 import StoreTeams from './Store';
 import Teams from './Teams';
 import Team from './Team';
 import TableTeams from './TableTeams';
+import Article from './Article';
 
 import ball_mc_pt from '../images/shop/ball_mc_pt.jpg';
 import tezif_mc_pt from '../images/shop/tezif_mc_pt.jpg'
@@ -31,10 +32,47 @@ import ball_hp_sheva from '../images/shop/ball_hp_sheva.jpeg';
 import shirt_hp_sheva from '../images/shop/shirt_hp_sheva.jpeg';
 import hat_hp_sheva from '../images/shop/hat_hp_sheva.jpeg';
 
+import rokoviza from '../images/articles/rokoviza.png';
+import maman from '../images/articles/maman.png';
+import teams from '../images/articles/teams.png';
+
 class Manager extends Component {
     constructor(props) {
         super(props);
         this.counter = 5;
+
+        const data1 = <p>עונת 2020 הנדירה של ניקיטה רוקאביצה לא נעלמת מעיני העולם. ולאחר שקבע את הרצף הארוך בעונה החולפת, וגם סיים במקום השישי באירופה עם 25 שערים חלוץ מכבי חיפה קיבל מקום של כבוד בין השחקנים הטובים ביותר באסיה. בפרס זה, ההתאחדות אסיאתית העניקה לאוהדים את הכוח כאשר הם יכולים לבחור בין 15 המועמדים.<br />
+        לצד רוקאביצה האוסטרלי הגיעו נציגים מכל רחבי היבשת. כמובן, שגולת הכותרת של אותה רשימה הוא כוכבה של טוטנהאם, יונג מי סון, שזכה בתואר השחקן הטוב באסיה שלוש פעמים בעבר. שחקן ההתקפה גם נבחר לשחקן הטוב ביותר של הספרס בעונה החולפת כשאחד מ-22 שעריו קיבל את הכבוד הגדול - השער היפה של השנה, אותו כבש מול ברנלי.<br />
+        לצידם, ניתן לראות גם את חלוצה הנפלא של זניט סנט פטרסבורג, סרדאר אזמון. האיראני הרשית 21 שערים בכל המסגרות, וכתוצאה מכך זכה למלכות השערים ברוסיה יחד עם חברו לקבוצה, ארטיום דזיובה.<br />
+        שם בולט נוסף הוא קאנג אין לי מוולנסיה. הדרום קוריאני בן ה-19 נבחר בעונה שעברה לשחקן הצעיר הטוב ביותר ביבשת, וגם העונה ניתן לראות את ההתקדמות שלו. בחודש ספטמבר הוא ניפק שני בישולים מול לבנטה ובעקבות זאת הפך לשחקן ביותר ב'לה ליגה' שעושה זאת במאה ה-21.<br />
+        השחקנים שהשלימו את הרשימה הם: מהדי טרמי (פורטו), עלי עדנאן (ונקובר), עלי גוליזאדה, קוה רזאי וריוטה מוריוקה (שרלרואה), טאקהירו טומיאסו (בולוניה), טאקפוסה קובו (ריאל מדריד/ויאריאל), ווטארו אנדו (שטוטגרט), הואנג הי-צ'ן (זלצבורג/לייפציג), טאקומי מינאמינו (זלצבורג/ליברפול), דאיצ'י קמאדה (פרנקפורט).<br />
+        </p>;
+        const data2 = <p>עוד מעט, הכל יתערבב מחדש: חלון ההעברות של ינואר נפתח, ואיתו - תמיד - ההזדמנות לחפש מציאות. למצוא את התוספת הראויה, את מקצה השיפורים מהטעויות של הקיץ, את האפשרות לעשות טוב יותר ממה שנעשה. וכל השנים נעשה ניסיון להשיג את "התוסף לדלק", כמו שקרא לזה פעם ראובן עטר, האקסטרה שיוכל לשדרג קבוצה טובה לקבוצה אלופה. אז לכבוד פתיחת החלון, ואולי גם בהשפעת המעבר המתוקשר של עומר אצילי למכבי חיפה, הנה לכם - חמישה סיפורים על חמש העברות גדולות שנעשו בחלון הנוכחי, ואוהדי הקבוצות לא ישכחו לעולם.<br />
+
+        במקום החמישי: אלן מסודי למכבי תל אביב, ינואר 2008
+        קצת קשה לזכור היום, אבל בהגיעה לחורף של עונת 07/08, מכבי תל אביב היתה אבודה ממש. פתיחת העונה ההזויה, המריבות בין לוני הרציקוביץ' ורוני מאנה (כולל פיליפ סולומון שקפץ באמצע) ואבי נמני שעמד בין המגרש ליציע, הותירו את המכבים מדשדשים, כשהמועדון מידרדר לתחתית. כמה קיצוני היה המצב? מכבי פתחה את העונה עם לא פחות משבעה משחקים ללא ניצחון, ובשלבים מסוימים אפילו נחשבה מועמדת לירידה.<br />
+
+        אבל אז הגיע ינואר - אלכס שניידר נכנס לעמדת הבעלים במקומו של הרציקוביץ', מכבי קיבלה קצת מעות לחיזוק, והלכה על הקונגולזי (שכבר צבר לעצמו שם בשלל קבוצות אחרות, ופתח את העונה במ.ס. אשדוד). זה נגמר עם שישה שערים ב-15 הופעות, בישול מרהיב בדרבי - ומכבי, שכל העונה פלרטטה עם הקו האדום, סיימה במקום השישי.<br />
+
+        במקום הרביעי: דימיטר טלקיסקי ואלין טופוזאקוב להפועל תל אביב, ינואר 2008
+        אותו חודש, אותה עיר - צבע אחר. לצד מכבי, גם הפועל תל אביב חוותה פתיחת עונה קשה. גיא לוזון, שהגיע בתור מאמן צעיר ורענן, כשל בצורה די קשה. הפתח תקוואי סיים את דרכו די מהר, ואת מקומו תפס אלי גוטמן - מאמן עם רקורד עשיר (אליפות בהפועל חיפה, גביע עם הפועל באר שבע) ששב לארץ אחרי גלות קצרה בקפריסין. גוטמן שינה את הפועל לחלוטין, גם דרך החיזוק - ובעיקר צמד השחקנים הבולגרים.<br />
+
+        הבלם הוסיף יציבות להגנה, וטלקיסקי? הוא זכור אצל אוהדי הפועל כאחד הזרים היותר אהובים ששיחקו במדיה, כולל שיר שחקן על הלחן של "יד ביד" של עפרה חזה ("דימיטר לאורך כל הדרך") - בעיקר הודות לשני רגעי קסם: גול מטורף בדרבי התל אביבי מול שער 11 (טיל מהאוויר לחיבורים בניצחון 1:3), ומבצע אישי עוד יותר בלתי נשכח, פלוס צ'יפ, על הראש של בית"ר ירושלים - שחלמה על חגיגות אליפות. הפועל נשארה בליגה והגיעה עד גמר הגביע (שם בית"ר "נקמה" עם ניצחון בפנדלים), טלקיסקי וטופוזאקוב אמנם נפרדו די מהר - אבל הפועל המריאה לקבוצת הדאבל ההיסטורית של גוטמן, שכטר, ורמוט - ושחקן אחר, שעוד יופיע ברשימה שלנו.<br />
+        במקום השלישי: חנן ממן להפועל באר שבע, ינואר 2018<br />
+        במקום השני: דויד סולארי לעירוני קרית שמונה, ינואר 2012<br />
+        ובמקום הראשון: ערן זהבי וראדה פריצה למכבי תל אביב, ינואר 2013<br />
+        </p>;
+        const data3 = <p>במסגרת עדכוני החוקה שנכנסו לתוקף מהעונה הקודמת, השתנה מנגנון הטיפול בעבירות של מאמנים ואנשי צוות בליגת העל.<br /> לפני השינוי, אנשי הספסל היו יכולים לקבל אות אזהרה בעל פה או הרחקה שלאחריה הם נאלצו להגיע לוועדת משמעת בבית הדין של ההתאחדות לכדורגל.<br /> כיום השופטים רשאים לשלוף כרטיס צהוב או אדום לעבר אנשי הספסל של הקבוצה, וכמו שראינו, הם משתמשים בנשק הזה לעיתים תכופות.<br />
+
+        לא רבים יודעים, אבל בהתאחדות מתבצעת ספירה מוסדרת של צבירת הכרטיסים הצהובים, ובדיוק כמו אצל השחקנים מי שיצבור חמישה כרטיסים צהובים, יורחקו למשחק אחד ויאלץ לראות את המשחק ביציע, לאחר מכן הספירה תמשך והפעם הצהוב התשיעי יגרום להרחקתו של בעל התפקיד ממשחק אחד.<br />
+
+        מבדיקת ערוץ הספורט, לאחר 15 מחזורים (להוציא את הפועל ק"ש ובני סכנין ששיחקו 14 משחקים בלבד), עולה כי במהלך המחזורים האלה נשלפו 3 אדומים (למאמנים גיא לוזון וקובי רפואה ולמנהל הפועל ת"א דוד מגן) ולא פחות מ-43 כרטיסים צהובים. מדובר על ממוצע של כ-3 כרטיסים צהובים למחזור. הבדיקה לא כללה כרטיסים שנשלפו במהלך משחקי גביע הטוטו, שכן עבור אלה מתבצעת ספירה נפרדת בשל עדכון בחוקה, גם לספסלים נספרים צהובים. <br />
+        הנתונים פה
+        באופן לא מפתיע בראש רשימת ספסלי הקבוצות המוצהבות נמצאות שתי התל אביביות, שלא חוו הצלחה מקצועית עד כה העונה ונראה שחוסר ההצלחה הזה גרם לאי שקט אצל אנשי הספסל. מכבי תל אביב מובילה את טבלת הצהובים עם 6 כרטיסים, 4 מתוכם שייכים לצוות היווני שסיים את תפקידו  (2 למאמן דוניס ו-2 לאנשי הצוות שלו). את 2 הכרטיסים הנוספים ספג מנהל הקבוצה יואב זיו.<br />
+
+        היריבה העירונית הפועל ת"א מיד אחריה עם 5 כרטיסים צהובים. בלט מעל כולם מנהל הקבוצה דוד מגן, שהוא, כאמור, איש הצוות היחיד שהורחק ואינו מאמן. מגן ראה אדום לאחר שצעק לאלי חכמון, שהיה השופט הרביעי בדרבי מול מכבי ת"א: "מה תעשה לי? תרחיק אותי בכרטיס אדום?". הספסלים ההוגנים עד כה במהלך הליגה הם ספסלי הפועל ב"ש והפועל חיפה, שהסתפקו בצהוב אחד בלבד שנשלף למאמני הקבוצה.<br />
+        </p>;
+
         this.state = {
             teams: [
                 {
@@ -104,12 +142,21 @@ class Manager extends Component {
             total_price: 0,
             pointA: '',
             pointB: '',
-            teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams'))
+            teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams')),
+            article_num: 0,
+            articles: [
+                { id: 0, title: "לצד סון: רוקאביצה בין נבחרי העונה באסיה", sub_title: "חלוץ מכבי חיפה בין 15 המועמדים. לינק להצבעה בפנים", image: rokoviza, context: data1 },
+                { id: 1, title: "חזק חזק ונתחזק: מצעד ההעברות הגדולות של ינואר", sub_title: "לרגל פתיחת חלון ההעברות, טופ 5 מדרג את החתמות החורף", image: maman, context: data2 },
+                { id: 2, title: "בשליפה: המאמנים שנמצאים בסכנת הרחקה", sub_title: "בשל עדכון בחוקה, גם לספסלים נספרים צהובים. הנתונים פה", image: teams, context: data3 }
+            ]
         }
+    }
+    //fix articles
+    setArticleNum = (num) => {
+        this.state.article_num = num;
     }
 
     getTeamFromChild = (data) => {
-        debugger;
         let newArr;
         if (this.state.teamsFromLocalstorage === null) {
             newArr = [...this.state.teams]
@@ -121,8 +168,8 @@ class Manager extends Component {
         let rLoss = Math.floor(Math.random() * 4)
         let points = rWin * 3 + rDraw
         let newTeam = { id: ++this.counter, club: data.club, items: [], info: data.info, imgClub: data.imgClub, players: data.players, win: rWin, draw: rDraw, loss: rLoss, points: points }
-        newArr=[...newArr,newTeam]
-         console.log(newArr)
+        newArr = [...newArr, newTeam]
+        console.log(newArr)
         this.setState({
             teams: newArr
         }, () => {
@@ -146,8 +193,6 @@ class Manager extends Component {
 
     }
     addToCart = (id) => {
-        console.log(id);
-        debugger
         let item = this.state.items.find(item => item.id === id)
         if (item.quantity === 0) return;
         if (this.state.cartItems.find(item => item.id === id)) return;
@@ -156,7 +201,6 @@ class Manager extends Component {
     }
 
     RemoveItem = (id) => {
-        console.log(id);
         let cartItems = this.state.cartItems.filter(item => item.id !== id);
         let item = this.state.cartItems.find(item => item.id === id);
         let items_price = this.state.total_price - item.cost * item.quantity;
@@ -166,11 +210,13 @@ class Manager extends Component {
 
     ConfirmOrder = () => {
         if (this.state.cartItems.length > 0) {
-            alert("Your order confirm on our system,email with the order details will sent to you :) !")
+            document.getElementById("su").innerHTML = ".Your order confirm on our system,email with the order details will sent to you";
+            document.getElementById("su").style.display = "block";
             this.setState({ cartItems: [], total_price: 0 })
             return
         }
-        alert("No items added")
+        document.getElementById("wr").innerHTML = ".No items added";
+        document.getElementById("wr").style.display = "block";
     }
 
     handleGameBtn = (teamA, teamB) => {
@@ -227,29 +273,27 @@ class Manager extends Component {
     }
 
     render() {
-        console.log(this.state.teams)
         return (
             <Switch>
                 <Route exact path="/" render={() =>
                     <Home teams={this.state.teams} handleGameBtn={this.handleGameBtn}
                         pointA={this.state.pointA}
-                        pointB={this.state.pointB} />}></Route>
-                <Route path="/teams" render={() =>
-                    <Teams teams={this.state.teams}
-                        sendToParent={this.getTeamFromChild} />}></Route>
-                <Route path="/table" render={() =>
-                    <TableTeams teams={this.state.teams} />}></Route>
-                <Route path="/store" render={() =>
-                    <StoreTeams items={this.state.items}
-                        addToCart={this.addToCart}
-                        cartItems={this.state.cartItems}
-                        RemoveItem={this.RemoveItem}
-                        ConfirmOrder={this.ConfirmOrder}
-                        total_price={this.state.total_price}
-                        handleIncrement={this.UpdateIncrement}
-                        handleDecrement={this.UpdateDecrement} />}></Route>
-                <Route path="/team" render={() =>
-                    <Team />}></Route>
+                        pointB={this.state.pointB}
+                        setArticleNum={this.setArticleNum} />}></Route>
+                <Route path="/teams" render={() => <Teams teams={this.state.teams}
+                    sendToParent={this.getTeamFromChild} />}></Route>
+                <Route path="/table" render={() => <TableTeams teams={this.state.teams} />}></Route>
+                <Route path="/store" render={() => <StoreTeams
+                    items={this.state.items}
+                    addToCart={this.addToCart}
+                    cartItems={this.state.cartItems}
+                    RemoveItem={this.RemoveItem}
+                    ConfirmOrder={this.ConfirmOrder}
+                    total_price={this.state.total_price}
+                    handleIncrement={this.UpdateIncrement}
+                    handleDecrement={this.UpdateDecrement} />}></Route>
+                <Route path="/team" render={() => <Team />}></Route>
+                <Route path="/article" render={() => <Article articles={this.state.articles} article_num={this.state.article_num} />}></Route>
             </Switch>
         );
     }
