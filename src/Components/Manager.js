@@ -210,12 +210,12 @@ class Manager extends Component {
 
   ConfirmOrder = () => {
     if (this.state.cartItems.length > 0) {
-      document.getElementById("su").innerHTML = ".Your order confirm on our system,email with the order details will sent to you";
+      document.getElementById("su").innerHTML = "תודה שקנית אצלנו,הזמנתך אושרה במערכת שלנו, אימייל עם פרטי ההזמנה יישלחו אליך";
       document.getElementById("su").style.display = "block";
       this.setState({ cartItems: [], total_price: 0 })
       return
     }
-    document.getElementById("wr").innerHTML = ".No items added";
+    document.getElementById("wr").innerHTML = "לא נוספו מוצרים לסל הקניות, אנא בחר מוצרים מהחנות";
     document.getElementById("wr").style.display = "block";
   }
 

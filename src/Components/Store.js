@@ -68,7 +68,7 @@ class StoreTeams extends Component {
           >
             <div style={{ backgroundColor: 'rgba(117, 133, 145, 0.1)' }}>
               <Modal.Header >
-                <Modal.Title>עגלת קניות</Modal.Title>
+                <Modal.Title>סל הקניות</Modal.Title>
                 <Button size="sm" variant="secondary" onClick={this.SetCloseModal}>X</Button>
               </Modal.Header>
               <Modal.Body >
@@ -91,14 +91,15 @@ class StoreTeams extends Component {
               </Modal.Body>
 
               <Modal.Footer>
-                <Button variant="success" onClick={this.HandleConfirmOrder}>לתשלום</Button><br />
+                <Button variant="success" onClick={this.HandleConfirmOrder}>לתשלום</Button><br /><br />
+                <Alert id="su" variant="success" style={{ display: 'none' }}>
+                  This is a alert—check it out!
+                </Alert>
+                <Alert id="wr" variant="danger" style={{ display: 'none' }}>
+                  This is a alert—check it out!
+                </Alert>
               </Modal.Footer>
-              <Alert id="su" variant="success" style={{ display: 'none' }}>
-                This is a alert—check it out!
-                </Alert>
-              <Alert id="wr" variant="danger" style={{ display: 'none' }}>
-                This is a alert—check it out!
-                </Alert>
+
             </div>
           </Modal>
         </>
