@@ -121,41 +121,43 @@ class Manager extends Component {
         { id: 2, prod: "כדור", cost: 80, src: ball_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
         { id: 3, prod: "חולצה", cost: 50, src: shirt_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
         { id: 4, prod: "כובע", cost: 25, src: hat_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
-        { id: 5, prod: "צעיף", cost: 25, src: tezif_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
-        { id: 6, prod: "כדור", cost: 25, src: ball_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
-        { id: 7, prod: "חולצה", cost: 25, src: shirt_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
+        { id: 5, prod: "צעיף", cost: 30, src: tezif_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
+        { id: 6, prod: "כדור", cost: 80, src: ball_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
+        { id: 7, prod: "חולצה", cost: 50, src: shirt_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
         { id: 8, prod: "כובע", cost: 25, src: hat_mc_tlv, team_name: "מכבי תל אביב", quantity: 0 },
-        { id: 9, prod: "צעיף", cost: 25, src: tezif_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
-        { id: 10, prod: "כדור", cost: 25, src: ball_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
-        { id: 11, prod: "חולצה", cost: 25, src: shirt_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
+        { id: 9, prod: "צעיף", cost: 30, src: tezif_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
+        { id: 10, prod: "כדור", cost: 80, src: ball_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
+        { id: 11, prod: "חולצה", cost: 50, src: shirt_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
         { id: 12, prod: "כובע", cost: 25, src: hat_mc_haifa, team_name: "מכבי חיפה", quantity: 0 },
-        { id: 13, prod: "צעיף", cost: 25, src: tezif_btr, team_name: "ביתר ירושלים", quantity: 0 },
-        { id: 14, prod: "כדור", cost: 25, src: ball_btr, team_name: "ביתר ירושלים", quantity: 0 },
-        { id: 15, prod: "חולצה", cost: 25, src: shirt_btr, team_name: "ביתר ירושלים", quantity: 0 },
+        { id: 13, prod: "צעיף", cost: 30, src: tezif_btr, team_name: "ביתר ירושלים", quantity: 0 },
+        { id: 14, prod: "כדור", cost: 80, src: ball_btr, team_name: "ביתר ירושלים", quantity: 0 },
+        { id: 15, prod: "חולצה", cost: 50, src: shirt_btr, team_name: "ביתר ירושלים", quantity: 0 },
         { id: 16, prod: "כובע", cost: 25, src: hat_btr, team_name: "ביתר ירושלים", quantity: 0 },
-        { id: 17, prod: "צעיף", cost: 25, src: tezif_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
-        { id: 18, prod: "כדור", cost: 25, src: ball_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
-        { id: 19, prod: "חולצה", cost: 25, src: shirt_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
+        { id: 17, prod: "צעיף", cost: 30, src: tezif_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
+        { id: 18, prod: "כדור", cost: 80, src: ball_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
+        { id: 19, prod: "חולצה", cost: 50, src: shirt_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 },
         { id: 20, prod: "כובע", cost: 25, src: hat_hp_sheva, team_name: "הפועל באר שבע", quantity: 0 }
       ],
       cartItems: [],
       total_price: 0,
-      pointA: '',
-      pointB: '',
+      pointA: 0,
+      pointB: 0,
       teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams')),
       article_num: 0,
       articles: [
         { id: 0, title: "לצד סון: רוקאביצה בין נבחרי העונה באסיה", sub_title: "חלוץ מכבי חיפה בין 15 המועמדים. לינק להצבעה בפנים", image: rokoviza, context: data1 },
         { id: 1, title: "חזק חזק ונתחזק: מצעד ההעברות הגדולות של ינואר", sub_title: "לרגל פתיחת חלון ההעברות, טופ 5 מדרג את החתמות החורף", image: maman, context: data2 },
         { id: 2, title: "בשליפה: המאמנים שנמצאים בסכנת הרחקה", sub_title: "בשל עדכון בחוקה, גם לספסלים נספרים צהובים. הנתונים פה", image: teams, context: data3 }
-      ]
+      ],
+      resultsGames: []
     }
   }
-  //fix articles
+  //comp - Article
   setArticleNum = (num) => {
     this.state.article_num = num;
   }
 
+  //add team to array - from Teams
   getTeamFromChild = (data) => {
     let newArr;
     if (this.state.teamsFromLocalstorage === null) {
@@ -177,6 +179,7 @@ class Manager extends Component {
     })
   }
 
+  //Store function to update increment items quantity   
   UpdateIncrement = (id) => {
     let item = this.state.items.find(item => item.id === id);
     let qua = item.quantity++
@@ -184,6 +187,7 @@ class Manager extends Component {
     this.setState({ quantity: qua, total_price: total })
   }
 
+  //Store function to update decrement items quantity   
   UpdateDecrement = (id) => {
     let item = this.state.items.find(item => item.id === id);
     if (item.quantity === 0) return;
@@ -192,6 +196,7 @@ class Manager extends Component {
     this.setState({ quantity: qua, total_price: total })
 
   }
+  //Store function to add itmes to cart
   addToCart = (id) => {
     let item = this.state.items.find(item => item.id === id)
     if (item.quantity === 0) return;
@@ -200,6 +205,7 @@ class Manager extends Component {
     this.setState({ cartItems: newCart })
   }
 
+  //Store function to remove items from cart
   RemoveItem = (id) => {
     let cartItems = this.state.cartItems.filter(item => item.id !== id);
     let item = this.state.cartItems.find(item => item.id === id);
@@ -207,7 +213,7 @@ class Manager extends Component {
     item.quantity = item.quantity - item.quantity
     this.setState({ cartItems: cartItems, total_price: items_price, quantity: item.quantity })
   }
-
+  //Store function to get confirm on the order
   ConfirmOrder = () => {
     if (this.state.cartItems.length > 0) {
       document.getElementById("su").innerHTML = "תודה שקנית אצלנו,הזמנתך אושרה במערכת שלנו, אימייל עם פרטי ההזמנה יישלחו אליך";
@@ -218,7 +224,7 @@ class Manager extends Component {
     document.getElementById("wr").innerHTML = "לא נוספו מוצרים לסל הקניות, אנא בחר מוצרים מהחנות";
     document.getElementById("wr").style.display = "block";
   }
-
+  //Home function to update the table
   handleGameBtn = (teamA, teamB) => {
     let newArray
     if (localStorage.getItem('teams')) {
@@ -231,7 +237,7 @@ class Manager extends Component {
     let rndA = Math.floor(Math.random() * 7)
     let rndB = Math.floor(Math.random() * 7)
     newArray.map((team, index) => {
-      if (team.id == teamA) {
+      if (team.id === teamA) {
         A = team
         if (rndA > rndB) {
           //team A won
@@ -246,7 +252,7 @@ class Manager extends Component {
           A = { ...A, draw: A.draw + 1, points: points }
         }
       }
-      if (team.id == teamB) {
+      if (team.id === teamB) {
         B = team
         if (rndA < rndB) {
           //team A won
@@ -272,14 +278,24 @@ class Manager extends Component {
     })
   }
 
+  //to fix
+  getResultsFromHome = (a, b, pA, pB) => {
+    let result = { a: a, b: b, pointA: pA, pointB: pB }
+    console.log(result)
+  }
+
   render() {
     return (
       <Switch>
         <Route exact path="/" render={() =>
-          <Home teams={this.state.teams} handleGameBtn={this.handleGameBtn}
+          <Home teams={this.state.teams}
+            handleGameBtn={this.handleGameBtn}
             pointA={this.state.pointA}
             pointB={this.state.pointB}
-            setArticleNum={this.setArticleNum} />}></Route>
+            setArticleNum={this.setArticleNum}
+            resultsGames={this.state.resultsGames}
+            sendResultToManager={this.getResultsFromHome}
+          />}></Route>
         <Route path="/teams" render={() => <Teams teams={this.state.teams}
           sendToParent={this.getTeamFromChild} />}></Route>
         <Route path="/table" render={() => <TableTeams teams={this.state.teams} />}></Route>

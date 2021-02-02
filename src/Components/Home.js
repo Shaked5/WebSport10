@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import NavWeb from './Nav';
 import Carousel from 'react-bootstrap/Carousel';
 import '../CSSWeb/home.css'
-import { Card, Button } from 'react-bootstrap/';
+import { Card, Button, Alert } from 'react-bootstrap/';
 import rokaviza from '../images/rokaviza.jpg';
 import coach from '../images/1067598.jpg'
 import card1 from '../images/1067766.jpg'
@@ -18,26 +18,52 @@ class Home extends Component {
   }
   handleTeamA = (e) => {
     let event = e.target.value
-    if (this.state.teamB === event)
-      alert('error')
+    while (this.state.teamB === event) {
+      // alert("בחרת אותה קבוצה")
+      let showAlert = document.getElementById("wr").innerHTML = "לא ניתן לבחור אותה קבוצה"
+      showAlert += document.getElementById("wr").style.display = "block"
+      setTimeout(showAlert, 500);
+      setTimeout(() => {
+        showAlert = document.getElementById("wr").style.display = "none"
+      }, 1500);
+      return;
+    }
     this.setState({ teamA: e.target.value })
   }
   handleTeamB = (e) => {
     let event = e.target.value
-    if (this.state.teamA === event)
-      alert('error')
+    while (this.state.teamA === event) {
+      // alert("בחרת אותה קבוצה")
+      let showAlert = document.getElementById("wr").innerHTML = "לא ניתן לבחור אותה קבוצה"
+      showAlert += document.getElementById("wr").style.display = "block"
+      setTimeout(showAlert, 500);
+      setTimeout(() => {
+        showAlert = document.getElementById("wr").style.display = "none"
+      }, 1500);
+      return;
+    }
     this.setState({ teamB: e.target.value })
   }
 
   handleGameBtn = () => {
-    this.props.handleGameBtn(this.state.teamA, this.state.teamB)
+    if (this.state.teamA == 0 || this.state.teamB == 0) {
+      let showAlert = document.getElementById("wr").innerHTML = "לא נבחרו קבוצות, אנא בחר קבוצות להגרלה"
+      showAlert += document.getElementById("wr").style.display = "block"
+      setTimeout(showAlert, 500);
+      setTimeout(() => {
+        showAlert = document.getElementById("wr").style.display = "none"
+      }, 2500);
+      return
+    }
+    this.props.handleGameBtn(parseInt(this.state.teamA), parseInt(this.state.teamB))
+    this.props.sendResultToManager(this.state.teamA, this.state.teamB,this.props.pointA, this.props.pointB)
   }
 
-
-  //check !!
   sendIdArtcile = (num) => {
     this.props.setArticleNum(num)
   }
+
+
 
   render() {
     return (
@@ -150,8 +176,11 @@ class Home extends Component {
                 </div>
               </Card.Text>
               <Button variant="success" onClick={this.handleGameBtn}>אשר בחירה</Button><br /><br />
+              <Alert id="wr" variant="danger" style={{ display: 'none' }} />
             </Card.Body>
-            <Card.Footer className="text-muted"></Card.Footer>
+            <Card.Footer className="text-muted">
+              <Alert id="wr" variant="danger" style={{ display: 'none' }} />
+            </Card.Footer>
           </Card>
         </div>
       </div>

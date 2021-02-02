@@ -92,14 +92,9 @@ class StoreTeams extends Component {
 
               <Modal.Footer>
                 <Button variant="success" onClick={this.HandleConfirmOrder}>לתשלום</Button><br /><br />
-                <Alert id="su" variant="success" style={{ display: 'none' }}>
-                  This is a alert—check it out!
-                </Alert>
-                <Alert id="wr" variant="danger" style={{ display: 'none' }}>
-                  This is a alert—check it out!
-                </Alert>
+                <Alert id="su" variant="success" style={{ display: 'none' }} />
+                <Alert id="wr" variant="danger" style={{ display: 'none' }} />
               </Modal.Footer>
-
             </div>
           </Modal>
         </>

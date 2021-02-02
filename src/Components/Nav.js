@@ -13,7 +13,7 @@ class NavWeb extends Component {
     return (
       <div className="flex-container">
         <Navbar expand="lg" bg="dark" variant="dark">
-          <Navbar.Brand href="/">דף הבית</Navbar.Brand>
+          <Nav.Link href="/">דף הבית</Nav.Link>
           <Nav.Link href="/teams">קבוצות</Nav.Link>
           <Nav.Link href="/table">טבלת ניקוד</Nav.Link>
           <Nav.Link href="/store">חנות</Nav.Link>
