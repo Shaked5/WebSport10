@@ -5,12 +5,10 @@ HTML{
  }
 
 .container{
-    background-color: lightseagreen;
-    background-size:auto;
-    background-size: cover;
+    background-color: lightcyan
 }
 #containerTable{
-    background-color: transparent;
+    
     width: 80%;
     align-items: 'center'
     

@@ -113,7 +113,7 @@ class Home extends Component {
             <Card.Body style={{ backgroundColor: 'lightcyan' }}>
               <Card.Title>לצד סון: רוקאביצה בין נבחרי העונה באסיה</Card.Title>
               <Card.Text>
-                <Link to="/article"><Button variant="success" onClick={() => this.sendIdArtcile(0)}>לחץ לפתיחת הכתבה</Button></Link>
+                <Link to="/article"><Button variant="dark" onClick={() => this.sendIdArtcile(0)}>לחץ לפתיחת הכתבה</Button></Link>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -123,7 +123,7 @@ class Home extends Component {
             <Card.Body style={{ backgroundColor: 'lightcyan' }}>
               <Card.Title>מצעד ההעברות הגדולות של ינואר</Card.Title>
               <Card.Text>
-                <Link to="/article"><Button variant="success" onClick={() => this.sendIdArtcile(1)}>לחץ לפתיחת הכתבה</Button></Link>
+                <Link to="/article"><Button variant="dark" onClick={() => this.sendIdArtcile(1)}>לחץ לפתיחת הכתבה</Button></Link>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -133,7 +133,7 @@ class Home extends Component {
             <Card.Body style={{ backgroundColor: 'lightcyan' }}>
               <Card.Title>המאמנים שנמצאים בסכנת הרחקה</Card.Title>
               <Card.Text>
-                <Link to="/article"><Button variant="success" onClick={() => this.sendIdArtcile(2)}>לחץ לפתיחת הכתבה</Button></Link>
+                <Link to="/article"><Button variant="dark" onClick={() => this.sendIdArtcile(2)}>לחץ לפתיחת הכתבה</Button></Link>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -176,7 +176,7 @@ class Home extends Component {
                   </div>
                 </div>
               </Card.Text>
-              <Button variant="success" onClick={this.handleGameBtn}>אשר בחירה</Button><br /><br />
+              <Button variant="dark" onClick={this.handleGameBtn}>אשר בחירה</Button><br /><br />
               <Alert id="wr" variant="danger" style={{ display: 'none' }} />
               {this.props.resultsGames.map((res, index) =>
                 <div key={index}>

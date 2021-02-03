@@ -85,7 +85,7 @@ class Teams extends Component {
         </div>
         <br />
         <center>
-          <Button variant="success" onClick={this.setOpen}
+          <Button variant="dark" onClick={this.setOpen}
             aria-controls="example-collapse-text"
             aria-expanded={this.state.open}
           >הוספת קבוצה</Button>
@@ -125,7 +125,7 @@ class Teams extends Component {
 
               </Form.Row>
               <Form.Group>
-                <Button onClick={this.addPlayer} variant="secondary">הוספת שחקן</Button>
+                <Button variant="outline-dark" onClick={this.addPlayer} >הוספת שחקן</Button>
               </Form.Group> <br />
 
               <Form.Group>
@@ -133,7 +133,7 @@ class Teams extends Component {
                 <Form.Control as="textarea" rows={3} value={this.state.info}
                   onChange={e => this.setState({ info: e.target.value })} ></Form.Control>
               </Form.Group>
-              <Button variant="success" onClick={this.sendTeamToParent}>
+              <Button variant="outline-dark" onClick={this.sendTeamToParent}>
                 אישור
                </Button>
             </Form>
