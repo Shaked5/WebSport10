@@ -51,13 +51,13 @@ class StoreTeams extends Component {
   render() {
     console.log(this.state.searchInput)
     return (
-      <div >
+      <div style={{ backgroundColor: 'lightgoldenrodyellow' }}>
         <NavWeb />
         <br />
         <div>
           <>
             <Button variant="btn-container secondary" onClick={this.SetModalShow}>
-              <span style={{ color: 'red', fontSize: '1rem', fontWeight: 'bold', marginLeft: 60 }}>{this.props.cartItems.length}</span>
+              <span style={{ color: 'red', fontSize: '1rem', fontWeight: 'bold', marginLeft: 65 }}>{this.props.cartItems.length}</span>
               <img style={{ position: 'absolute', top: '', left: '10%' }} className="cart" src={cart} />
             </Button>
 
@@ -99,10 +99,10 @@ class StoreTeams extends Component {
             </Modal>
           </>
         </div>
-        <div style={{ textAlign: 'right' }}>
-          <b>חיפוש מוצר על פי קבוצה :</b> <input style={{ height: '28px' }} type="text" onChange={this.inputTeam} />
+        <h2 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique', fontSize: 50 }}>חנות האוהדים</h2>
+        <div style={{ textAlign: 'right', marginRight: '3%', fontSize: 20 }}>
+          <b>חיפוש מוצר על פי שם קבוצה :</b> <input style={{ height: '28px' }} type="text" onChange={this.inputTeam} />
         </div>
-        <h2 style={{ textAlign: 'center' }}>חנות האוהדים</h2>
         <div>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', margin: 20, }}>
             {this.state.searchInput === '' && this.props.items.map((item, index) =>

@@ -14,7 +14,7 @@ class Team extends Component {
   renderTableData = () => {
     return this.props.location.state.newTeam.players.map((player, index) => {
       return (
-        <tr key={index}>
+        <tr key={index} style={{ fontWeight: 'bold' }}>
           <td>{player.id}</td>
           <td>{player.name}</td>
           <td>{player.age}</td>
@@ -25,17 +25,17 @@ class Team extends Component {
   render() {
     console.log(this.renderTableData);
     return (
-      <div>
+      <div style={{ backgroundColor: 'lightcyan' }}>
         <NavWeb />
         <center>
           <h1>{this.props.location.state.newTeam.club}</h1>
           <img src={this.props.location.state.newTeam.imgClub} alt="oops" width="400" height="250" />
-          <p style={{ width: '70%' }}>{this.props.location.state.newTeam.info}</p>
+          <p style={{ width: '70%', fontWeight: 'bold' }}>{this.props.location.state.newTeam.info}</p>
           <div>
             <h3 id='title'> סגל השחקנים</h3>
             <table id="containerTable">
-              <tbody>
-                <tr>
+              <tbody style={{ fontWeight: 'bold' }}>
+                <tr style={{ backgroundColor: 'lightblue' }}>
                   <th>מספר</th>
                   <th>שם השחקן</th>
                   <th>גיל</th>
