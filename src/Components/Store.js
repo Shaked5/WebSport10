@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import NavWeb from './Nav';
 import { withRouter } from 'react-router-dom';
 import { Card, Button, Modal, Alert } from 'react-bootstrap/';
+import { Bag } from 'react-bootstrap-icons';
 import '../index.css';
 import '../CSSWeb/Store.css'
-import cart from '../images/cart.png';
-
 
 class StoreTeams extends Component {
   constructor(props) {
@@ -57,8 +56,8 @@ class StoreTeams extends Component {
         <div>
           <>
             <Button variant="btn-container secondary" onClick={this.SetModalShow}>
-              <span style={{ color: 'red', fontSize: '1rem', fontWeight: 'bold', marginLeft: 65 }}>{this.props.cartItems.length}</span>
-              <img style={{ position: 'absolute', top: '', left: '10%' }} className="cart" src={cart} />
+              <span style={{ color: 'red', fontSize: '1rem', fontWeight: 'bold', marginLeft: 70 }}>{this.props.cartItems.length}</span>
+              <Bag size='sm' style={{ position: 'absolute', top: '', left: '10%', size: 'sm' }} className="cart" />
             </Button>
 
             <Modal
@@ -111,9 +110,9 @@ class StoreTeams extends Component {
                   <Card.Img variant="top" src={item.src} height="200" />
                   <Card.Title>{item.prod}</Card.Title>
                   <Card.Text><b>₪{item.cost} ש"ח<br />
-                    <Button variant='transpert' size='sm' onClick={() => this.handleIncrement(item.id)}>+</Button>
+                    <Button variant='transpert' size='sm' onClick={() => this.handleIncrement(item.id)}><b>+</b></Button>
                     {item.quantity}
-                    <Button variant='transpert' size='sm' onClick={() => this.handleDecrement(item.id)}>-</Button></b>
+                    <Button variant='transpert' size='sm' onClick={() => this.handleDecrement(item.id)}><b>-</b></Button></b>
                   </Card.Text>
                   <Button variant="success" onClick={() => this.sendItemToCart(item.id)}>הוסף לסל</Button>
                 </Card.Body>
@@ -125,9 +124,9 @@ class StoreTeams extends Component {
                   <Card.Img variant="top" src={item.src} height="200" />
                   <Card.Title>{item.prod}</Card.Title>
                   <Card.Text><b>₪{item.cost} ש"ח <br />
-                    <Button variant='transpert' size='sm' onClick={() => this.handleIncrement(item.id)}>+</Button>
+                    <Button variant='transpert' size='sm' onClick={() => this.handleIncrement(item.id)}><b>+</b></Button>
                     {item.quantity}
-                    <Button variant='transpert' size='sm' onClick={() => this.handleDecrement(item.id)}>-</Button></b>
+                    <Button variant='transpert' size='sm' onClick={() => this.handleDecrement(item.id)}><b>-</b></Button></b>
                   </Card.Text>
                   <Button variant="success" onClick={() => this.sendItemToCart(item.id)}>הוסף לסל</Button>
                 </Card.Body>
