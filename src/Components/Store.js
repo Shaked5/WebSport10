@@ -115,7 +115,7 @@ class StoreTeams extends Component {
                     {item.quantity}
                     <Button variant='transpert' size='sm' onClick={() => this.handleDecrement(item.id)}>-</Button></b>
                   </Card.Text>
-                  <Button variant="success" onClick={() => this.sendItemToCart(item.id)}>הוסף לעגלה</Button>
+                  <Button variant="success" onClick={() => this.sendItemToCart(item.id)}>הוסף לסל</Button>
                 </Card.Body>
               </Card>
             )}
@@ -129,7 +129,7 @@ class StoreTeams extends Component {
                     {item.quantity}
                     <Button variant='transpert' size='sm' onClick={() => this.handleDecrement(item.id)}>-</Button></b>
                   </Card.Text>
-                  <Button variant="success" onClick={() => this.sendItemToCart(item.id)}>הוסף לעגלה</Button>
+                  <Button variant="success" onClick={() => this.sendItemToCart(item.id)}>הוסף לסל</Button>
                 </Card.Body>
               </Card>
             })}
