@@ -51,8 +51,8 @@ class TableTeams extends Component {
     } else {
       return this.state.teamsFromLocalstorage.sort((a, b) => a.points < b.points ? 1 : -1).map((team, index) => {
         return (
-          <tr key={index}>
-            <td>{this.id++}</td>
+          <tr style={{ fontSize: '20px', fontWeight: 'bold' }} key={index} >
+            <td >{this.id++}</td>
             <td style={{ cursor: 'pointer' }} onClick={() => this.sendTeamToPrint(team.id)} >{team.club}</td>
             <td>{team.win}</td>
             <td>{team.draw}</td>
@@ -69,11 +69,12 @@ class TableTeams extends Component {
       <div>
         <NavWeb />
         <center>
-          <div>
-            <h3 id='title'>דירוג הקבוצות</h3>
+          <div className="container">
+            <br />
+            <h3>דירוג הקבוצות</h3>
             <table id="containerTable">
               <tbody>
-                <tr style={{ color: 'blue', backgroundColor: 'lightblue' }}>
+                <tr style={{ fontSize: '20px', fontWeight: 'bold', color: 'blue', backgroundColor: 'lightblue' }}>
                   <th>מקום</th>
                   <th>שם הקבוצה</th>
                   <th>נצחונות</th>

@@ -1,8 +1,17 @@
+HTML{
+    background-image: url(/src/images/background.jpg);
+    background-size: 100%;
+    background-attachment: fixed;
+ }
 
-
-
+.container{
+    background-color: lightseagreen;
+    background-size:auto;
+    background-size: cover;
+}
 #containerTable{
-    background-color:aliceblue;
-    width: 70%;
+    background-color: transparent;
+    width: 80%;
     align-items: 'center'
+    
 }

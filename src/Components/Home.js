@@ -6,6 +6,7 @@ import { Card, Button, Alert } from 'react-bootstrap/';
 import rokaviza from '../images/rokaviza.jpg';
 import coach from '../images/1067598.jpg'
 import card1 from '../images/1067766.jpg'
+
 import { withRouter, Link } from 'react-router-dom';
 class Home extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class Home extends Component {
       return
     }
     this.props.handleGameBtn(parseInt(this.state.teamA), parseInt(this.state.teamB))
-    this.props.sendResultToManager(this.state.teamA, this.state.teamB,this.props.pointA, this.props.pointB)
+    this.props.sendResultToManager({ teamA: this.state.teamA, teamB: this.state.teamB, pointA: this.props.pointA, pointB: this.props.pointB })
   }
 
   sendIdArtcile = (num) => {
@@ -67,14 +68,14 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ backgroundColor: 'lightcyan' }}>
         <NavWeb />
         <center>
-          <h1>ברוכים הבאים לספורט 10</h1>
+          <h1 style={{ color: 'lightseagreen', fontStyle: 'oblique', fontSize: 50 }}>ברוכים הבאים לספורט 10</h1>
           <Carousel style={{ marginTop: 20, marginBottom: 15 }}>
             <Carousel.Item>
               <img
-                width="1300" height="300"
+                width="1300" height="600"
                 src="https://pbs.twimg.com/media/DtWJbzjWsAM8N7f.jpg"
                 alt="First slide"
               />
@@ -84,7 +85,7 @@ class Home extends Component {
             </Carousel.Item>
             <Carousel.Item>
               <img
-                width="1300" height="300"
+                width="1300" height="600"
                 src="https://images.one.co.il/images/d/dmain/ms/gg1442221.jpg"
                 alt="Third slide"
               />
@@ -95,7 +96,7 @@ class Home extends Component {
             </Carousel.Item>
             <Carousel.Item>
               <img
-                width="1300" height="300"
+                width="1300" height="600"
                 src="https://www.amigo.co.il/wp-content/uploads/2017/09/-%D7%9B%D7%93%D7%95%D7%A8%D7%92%D7%9C-%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99-2-e1506932783533-600x400.jpg"
                 alt="Third slide"
               />
@@ -105,11 +106,11 @@ class Home extends Component {
             </Carousel.Item>
           </Carousel>
         </center>
-        <h4 style={{ textAlign: 'right' }}>כתבות חמות</h4>
+        <h4 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique', fontSize: 40 }}>כתבות חמות</h4>
         <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '2%', textAlign: 'right', backgroundColor: 'rgba(117, 133, 145, 0.1)' }}>
           <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={rokaviza} width='150px' height='130px' />
-            <Card.Body>
+            <Card.Img variant="top" src={rokaviza} width='30%' height='50%' />
+            <Card.Body style={{ backgroundColor: 'lightcyan' }}>
               <Card.Title>לצד סון: רוקאביצה בין נבחרי העונה באסיה</Card.Title>
               <Card.Text>
                 <Link to="/article"><Button variant="success" onClick={() => this.sendIdArtcile(0)}>לחץ לפתיחת הכתבה</Button></Link>
@@ -118,8 +119,8 @@ class Home extends Component {
           </Card>
 
           <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={card1} width='150px' height='130px' />
-            <Card.Body>
+            <Card.Img variant="top" src={card1} width='30%' height='50%' />
+            <Card.Body style={{ backgroundColor: 'lightcyan' }}>
               <Card.Title>מצעד ההעברות הגדולות של ינואר</Card.Title>
               <Card.Text>
                 <Link to="/article"><Button variant="success" onClick={() => this.sendIdArtcile(1)}>לחץ לפתיחת הכתבה</Button></Link>
@@ -128,8 +129,8 @@ class Home extends Component {
           </Card>
 
           <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={coach} width='150px' height='130px' />
-            <Card.Body>
+            <Card.Img variant="top" src={coach} width='30%' height='50%' />
+            <Card.Body style={{ backgroundColor: 'lightcyan' }}>
               <Card.Title>המאמנים שנמצאים בסכנת הרחקה</Card.Title>
               <Card.Text>
                 <Link to="/article"><Button variant="success" onClick={() => this.sendIdArtcile(2)}>לחץ לפתיחת הכתבה</Button></Link>
@@ -138,10 +139,10 @@ class Home extends Component {
           </Card>
         </div>
         <br />
-        <div>
-          <Card className="text-center">
-            <Card.Header style={{ fontSize: 20 }}><b>פינת ההגרלה</b></Card.Header>
-            <Card.Body>
+        <div >
+          <Card className="text-center" style={{ backgroundColor: 'lightcyan' }}>
+            <h4 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique', fontSize: 40 }}>פינת ההגרלה</h4>
+            <Card.Body >
               <Card.Title style={{ textAlign: 'center' }}>בחר קבוצות ולחץ על אישור כדי לראות את תוצאת המשחק</Card.Title>
               <br />
               <Card.Text>
@@ -177,6 +178,10 @@ class Home extends Component {
               </Card.Text>
               <Button variant="success" onClick={this.handleGameBtn}>אשר בחירה</Button><br /><br />
               <Alert id="wr" variant="danger" style={{ display: 'none' }} />
+              {this.props.resultsGames.map((res, index) =>
+                <div key={index}>
+                  <b>{res.pointB}:{res.pointA}</b>
+                </div>)}
             </Card.Body>
             <Card.Footer className="text-muted">
               <Alert id="wr" variant="danger" style={{ display: 'none' }} />

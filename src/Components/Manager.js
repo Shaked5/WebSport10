@@ -213,6 +213,7 @@ class Manager extends Component {
     item.quantity = item.quantity - item.quantity
     this.setState({ cartItems: cartItems, total_price: items_price, quantity: item.quantity })
   }
+
   //Store function to get confirm on the order
   ConfirmOrder = () => {
     if (this.state.cartItems.length > 0) {
@@ -224,6 +225,7 @@ class Manager extends Component {
     document.getElementById("wr").innerHTML = "לא נוספו מוצרים לסל הקניות, אנא בחר מוצרים מהחנות";
     document.getElementById("wr").style.display = "block";
   }
+
   //Home function to update the table
   handleGameBtn = (teamA, teamB) => {
     let newArray
@@ -279,12 +281,15 @@ class Manager extends Component {
   }
 
   //to fix
-  getResultsFromHome = (a, b, pA, pB) => {
-    let result = { a: a, b: b, pointA: pA, pointB: pB }
-    console.log(result)
+  getResultsFromHome = (data) => {
+    debugger
+    let result = { teamA: data.teamA, teamB: data.teamB, pA: data.pointA, pB: data.pointB }
+    let newArray = [...this.state.resultsGames, result]
+    this.setState({ resultsGames: newArray })
   }
 
   render() {
+    console.log(this.state.resultsGames)
     return (
       <Switch>
         <Route exact path="/" render={() =>

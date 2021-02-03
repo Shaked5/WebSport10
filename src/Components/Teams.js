@@ -61,32 +61,34 @@ class Teams extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ backgroundColor: 'lightcyan' }}>
         <NavWeb />
+        <br />
         <center>
-          <h1>קבוצות הליגה</h1>
+          <h1 style={{ color: 'lightseagreen', fontStyle: 'oblique', fontSize: 50 }}>קבוצות הליגה</h1>
         </center>
         <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
           {this.state.teamsFromLocalstorage && this.state.teamsFromLocalstorage.map((team, index) =>
             <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
-              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200"
+              <img style={{ cursor: 'pointer' }} index={team.id} src={team.imgClub} alt="stam" width="300" height="200"
                 onClick={() => this.sendTeamToPrint(team.id)} />
-              <p index={team.id}> {team.club} </p>
+              <b><p index={team.id}> {team.club} </p></b>
             </div>
           )}
           {!this.state.teamsFromLocalstorage && this.props.teams.map((team, index) =>
             <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
-              <img index={team.id} src={team.imgClub} alt="stam" width="300" height="200"
+              <img style={{ cursor: 'pointer' }} index={team.id} src={team.imgClub} alt="stam" width="300" height="200"
                 onClick={() => this.sendTeamToPrint(team.id)} />
-              <p index={team.id}> {team.club} </p>
+              <b><p index={team.id}> {team.club} </p></b>
             </div>
           )}
         </div>
+        <br />
         <center>
-          <Button onClick={this.setOpen}
+          <Button variant="success" onClick={this.setOpen}
             aria-controls="example-collapse-text"
             aria-expanded={this.state.open}
-          >הוסף קבוצה</Button>
+          >הוספת קבוצה</Button>
           <Collapse in={this.state.open}>
 
             <Form style={{ width: '70%' }}>
@@ -131,13 +133,14 @@ class Teams extends Component {
                 <Form.Control as="textarea" rows={3} value={this.state.info}
                   onChange={e => this.setState({ info: e.target.value })} ></Form.Control>
               </Form.Group>
-              <Button variant="primary" onClick={this.sendTeamToParent}>
+              <Button variant="success" onClick={this.sendTeamToParent}>
                 אישור
                </Button>
             </Form>
 
           </Collapse>
         </center>
+        <br />
       </div>
     );
   }
