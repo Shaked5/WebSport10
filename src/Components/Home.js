@@ -73,8 +73,9 @@ class Home extends Component {
         <center>
           <h1 style={{ color: 'lightseagreen', fontStyle: 'oblique', fontSize: 50 }}>ברוכים הבאים לספורט 10</h1>
           <Carousel style={{ marginTop: 20, marginBottom: 15 }}>
-            <Carousel.Item>
+            <Carousel.Item >
               <img
+                style={{ borderRadius: 7 }}
                 width="1300" height="600"
                 src="https://pbs.twimg.com/media/DtWJbzjWsAM8N7f.jpg"
                 alt="First slide"
@@ -85,6 +86,7 @@ class Home extends Component {
             </Carousel.Item>
             <Carousel.Item>
               <img
+                style={{ borderRadius: 7 }}
                 width="1300" height="600"
                 src="https://images.one.co.il/images/d/dmain/ms/gg1442221.jpg"
                 alt="Third slide"
@@ -96,6 +98,7 @@ class Home extends Component {
             </Carousel.Item>
             <Carousel.Item>
               <img
+                style={{ borderRadius: 7 }}
                 width="1300" height="600"
                 src="https://www.amigo.co.il/wp-content/uploads/2017/09/-%D7%9B%D7%93%D7%95%D7%A8%D7%92%D7%9C-%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99-2-e1506932783533-600x400.jpg"
                 alt="Third slide"
