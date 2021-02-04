@@ -57,7 +57,6 @@ class Home extends Component {
       return
     }
     this.props.handleGameBtn(parseInt(this.state.teamA), parseInt(this.state.teamB))
-    this.props.sendResultToManager({ teamA: this.state.teamA, teamB: this.state.teamB, pointA: this.props.pointA, pointB: this.props.pointB })
   }
 
   sendIdArtcile = (num) => {
@@ -183,7 +182,7 @@ class Home extends Component {
               <Alert id="wr" variant="danger" style={{ display: 'none' }} />
               {this.props.resultsGames.map((res, index) =>
                 <div key={index}>
-                  <b>{res.pointB}:{res.pointA}</b>
+                  <b>{res.teamA} {res.pB}:{res.pA} {res.teamB}</b>
                 </div>)}
             </Card.Body>
             <Card.Footer className="text-muted">

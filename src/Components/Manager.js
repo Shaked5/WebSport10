@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import Home from './Home';
 import StoreTeams from './Store';
@@ -277,16 +277,25 @@ class Manager extends Component {
       teams: newArray, teamsFromLocalstorage: newArray
     }, () => {
       localStorage.setItem('teams', JSON.stringify(this.state.teams))
+      console.log("pointA:",this.state.pointA)
+      console.log("pointB:",this.state.pointB)
+      let tA = this.state.teams.find(team => team.id===teamA)
+      let tB = this.state.teams.find(team => team.id===teamB)
+      let result = { teamA: tA.club, teamB:tB.club, pA:this.state.pointA, pB:this.state.pointB }
+      let newArray = [...this.state.resultsGames, result]
+      this.setState({ resultsGames: newArray })
     })
   }
 
   //to fix
-  getResultsFromHome = (data) => {
-    debugger
-    let result = { teamA: data.teamA, teamB: data.teamB, pA: data.pointA, pB: data.pointB }
-    let newArray = [...this.state.resultsGames, result]
-    this.setState({ resultsGames: newArray })
-  }
+  // getResultsFromHome = (data) => {
+  //   debugger
+  //   console.log("pointA:",this.state.pointA)
+  //   console.log("pointB:",this.state.pointB)
+  //   let result = { teamA: data.teamA, teamB: data.teamB, pA: data.pointA, pB: data.pointB }
+  //   let newArray = [...this.state.resultsGames, result]
+  //   this.setState({ resultsGames: newArray })
+  // }
 
   render() {
     console.log(this.state.resultsGames)
@@ -299,7 +308,6 @@ class Manager extends Component {
             pointB={this.state.pointB}
             setArticleNum={this.setArticleNum}
             resultsGames={this.state.resultsGames}
-            sendResultToManager={this.getResultsFromHome}
           />}></Route>
         <Route path="/teams" render={() => <Teams teams={this.state.teams}
           sendToParent={this.getTeamFromChild} />}></Route>

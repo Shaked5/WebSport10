@@ -67,7 +67,9 @@ class TableTeams extends Component {
   render() {
     return (
       <div>
+        <div>
         <NavWeb />
+        </div>
         <center>
           <div className="container">
             <br />

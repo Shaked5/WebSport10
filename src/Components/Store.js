@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import NavWeb from './Nav';
 import { withRouter } from 'react-router-dom';
 import { Card, Button, Modal, Alert } from 'react-bootstrap/';
-import { Bag } from 'react-bootstrap-icons';
+import { Cart } from 'react-bootstrap-icons';
 import '../index.css';
 import '../CSSWeb/Store.css'
 
@@ -55,9 +55,9 @@ class StoreTeams extends Component {
         <br />
         <div>
           <>
-            <Button variant="btn-container secondary" onClick={this.SetModalShow}>
+            <Button  variant="transpert" onClick={this.SetModalShow}>
               <span style={{ color: 'red', fontSize: '1rem', fontWeight: 'bold', marginLeft: 70 }}>{this.props.cartItems.length}</span>
-              <Bag size='sm' style={{ position: 'absolute', top: '', left: '10%', size: 'sm' }} className="cart" />
+              <Cart size='sm' style={{ position: 'absolute', top: '', left: '10%', size: 'sm' }} className="cart" />
             </Button>
 
             <Modal
