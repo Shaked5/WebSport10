@@ -287,18 +287,7 @@ class Manager extends Component {
     })
   }
 
-  //to fix
-  // getResultsFromHome = (data) => {
-  //   debugger
-  //   console.log("pointA:",this.state.pointA)
-  //   console.log("pointB:",this.state.pointB)
-  //   let result = { teamA: data.teamA, teamB: data.teamB, pA: data.pointA, pB: data.pointB }
-  //   let newArray = [...this.state.resultsGames, result]
-  //   this.setState({ resultsGames: newArray })
-  // }
-
   render() {
-    console.log(this.state.resultsGames)
     return (
       <Switch>
         <Route exact path="/" render={() =>
