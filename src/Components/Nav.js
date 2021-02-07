@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import '../CSSWeb/navweb.css';
 import iconNav from '../images/newIcon.png';
-
+import { Link } from 'react-router-dom'
 
 class NavWeb extends Component {
   constructor(props) {
@@ -12,12 +12,13 @@ class NavWeb extends Component {
   render() {
     return (
       <div className="flex-container">
+        <Nav.Link></Nav.Link>
         <Navbar expand="lg" bg="dark" variant="dark">
-          <Nav.Link href="/">דף הבית</Nav.Link>
-          <Nav.Link href="/teams">קבוצות</Nav.Link>
-          <Nav.Link href="/table">טבלת ניקוד</Nav.Link>
-          <Nav.Link href="/store">חנות</Nav.Link>
-          <Nav.Item style={{ marginRight: '15%' }}><a href="/"> <img width="40%" src={iconNav}></img> </a></Nav.Item>
+          <Nav.Link><Link to="/">דף הבית</Link></Nav.Link>
+          <Nav.Link><Link to="/teams">קבוצות הליגה</Link></Nav.Link>
+          <Nav.Link><Link to="/table">טבלת דירוג </Link></Nav.Link>
+          <Nav.Link><Link to="/store">חנות האוהדים</Link></Nav.Link>
+          <Nav.Item style={{ marginRight: '15%' }}><Link to="/"><img width="40%" src={iconNav}></img></Link></Nav.Item>
         </Navbar>
       </div>
     );
