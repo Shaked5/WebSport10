@@ -50,7 +50,7 @@ class StoreTeams extends Component {
   render() {
     console.log(this.state.searchInput)
     return (
-      <div style={{ backgroundColor: 'lightgoldenrodyellow' }}>
+      <div style={{ backgroundColor: 'rgba(178, 169, 155, 0.4)' }}>
         <NavWeb />
         <br />
         <div>

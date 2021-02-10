@@ -6,11 +6,12 @@ HTML{
 
 .container{
     background-color: lightcyan;
-   height: 100%;
+   height: 100vh;
 }
 #containerTable{
     font-weight: bold;
-    width: 70%;
+    height: 50%;
+    width: 75%;
     align-items: 'center';
     margin-bottom: 10%;
 }
