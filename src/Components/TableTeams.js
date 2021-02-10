@@ -5,10 +5,8 @@ import { withRouter } from 'react-router-dom';
 class TableTeams extends Component {
   constructor(props) {
     super(props);
-    this.id = 1;
     this.state = {
       teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams')),
-
     }
   }
 
@@ -35,11 +33,12 @@ class TableTeams extends Component {
 
   renderTableData = () => {
     debugger
+    let idTable=1;
     if (this.state.teamsFromLocalstorage === null) {
       return this.props.teams.sort((a, b) => a.points < b.points ? 1 : -1).map((team, index) => {
         return (
           <tr key={index}>
-            <td>{this.id++}</td>
+            <td>{idTable++}</td>
             <td style={{ cursor: 'pointer' }} onClick={() => this.sendTeamToPrint(team.id)} clickable={true}>{team.club}</td>
             <td>{team.win}</td>
             <td>{team.draw}</td>
@@ -52,7 +51,7 @@ class TableTeams extends Component {
       return this.state.teamsFromLocalstorage.sort((a, b) => a.points < b.points ? 1 : -1).map((team, index) => {
         return (
           <tr style={{ fontSize: '20px', fontWeight: 'bold' }} key={index} >
-            <td >{this.id++}</td>
+            <td >{idTable++}</td>
             <td style={{ cursor: 'pointer' }} onClick={() => this.sendTeamToPrint(team.id)} >{team.club}</td>
             <td>{team.win}</td>
             <td>{team.draw}</td>
