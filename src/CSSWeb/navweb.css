@@ -1,10 +1,12 @@
-.icon-nav {
-    width: 5%;
+
+a.nav-link{
+    margin: 5px;
+    padding: 0% !important;
 }
 
 .nav-link {
     color: lightseagreen;
     justify-content: space-around;
-    width: 20%;
-    font-size: 20px
+    width: 18%;
+    font-size: 18px;
 }

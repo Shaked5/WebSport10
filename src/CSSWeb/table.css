@@ -6,13 +6,11 @@ HTML{
 
 .container{
     background-color: lightcyan;
-   height: 100vh;
+    height: 100vh;
 }
 #containerTable{
     font-weight: bold;
     height: 50%;
     width: 75%;
     align-items: 'center';
-    margin-bottom: 10%;
 }
-/* /src/images/background.jpg */

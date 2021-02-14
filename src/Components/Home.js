@@ -40,7 +40,7 @@ class Home extends Component {
       setTimeout(showAlert, 500);
       setTimeout(() => {
         showAlert = document.getElementById("wr").style.display = "none"
-      }, 1500);
+      }, 3000);
       return;
     }
     this.setState({ teamB: e.target.value })
@@ -53,7 +53,7 @@ class Home extends Component {
       setTimeout(showAlert, 500);
       setTimeout(() => {
         showAlert = document.getElementById("wr").style.display = "none"
-      }, 2500);
+      }, 3000);
       return
     }
     this.props.handleGameBtn(parseInt(this.state.teamA), parseInt(this.state.teamB))
@@ -68,7 +68,7 @@ class Home extends Component {
   render() {
     return (
       <div style={{ backgroundColor: 'lightcyan' }}>
-        <NavWeb />
+        <NavWeb style={{ padding: 'none' }} />
         <center>
           <h1 style={{ color: 'lightseagreen', fontStyle: 'oblique', fontSize: 50 }}>ברוכים הבאים לספורט 10</h1>
           <Carousel style={{ marginTop: 20, marginBottom: 15 }}>
@@ -80,7 +80,7 @@ class Home extends Component {
                 alt="First slide"
               />
               <Carousel.Caption>
-                <h3>ברוכים הבאים</h3>
+                <h1>ברוכים הבאים</h1>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -92,7 +92,7 @@ class Home extends Component {
               />
 
               <Carousel.Caption>
-                <h3>לאתר</h3>
+                <h1>לאתר</h1>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -103,7 +103,7 @@ class Home extends Component {
                 alt="Third slide"
               />
               <Carousel.Caption>
-                <h3>הטוב במדינה!</h3>
+                <h1>הטוב במדינה !</h1>
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
@@ -143,34 +143,34 @@ class Home extends Component {
         <br />
         <div >
           <Card className="text-center" style={{ backgroundColor: 'lightcyan' }}>
-            <h4 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique', fontSize: 40 }}>פינת ההגרלה</h4>
+            <Link style={{ marginRight: '90%', fontWeight: 'bold', fontSize: 18 }} to="/table">לטבלת הדירוג</Link>
+            <h1 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique' }}>פינת ההגרלה</h1>
             <Card.Body >
-              <Card.Title style={{ textAlign: 'center' }}>בחר קבוצות ולחץ על אישור כדי לראות את תוצאת המשחק</Card.Title>
-              <br />
+              <Card.Title style={{ textAlign: 'center' }}>בחר קבוצות ולחץ על אישור כדי לראות את תוצאת המשחק<br />תוכל לצפות במצב הטבלה לאחר תוצאת ההגרלה, בזמן אמת !</Card.Title>
               <Card.Text>
                 <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
                   <div>
-                    <select onChange={this.handleTeamA}>
-                      <option value=''>בחר קבוצה</option>
-                      {this.state.teamsFromLocalstorage === null && this.props.teams.map((team, index) => <option key={index} value={team.id} >
+                    <select style={{ fontWeight: 'bold' }} onChange={this.handleTeamA}>
+                      <option style={{ fontWeight: 'bold' }} value=''>בחר קבוצה</option>
+                      {this.state.teamsFromLocalstorage === null && this.props.teams.map((team, index) => <option style={{ fontWeight: 'bold' }} key={index} value={team.id} >
                         {team.club}
                       </option>
                       )}
-                      {this.state.teamsFromLocalstorage !== null && this.state.teamsFromLocalstorage.map((team, index) => <option key={index} value={team.id} >
+                      {this.state.teamsFromLocalstorage !== null && this.state.teamsFromLocalstorage.map((team, index) => <option style={{ fontWeight: 'bold' }} key={index} value={team.id} >
                         {team.club}
                       </option>
                       )}
                     </select>
                   </div>
                   <b>{this.props.pointB}:{this.props.pointA}</b>
-                  <div>
-                    <select onChange={this.handleTeamB}>
-                      <option value=''>בחר קבוצה</option>
-                      {this.state.teamsFromLocalstorage === null && this.props.teams.map((team, index) => <option key={index} value={team.id} >
+                  <div style={{ fontWeight: 'bold' }}>
+                    <select style={{ fontWeight: 'bold' }} onChange={this.handleTeamB}>
+                      <option style={{ fontWeight: 'bold' }} value=''>בחר קבוצה</option>
+                      {this.state.teamsFromLocalstorage === null && this.props.teams.map((team, index) => <option style={{ fontWeight: 'bold' }} key={index} value={team.id} >
                         {team.club}
                       </option>
                       )}
-                      {this.state.teamsFromLocalstorage !== null && this.state.teamsFromLocalstorage.map((team, index) => <option key={index} value={team.id} >
+                      {this.state.teamsFromLocalstorage !== null && this.state.teamsFromLocalstorage.map((team, index) => <option style={{ fontWeight: 'bold' }} key={index} value={team.id} >
                         {team.club}
                       </option>
                       )}
@@ -182,7 +182,7 @@ class Home extends Component {
               <Alert id="wr" variant="danger" style={{ display: 'none' }} />
               {this.props.resultsGames.map((res, index) =>
                 <div key={index}>
-                  <b>{res.teamA} {res.pB}:{res.pA} {res.teamB}</b>
+                  <b>{res.teamA}  {res.pB}:{res.pA}  {res.teamB}</b>
                 </div>)}
             </Card.Body>
             <Card.Footer className="text-muted">

@@ -52,6 +52,7 @@ class StoreTeams extends Component {
     return (
       <div style={{ backgroundColor: 'rgba(178, 169, 155, 0.4)' }}>
         <NavWeb />
+        <h2 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique', fontSize: 50 }}>חנות האוהדים</h2>
         <br />
         <div>
           <>
@@ -98,7 +99,6 @@ class StoreTeams extends Component {
             </Modal>
           </>
         </div>
-        <h2 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique', fontSize: 50 }}>חנות האוהדים</h2>
         <div style={{ textAlign: 'right', marginRight: '3%', fontSize: 20 }}>
           <b>חיפוש מוצר על פי שם קבוצה :</b> <input style={{ height: '28px' }} type="text" onChange={this.inputTeam} />
         </div>

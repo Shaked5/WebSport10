@@ -72,14 +72,14 @@ class Teams extends Component {
             <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
               <img style={{ cursor: 'pointer' }} index={team.id} src={team.imgClub} alt="stam" width="300" height="200"
                 onClick={() => this.sendTeamToPrint(team.id)} />
-              <b><p index={team.id}> {team.club} </p></b>
+              <b><p style={{ fontStyle: 'oblique', fontSize: 20 }} index={team.id}> {team.club} </p></b>
             </div>
           )}
           {!this.state.teamsFromLocalstorage && this.props.teams.map((team, index) =>
             <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
               <img style={{ cursor: 'pointer' }} index={team.id} src={team.imgClub} alt="stam" width="300" height="200"
                 onClick={() => this.sendTeamToPrint(team.id)} />
-              <b><p index={team.id}> {team.club} </p></b>
+              <b><p style={{ fontStyle: 'oblique', fontSize: 20 }} index={team.id}> {team.club} </p></b>
             </div>
           )}
         </div>
@@ -91,10 +91,10 @@ class Teams extends Component {
           >הוספת קבוצה</Button>
           <Collapse in={this.state.open}>
 
-            <Form style={{ width: '70%' }}>
+            <Form style={{ width: '70%', fontWeight: 'bold' }}>
               <Form.Row>
                 <Form.Group as={Col} controlId="formGridEmail">
-                  <Form.Label >שם קבוצה</Form.Label>
+                  <Form.Label >שם הקבוצה</Form.Label>
                   <Form.Control type="text" value={this.state.club}
                     onChange={e => this.setState({ club: e.target.value })} />
                 </Form.Group>
@@ -104,7 +104,7 @@ class Teams extends Component {
                   <Form.Control type="text" value={this.state.imgClub}
                     onChange={e => this.setState({ imgClub: e.target.value })} />
                   <Form.Text className="text-muted">
-                    הכנס לינק של סמל הקבוצה
+                    (לינק תמונה של סמל הקבוצה)
                   </Form.Text>
                 </Form.Group>
               </Form.Row>
@@ -112,7 +112,7 @@ class Teams extends Component {
               <Form.Label>הכנס רשימת שחקנים</Form.Label>
               <Form.Row>
                 <Form.Group as={Col} controlId="formGridAddress1">
-                  <Form.Label>שם שחקן</Form.Label>
+                  <Form.Label>שם השחקן</Form.Label>
                   <Form.Control type="text" value={this.state.playerName}
                     onChange={e => this.setState({ playerName: e.target.value })} />
                 </Form.Group>

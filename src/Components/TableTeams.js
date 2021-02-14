@@ -72,7 +72,7 @@ class TableTeams extends Component {
         <center>
           <div className="container">
             <br />
-            <h3>דירוג הקבוצות</h3>
+            <h3 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique', fontSize: 46 }}>דירוג הקבוצות</h3>
             <table id="containerTable">
               <tbody>
                 <tr style={{ fontSize: '20px', fontWeight: 'bold', color: 'blue', backgroundColor: 'lightblue' }}>
