@@ -109,7 +109,7 @@ class Teams extends Component {
                 </Form.Group>
               </Form.Row>
 
-              <Form.Label>הכנס רשימת שחקנים</Form.Label>
+              <Form.Label>הכנס את רשימת השחקנים</Form.Label>
               <Form.Row>
                 <Form.Group as={Col} controlId="formGridAddress1">
                   <Form.Label>שם השחקן</Form.Label>
@@ -129,7 +129,7 @@ class Teams extends Component {
               </Form.Group> <br />
 
               <Form.Group>
-                <Form.Label>מידע על הקבוצה</Form.Label>
+                <Form.Label>מידע אודות הקבוצה</Form.Label>
                 <Form.Control as="textarea" rows={3} value={this.state.info}
                   onChange={e => this.setState({ info: e.target.value })} ></Form.Control>
               </Form.Group>

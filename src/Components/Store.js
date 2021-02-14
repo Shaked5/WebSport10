@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import NavWeb from './Nav';
+import ScrollToTop from './ScrollToTop ';
 import { withRouter } from 'react-router-dom';
 import { Card, Button, Modal, Alert } from 'react-bootstrap/';
 import { Cart } from 'react-bootstrap-icons';
@@ -48,7 +49,6 @@ class StoreTeams extends Component {
   }
 
   render() {
-    console.log(this.state.searchInput)
     return (
       <div style={{ backgroundColor: 'rgba(178, 169, 155, 0.4)' }}>
         <NavWeb />
@@ -133,6 +133,9 @@ class StoreTeams extends Component {
               </Card>
             })}
           </div>
+        </div>
+        <div style={{ textAlign: 'right' }}>
+          <ScrollToTop />
         </div>
       </div>);
   }

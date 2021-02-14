@@ -68,7 +68,7 @@ class Home extends Component {
   render() {
     return (
       <div style={{ backgroundColor: 'lightcyan' }}>
-        <NavWeb style={{ padding: 'none' }} />
+        <NavWeb/>
         <center>
           <h1 style={{ color: 'lightseagreen', fontStyle: 'oblique', fontSize: 50 }}>ברוכים הבאים לספורט 10</h1>
           <Carousel style={{ marginTop: 20, marginBottom: 15 }}>
