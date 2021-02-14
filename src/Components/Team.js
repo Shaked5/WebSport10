@@ -4,7 +4,6 @@ import '../index.css';
 import '../CSSWeb/team.css';
 import { withRouter } from 'react-router-dom';
 
-
 class Team extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +21,7 @@ class Team extends Component {
       )
     })
   }
+
   render() {
     return (
       <div style={{ backgroundColor: 'lightcyan', paddingBottom: 40 }}>

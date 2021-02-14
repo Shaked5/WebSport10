@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavWeb from './Nav';
 import '../CSSWeb/table.css';
 import { withRouter } from 'react-router-dom';
+
 class TableTeams extends Component {
   constructor(props) {
     super(props);
@@ -9,8 +10,6 @@ class TableTeams extends Component {
       teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams')),
     }
   }
-
-
 
   sendTeamToPrint = (id) => {
     let newTeam;
