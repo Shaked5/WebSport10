@@ -137,7 +137,6 @@ class Teams extends Component {
                 אישור
                </Button>
             </Form>
-
           </Collapse>
         </center>
         <br />
