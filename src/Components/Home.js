@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactPlayer from "react-player"
 import NavWeb from './Nav';
 import Carousel from 'react-bootstrap/Carousel';
 import '../CSSWeb/home.css'
@@ -68,7 +69,7 @@ class Home extends Component {
   render() {
     return (
       <div style={{ backgroundColor: 'lightcyan' }}>
-        <NavWeb/>
+        <NavWeb />
         <center>
           <h1 style={{ color: 'lightseagreen', fontStyle: 'oblique', fontSize: 50 }}>ברוכים הבאים לספורט 10</h1>
           <Carousel style={{ marginTop: 20, marginBottom: 15 }}>
@@ -109,9 +110,9 @@ class Home extends Component {
           </Carousel>
         </center>
         <h4 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique', fontSize: 40 }}>כתבות חמות</h4>
-        <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '2%', textAlign: 'right', backgroundColor: 'rgba(117, 133, 145, 0.1)' }}>
-          <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={rokaviza} width='30%' height='50%' />
+        <div className="row" style={{ textAlign: 'center', backgroundColor: 'rgba(117, 133, 145, 0.1)', paddingRight: '5%' }}>
+          <Card className="col-lg-3 m-5" style={{ padding: 0, backgroundColor: 'rgba(117, 133, 145, 0.1)' }}>
+            <Card.Img src={rokaviza} style={{ width: '100%', height: '55%' }} />
             <Card.Body style={{ backgroundColor: 'lightcyan' }}>
               <Card.Title>לצד סון: רוקאביצה בין נבחרי העונה באסיה</Card.Title>
               <Card.Text>
@@ -119,9 +120,8 @@ class Home extends Component {
               </Card.Text>
             </Card.Body>
           </Card>
-
-          <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={card1} width='30%' height='50%' />
+          <Card className="col-lg-3 m-5" style={{ padding: 0, backgroundColor: 'rgba(117, 133, 145, 0.1)' }}>
+            <Card.Img src={card1} style={{ width: '100%', height: '55%' }} />
             <Card.Body style={{ backgroundColor: 'lightcyan' }}>
               <Card.Title>מצעד ההעברות הגדולות של ינואר</Card.Title>
               <Card.Text>
@@ -129,9 +129,8 @@ class Home extends Component {
               </Card.Text>
             </Card.Body>
           </Card>
-
-          <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={coach} width='30%' height='50%' />
+          <Card className="col-lg-3 m-5" style={{ padding: 0, backgroundColor: 'rgba(117, 133, 145, 0.1)' }}>
+            <Card.Img src={coach} style={{ width: '100%', height: '55%' }} />
             <Card.Body style={{ backgroundColor: 'lightcyan' }}>
               <Card.Title>המאמנים שנמצאים בסכנת הרחקה</Card.Title>
               <Card.Text>
@@ -140,13 +139,28 @@ class Home extends Component {
             </Card.Body>
           </Card>
         </div>
+        <h4 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique', fontSize: 40, margin: 0 }}>סרטונים חמים</h4>
+        <div className="row" style={{ marginBottom: '6%', marginRight: '2.5%' }}>
+          <div className="col-lg-3 m-5">
+            <h5 style={{ textAlign: 'right' }}>ליגת העל 20/21 מחזור 2: תקציר שערים</h5>
+            <ReactPlayer width='110%' height='140%' url="https://www.youtube.com/watch?v=UwpepxsUxQg" />
+          </div>
+          <div className="col-lg-3 m-5">
+            <h5 style={{ textAlign: 'right' }}>ליגת העל 20/21 מחזור 1: תקציר שערים</h5>
+            <ReactPlayer width='110%' height='140%' url="https://www.youtube.com/watch?v=pxEcPXWepPA" />
+          </div>
+          <div className="col-lg-3 m-5">
+            <h5 style={{ textAlign: 'right' }}>10 השערים היפים ביותר בליגת העל</h5>
+            <ReactPlayer width='110%' height='140%' url="https://www.youtube.com/watch?v=Rhm4VVZ_W1Y" />
+          </div>
+        </div>
         <br />
         <div >
           <Card className="text-center" style={{ backgroundColor: 'lightcyan' }}>
-            <Link style={{ marginRight: '90%', fontWeight: 'bold', fontSize: 18 }} to="/table">לטבלת הדירוג</Link>
+            <Link style={{ marginRight: '90%', fontWeight: 'bold', fontSize: 16 }} to="/table">לטבלת הדירוג</Link>
             <h1 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique' }}>פינת ההגרלה</h1>
             <Card.Body >
-              <Card.Title style={{ textAlign: 'center' }}>בחר קבוצות ולחץ על אישור כדי לראות את תוצאת המשחק<br />תוכל לצפות במצב הטבלה לאחר תוצאת ההגרלה, בזמן אמת !</Card.Title>
+              <Card.Title style={{ textAlign: 'center' }}>בחר קבוצות ולחץ על אישור כדי לראות את תוצאת המשחק<br />תוכל לצפות במצב הטבלה לאחר תוצאת ההגרלה בזמן אמת !</Card.Title>
               <Card.Text>
                 <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
                   <div>
