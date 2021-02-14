@@ -2,12 +2,8 @@ HTML{
     background-image: url(https://cutewallpaper.org/21/soccer-field-background-hd/Royalton-Fieldhouse.jpg);
     background-size: 100%;
     background-attachment: fixed;
- }
-
-.container{
-    background-color: lightcyan;
-    height: 100vh;
 }
+
 #containerTable{
     font-weight: bold;
     height: 50%;

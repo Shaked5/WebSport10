@@ -24,18 +24,18 @@ class Team extends Component {
   }
   render() {
     return (
-      <div style={{ backgroundColor: 'lightcyan' }}>
+      <div style={{ backgroundColor: 'lightcyan', paddingBottom: 40 }}>
         <NavWeb />
         <center>
           <h1 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique' }}>{this.props.location.state.newTeam.club}</h1><br />
           <img src={this.props.location.state.newTeam.imgClub} alt="oops" width="400" height="250" />
           <p style={{ width: '70%', fontWeight: 'bold' }}>{this.props.location.state.newTeam.info}</p>
-          <div style={{ marginTop: '20px' }}>
+          <div>
             <h3 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique' }}> סגל השחקנים</h3>
             <table id="containerTable">
               <tbody style={{ fontWeight: 'bold' }}>
                 <tr style={{ backgroundColor: 'lightblue' }}>
-                  <th>מספר</th>
+                  <th>#</th>
                   <th>שם השחקן</th>
                   <th>גיל</th>
                 </tr>

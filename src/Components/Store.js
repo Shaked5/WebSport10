@@ -56,7 +56,7 @@ class StoreTeams extends Component {
         <br />
         <div>
           <>
-            <Button  variant="transpert" onClick={this.SetModalShow}>
+            <Button variant="transpert" onClick={this.SetModalShow}>
               <span style={{ color: 'red', fontSize: '1rem', fontWeight: 'bold', marginLeft: 70 }}>{this.props.cartItems.length}</span>
               <Cart size='sm' style={{ position: 'absolute', top: '', left: '10%', size: 'sm' }} className="cart" />
             </Button>
@@ -77,14 +77,14 @@ class StoreTeams extends Component {
                     {this.props.cartItems.map((item, index) => {
                       return <div key={index}>
                         <p style={{ textAlign: 'right' }}>
+                          <img width="11%" height="3%" src={item.src}></img><br />
                           <b style={{ marginLeft: 20 }}>
                             שם מוצר: {item.prod} <br />
-                          מחיר הפריט: ₪{item.cost}
+                          מחיר הפריט: ₪{item.cost}<br />
                           כמות: {item.quantity}
                           </b>
-                          <img width="11%" height="3%" src={item.src}></img>
                           <Button className="btn btn-sm m-4" variant="danger"
-                            onClick={() => this.RemoveItem(item.id)}>הסר</Button></p>
+                            onClick={() => this.RemoveItem(item.id)}>הסר פריט</Button></p>
                       </div>
                     })}
                   </div>

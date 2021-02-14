@@ -33,7 +33,7 @@ class TableTeams extends Component {
 
   renderTableData = () => {
     debugger
-    let idTable=1;
+    let idTable = 1;
     if (this.state.teamsFromLocalstorage === null) {
       return this.props.teams.sort((a, b) => a.points < b.points ? 1 : -1).map((team, index) => {
         return (
@@ -65,14 +65,11 @@ class TableTeams extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div style={{ backgroundColor: 'lightcyan', paddingBottom: 50 }}>
         <NavWeb />
-        </div>
-        <center>
-          <div className="container">
-            <br />
-            <h3 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique', fontSize: 46 }}>דירוג הקבוצות</h3>
+        <div>
+          <center>
+            <h3 style={{marginTop: 10, textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique', fontSize: 46 }}>דירוג הקבוצות</h3>
             <table id="containerTable">
               <tbody>
                 <tr style={{ fontSize: '20px', fontWeight: 'bold', color: 'blue', backgroundColor: 'lightblue' }}>
@@ -86,8 +83,8 @@ class TableTeams extends Component {
                 {this.renderTableData()}
               </tbody>
             </table>
-          </div>
-        </center>
+          </center>
+        </div>
       </div>
     );
   }
