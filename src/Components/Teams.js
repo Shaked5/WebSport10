@@ -70,14 +70,14 @@ class Teams extends Component {
         <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
           {this.state.teamsFromLocalstorage && this.state.teamsFromLocalstorage.map((team, index) =>
             <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
-              <img style={{ cursor: 'pointer' }} index={team.id} src={team.imgClub} alt="stam" width="300" height="200"
+              <img style={{ cursor: 'pointer' }} index={team.id} src={team.imgClub} alt="stam" width="300" height="225"
                 onClick={() => this.sendTeamToPrint(team.id)} />
               <b><p style={{ fontStyle: 'oblique', fontSize: 20 }} index={team.id}> {team.club} </p></b>
             </div>
           )}
           {!this.state.teamsFromLocalstorage && this.props.teams.map((team, index) =>
             <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
-              <img style={{ cursor: 'pointer' }} index={team.id} src={team.imgClub} alt="stam" width="300" height="200"
+              <img style={{ cursor: 'pointer' }} index={team.id} src={team.imgClub} alt="stam" width="300" height="225"
                 onClick={() => this.sendTeamToPrint(team.id)} />
               <b><p style={{ fontStyle: 'oblique', fontSize: 20 }} index={team.id}> {team.club} </p></b>
             </div>

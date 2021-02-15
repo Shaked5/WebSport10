@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import NavWeb from './Nav';
-import '../index.css';
 import '../CSSWeb/team.css';
 import { withRouter } from 'react-router-dom';
 
@@ -13,10 +12,10 @@ class Team extends Component {
   renderTableData = () => {
     return this.props.location.state.newTeam.players.map((player, index) => {
       return (
-        <tr key={index} style={{ fontWeight: 'bold' }}>
-          <td>{player.id}</td>
-          <td>{player.name}</td>
-          <td>{player.age}</td>
+        <tr key={index} style={{ fontWeight: 'bold', width: '50%' }}>
+          <td >{player.id}</td>
+          <td style={{ paddingRight: '10%'}}>{player.name}</td>
+          <td >{player.age}</td>
         </tr>
       )
     })
@@ -27,17 +26,17 @@ class Team extends Component {
       <div style={{ backgroundColor: 'lightcyan', paddingBottom: 40 }}>
         <NavWeb />
         <center>
-          <h1 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique' }}>{this.props.location.state.newTeam.club}</h1><br />
-          <img src={this.props.location.state.newTeam.imgClub} alt="oops" width="400" height="250" />
+          <h1 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique' }}>{this.props.location.state.newTeam.club}</h1>
+          <img src={this.props.location.state.newTeam.imgClub} alt="oops" width='20%' />
           <p style={{ width: '70%', fontWeight: 'bold' }}>{this.props.location.state.newTeam.info}</p>
           <div>
             <h3 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique' }}> סגל השחקנים</h3>
-            <table id="containerTable">
+            <table>
               <tbody style={{ fontWeight: 'bold' }}>
-                <tr style={{ backgroundColor: 'lightblue' }}>
-                  <th>#</th>
-                  <th>שם השחקן</th>
-                  <th>גיל</th>
+                <tr style={{ backgroundColor: 'lightblue', width: '50%' }}>
+                  <th style={{ width: '15%' }}>#</th>
+                  <th style={{ width: '65%',paddingRight: '10%'}}>שם השחקן</th>
+                  <th style={{ width: '15%' }}>גיל</th>
                 </tr>
                 {this.renderTableData()}
               </tbody>
