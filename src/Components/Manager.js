@@ -171,7 +171,6 @@ class Manager extends Component {
     let points = rWin * 3 + rDraw
     let newTeam = { id: ++this.counter, club: data.club, items: [], info: data.info, imgClub: data.imgClub, players: data.players, win: rWin, draw: rDraw, loss: rLoss, points: points }
     newArr = [...newArr, newTeam]
-    console.log(newArr)
     this.setState({
       teams: newArr
     }, () => {
@@ -277,8 +276,6 @@ class Manager extends Component {
       teams: newArray, teamsFromLocalstorage: newArray
     }, () => {
       localStorage.setItem('teams', JSON.stringify(this.state.teams))
-      console.log("pointA:",this.state.pointA)
-      console.log("pointB:",this.state.pointB)
       let tA = this.state.teams.find(team => team.id===teamA)
       let tB = this.state.teams.find(team => team.id===teamB)
       let result = { teamA: tA.club, teamB:tB.club, pA:this.state.pointA, pB:this.state.pointB }

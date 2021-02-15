@@ -22,7 +22,6 @@ class TableTeams extends Component {
       })
     } else {
       newTeam = this.state.teamsFromLocalstorage.find(team => team.id === id);
-      console.log(newTeam);
       this.props.history.push({
         pathname: '/team',
         state: { newTeam: newTeam }
@@ -31,7 +30,6 @@ class TableTeams extends Component {
   }
 
   renderTableData = () => {
-    debugger
     let idTable = 1;
     if (this.state.teamsFromLocalstorage === null) {
       return this.props.teams.sort((a, b) => a.points < b.points ? 1 : -1).map((team, index) => {
