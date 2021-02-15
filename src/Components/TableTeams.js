@@ -80,7 +80,7 @@ class TableTeams extends Component {
               </tbody>
             </table>
             <div style={{ marginTop: 60 }}>
-              <img src={israelLig} style={{ width: '50%', borderRadius: 8, boxShadow: '0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0' }} />
+              <img src={israelLig} style={{ width: '40%', borderRadius: 8, boxShadow: '0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0' }} />
             </div>
           </center>
         </div>
