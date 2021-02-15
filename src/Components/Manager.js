@@ -269,18 +269,18 @@ class Manager extends Component {
         }
       }
     })
-    newArray = newArray.filter((team) => team.id != teamA && team.id != teamB)
-    newArray = [...newArray, A, B]
+    newArray = newArray.filter((team) => team.id != teamA && team.id != teamB)//סינון הקבוצות שלא נמצאו והחזרת המערך בלעדיהם
+    newArray = [...newArray, A, B]// עדכון הקבוצות החדשות למערך
     this.setState({
       pointA: rndA, pointB: rndB,
       teams: newArray, teamsFromLocalstorage: newArray
     }, () => {
       localStorage.setItem('teams', JSON.stringify(this.state.teams))
-      let tA = this.state.teams.find(team => team.id===teamA)
-      let tB = this.state.teams.find(team => team.id===teamB)
-      let result = { teamA: tA.club, teamB:tB.club, pA:this.state.pointA, pB:this.state.pointB }
-      let newArray = [...this.state.resultsGames, result]
-      this.setState({ resultsGames: newArray })
+      let tA = this.state.teams.find(team => team.id === teamA)//מציאת האובייקט של קבוצה א
+      let tB = this.state.teams.find(team => team.id === teamB)//מציאת האובייקט של קבוצה ב
+      let result = { teamA: tA.club, teamB: tB.club, pA: this.state.pointA, pB: this.state.pointB }//שמירת האובייקט לצורך הצגת התוצאות
+      let newArray = [...this.state.resultsGames, result]//הוספה למערך תוצאות המשחקים
+      this.setState({ resultsGames: newArray })//עדכון תוצאות
     })
   }
 

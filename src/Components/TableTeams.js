@@ -15,7 +15,6 @@ class TableTeams extends Component {
     let newTeam;
     if (this.state.teamsFromLocalstorage === null) {
       newTeam = this.props.teams.find(team => team.id === id);
-
       this.props.history.push({
         pathname: '/team',
         state: { newTeam: newTeam }
@@ -36,7 +35,7 @@ class TableTeams extends Component {
         return (
           <tr key={index}>
             <td>{idTable++}</td>
-            <td style={{ cursor: 'pointer' }} onClick={() => this.sendTeamToPrint(team.id)} clickable={true}>{team.club}</td>
+            <td style={{ cursor: 'pointer' }} onClick={() => this.sendTeamToPrint(team.id)}>{team.club}</td>
             <td>{team.win}</td>
             <td>{team.draw}</td>
             <td>{team.loss}</td>
@@ -80,8 +79,8 @@ class TableTeams extends Component {
                 {this.renderTableData()}
               </tbody>
             </table>
-            <div style={{ marginTop: 60}}>
-              <img src={israelLig} style={{width: '50%', borderRadius: 8 , boxShadow: '0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0'}} />
+            <div style={{ marginTop: 60 }}>
+              <img src={israelLig} style={{ width: '50%', borderRadius: 8, boxShadow: '0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0' }} />
             </div>
           </center>
         </div>

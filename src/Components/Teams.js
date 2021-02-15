@@ -24,6 +24,11 @@ class Teams extends Component {
   }
 
   addPlayer = () => {
+    var regex = new RegExp('^[a-zA-Z\u0590-\u05FF]+$')
+    if (!regex.test(this.state.playerName) || this.state.age > 40 || this.state.age < 16) {
+      alert('אנא בדוק אם טווח גילאים הוא בין 16-40, ניתן לרשום רק בשפה העברית')
+      return;
+    }
     let player = { id: this.id_Player, name: this.state.playerName, age: this.state.age }
     this.id_Player++;
     this.setState({ players: [...this.state.players, player], playerName: "", age: "" })
@@ -31,14 +36,17 @@ class Teams extends Component {
   }
 
   sendTeamToParent = () => {
+    var regex = new RegExp('^[a-zA-Z\u0590-\u05FF]+$')
+    if (!regex.test(this.state.club) || !regex.test(this.state.info)) {
+      alert('ניתן לרשום רק בשפה העברית')
+      return;
+    }
     if (this.state.club !== "" && this.state.imgClub !== "" && this.state.players !== [] && this.state.info !== "") {
       this.props.sendToParent({ club: this.state.club, imgClub: this.state.imgClub, info: this.state.info, players: this.state.players })
       this.setState({ club: "", imgClub: "", info: "" })
     }
-
-    else {
-      alert("all details is required!")
-    }
+    else
+      alert("כל הפרטים נדרשים !")
   }
 
   sendTeamToPrint = (index1) => {

@@ -12,9 +12,9 @@ class Team extends Component {
   renderTableData = () => {
     return this.props.location.state.newTeam.players.map((player, index) => {
       return (
-        <tr key={index} style={{ fontWeight: 'bold', width: '50%' }}>
+        <tr key={index} style={{ fontWeight: 'bold', width: '80%' }}>
           <td >{player.id}</td>
-          <td style={{ paddingRight: '10%'}}>{player.name}</td>
+          <td >{player.name}</td>
           <td >{player.age}</td>
         </tr>
       )
@@ -33,9 +33,9 @@ class Team extends Component {
             <h3 style={{ textAlign: 'center', color: 'lightseagreen', fontStyle: 'oblique' }}> סגל השחקנים</h3>
             <table>
               <tbody style={{ fontWeight: 'bold' }}>
-                <tr style={{ backgroundColor: 'lightblue', width: '50%' }}>
-                  <th style={{ width: '15%' }}>#</th>
-                  <th style={{ width: '65%',paddingRight: '10%'}}>שם השחקן</th>
+                <tr style={{ backgroundColor: 'lightblue', width: '100%' }}>
+                  <th style={{ width: '10%' }}>#</th>
+                  <th style={{ width: '75%'}}>שם השחקן</th>
                   <th style={{ width: '15%' }}>גיל</th>
                 </tr>
                 {this.renderTableData()}

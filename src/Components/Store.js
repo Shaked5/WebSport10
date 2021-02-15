@@ -4,7 +4,6 @@ import ScrollToTop from './ScrollToTop ';
 import { withRouter } from 'react-router-dom';
 import { Card, Button, Modal, Alert } from 'react-bootstrap/';
 import { Cart } from 'react-bootstrap-icons';
-import '../index.css';
 import '../CSSWeb/Store.css'
 
 class StoreTeams extends Component {
@@ -31,7 +30,6 @@ class StoreTeams extends Component {
   sendItemToCart = (id) => {
     this.props.addToCart(id)
   }
-
 
   HandleConfirmOrder = () => {
     this.props.ConfirmOrder()
@@ -60,7 +58,7 @@ class StoreTeams extends Component {
               <span style={{ color: 'red', fontSize: '1rem', fontWeight: 'bold', marginLeft: 70 }}>{this.props.cartItems.length}</span>
               <Cart size='sm' style={{ position: 'absolute', top: '', left: '10%', size: 'sm' }} className="cart" />
             </Button>
-
+            
             <Modal
               show={this.state.modalShow}
               onHide={this.SetCloseModal}

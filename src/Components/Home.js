@@ -26,7 +26,7 @@ class Home extends Component {
       setTimeout(showAlert, 500);
       setTimeout(() => {
         showAlert = document.getElementById("wr").style.display = "none"
-      }, 1500);
+      }, 2100);
       return;
     }
     this.setState({ teamA: e.target.value })
@@ -40,7 +40,7 @@ class Home extends Component {
       setTimeout(showAlert, 500);
       setTimeout(() => {
         showAlert = document.getElementById("wr").style.display = "none"
-      }, 3000);
+      }, 2100);
       return;
     }
     this.setState({ teamB: e.target.value })
@@ -53,7 +53,7 @@ class Home extends Component {
       setTimeout(showAlert, 500);
       setTimeout(() => {
         showAlert = document.getElementById("wr").style.display = "none"
-      }, 3000);
+      }, 2100);
       return
     }
     this.props.handleGameBtn(parseInt(this.state.teamA), parseInt(this.state.teamB))
