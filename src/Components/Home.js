@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ReactPlayer from "react-player"
 import NavWeb from './Nav';
 import Carousel from 'react-bootstrap/Carousel';
-import '../CSSWeb/home.css'
 import { Card, Button, Alert } from 'react-bootstrap/';
 import rokaviza from '../images/rokaviza.jpg';
 import coach from '../images/1067598.jpg'
