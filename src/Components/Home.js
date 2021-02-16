@@ -164,28 +164,22 @@ class Home extends Component {
                   <div>
                     <select style={{ fontWeight: 'bold' }} onChange={this.handleTeamA}>
                       <option style={{ fontWeight: 'bold' }} value=''>בחר קבוצה</option>
-                      {this.state.teamsFromLocalstorage === null && this.props.teams.map((team, index) => <option style={{ fontWeight: 'bold' }} key={index} value={team.id} >
-                        {team.club}
-                      </option>
-                      )}
-                      {this.state.teamsFromLocalstorage !== null && this.state.teamsFromLocalstorage.map((team, index) => <option style={{ fontWeight: 'bold' }} key={index} value={team.id} >
-                        {team.club}
-                      </option>
-                      )}
+                      {this.state.teamsFromLocalstorage === null && this.props.teams.map((team, index) =>
+                        <option style={{ fontWeight: 'bold' }} key={index} value={team.id}>{team.club}</option>)}
+                      {this.state.teamsFromLocalstorage !== null && this.state.teamsFromLocalstorage.map((team, index) =>
+                        <option style={{ fontWeight: 'bold' }} key={index} value={team.id}>{team.club}</option>)}
                     </select>
                   </div>
+
                   <b>{this.props.pointB}:{this.props.pointA}</b>
+
                   <div style={{ fontWeight: 'bold' }}>
                     <select style={{ fontWeight: 'bold' }} onChange={this.handleTeamB}>
                       <option style={{ fontWeight: 'bold' }} value=''>בחר קבוצה</option>
-                      {this.state.teamsFromLocalstorage === null && this.props.teams.map((team, index) => <option style={{ fontWeight: 'bold' }} key={index} value={team.id} >
-                        {team.club}
-                      </option>
-                      )}
-                      {this.state.teamsFromLocalstorage !== null && this.state.teamsFromLocalstorage.map((team, index) => <option style={{ fontWeight: 'bold' }} key={index} value={team.id} >
-                        {team.club}
-                      </option>
-                      )}
+                      {this.state.teamsFromLocalstorage === null && this.props.teams.map((team, index) =>
+                        <option style={{ fontWeight: 'bold' }} key={index} value={team.id}>{team.club}</option>)}
+                      {this.state.teamsFromLocalstorage !== null && this.state.teamsFromLocalstorage.map((team, index) =>
+                        <option style={{ fontWeight: 'bold' }} key={index} value={team.id}>{team.club}</option>)}
                     </select>
                   </div>
                 </div>
