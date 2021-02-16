@@ -55,7 +55,7 @@ class StoreTeams extends Component {
         <div>
           <>
             <Button variant="transpert" onClick={this.SetModalShow}>
-              <span style={{ color: 'red', fontSize: '1rem', fontWeight: 'bold', marginLeft: 70 }}>{this.props.cartItems.length}</span>
+              <span style={{ color: 'red', fontSize: '1rem', fontWeight: 'bold', marginLeft: 75 }}>{this.props.cartItems.length}</span>
               <Cart size='sm' style={{ position: 'absolute', top: '', left: '10%', size: 'sm' }} className="cart" />
             </Button>
             
