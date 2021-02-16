@@ -12,7 +12,6 @@ class NavWeb extends Component {
   render() {
     return (
       <div className="flex-container">
-        <Nav.Link></Nav.Link>
         <Navbar expand="lg" bg="dark" variant="dark">
           <Nav.Link><Link to="/">דף הבית</Link></Nav.Link>
           <Nav.Link><Link to="/teams">קבוצות הליגה</Link></Nav.Link>
