@@ -152,14 +152,14 @@ class Manager extends Component {
         { id: 2, title: "בשליפה: המאמנים שנמצאים בסכנת הרחקה", sub_title: "בשל עדכון בחוקה, גם לספסלים נספרים צהובים. הנתונים פה:", image: teams, context: data3 }
       ],
       resultsGames: [],
-      teamsList: []
+      teamsList: [],
     }
   }
   componentDidMount() {  
     axios.get("http://localhost:53291/api/TeamsRW/").then(response => {  
         //console.log(response.data);  
         this.setState({  
-          teamsList: response.data  
+          teamsList: response.data,
         });
     });  
   }  
