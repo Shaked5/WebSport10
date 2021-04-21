@@ -3,13 +3,24 @@ import NavWeb from './Nav';
 import '../CSSWeb/table.css';
 import { withRouter } from 'react-router-dom';
 import israelLig from '../images/israelLeage.png';
+import axios from 'axios';
 class TableTeams extends Component {
   constructor(props) {
     super(props);
     this.state = {
       teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams')),
+      tableList: []
     }
   }
+
+  componentDidMount() {  
+    axios.get("http://localhost:53291/api/TeamsRW/").then(response => {  
+        //console.log(response.data);  
+        this.setState({  
+          tableList: response.data  
+        });  
+    });  
+  }  
 
   sendTeamToPrint = (id) => {
     let newTeam;
@@ -60,6 +71,7 @@ class TableTeams extends Component {
   }
 
   render() {
+    console.log(this.state.tableList)
     return (
       <div style={{ backgroundColor: 'lightcyan', paddingBottom: 50 }}>
         <NavWeb />
