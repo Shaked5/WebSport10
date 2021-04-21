@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import Home from './Home';
@@ -74,48 +75,49 @@ class Manager extends Component {
     </p>;
 
     this.state = {
-      teams: [
-        {
-          id: 1,
-          club: "מכבי תל-אביב",
-          info: "מכבי תל אביב הוא מועדון כדורגל ישראלי מהעיר תל אביב, הנמנה עם מועדוני הכדורגל הוותיקים והמובילים בישראל ומשחק בליגת העל ובליגה האירופית. המועדון הוקם בשנת 1906, ומאז 2009 הוא בבעלות המיליארדר היהודי-קנדי מיטשל גולדהאר. המועדון חבר מן המניין בארגון המועדונים האירופיים ומנכלית הקבוצה שרון תמם מכהנת בדירקטוריון הארגון.",
-          imgClub: "https://upload.wikimedia.org/wikipedia/he/thumb/8/82/Maccabi_tlv_fc.png/250px-Maccabi_tlv_fc.png",
-          players: [{ id: 1, name: "שרן ייני", age: 34 }, { id: 2, name: "אייל גולסה", age: 30 }, { id: 3, name: "דור פרץ", age: 25 }, { id: 4, name: "יונתן כהן", age: 24 }, { id: 5, name: "איתי שכטר", age: 33 }],
-          win: 2, draw: 2, loss: 1, points: 8
-        },
-        {
-          id: 2,
-          club: "מכבי חיפה",
-          info: "מכבי חיפה הוא מועדון כדורגל ישראלי מהעיר חיפה, המשחק בליגת העל הישראלית. המועדון הוקם בשנת 1913, ומאז 1992 הוא מנוהל על ידי איש העסקים יעקב שחר, שמכהן כנשיא המועדון. המועדון כולל גם קבוצות נוער, נערים וילדים, ובתי ספר לכדורגל. המועדון חבר שותף בארגון המועדונים האירופיים.",
-          imgClub: "https://newshaifakrayot.net/wp-content/uploads/2019/08/214px-Maccabi-h.png",
-          players: [{ id: 1, name: "טאלב טואטחה", age: 28 }, { id: 2, name: "רמי גרשון", age: 32 }, { id: 3, name: "ניקיטה רוקאביצה", age: 33 }, { id: 4, name: "דולב חזיזה", age: 24 }],
-          win: 1, draw: 3, loss: 1, points: 6
-        },
-        {
-          id: 3,
-          club: "מכבי פתח-תקווה",
-          info: " מכבי עירוני פתח תקווה (השם המלא: מועדון ספורט מכבי אבשלום עירוני פתח תקווה) היא קבוצת כדורגל ישראלית מהעיר פתח תקווה, המשחקת בליגת העל.",
-          imgClub: "https://m-pt.co.il/wp-content/uploads/2020/10/maccabi_petah-tikva.png",
-          players: [{ id: 1, name: "אריק יאנקו", age: 30 }, { id: 2, name: "תומר לוי", age: 27 }, { id: 3, name: "ינון אליהו", age: 27 }, { id: 4, name: "מוחמד סרסור", age: 21 }],
-          win: 2, draw: 1, loss: 2, points: 7
-        },
-        {
-          id: 4,
-          club: "ביתר ירושלים",
-          info: "ביתר ירושלים היא קבוצת כדורגל מירושלים המשתייכת לאגודת הספורט ביתר, ומשחקת בליגת העל – ליגת הכדורגל הבכירה בישראל. הקבוצה הוקמה ב-1936, והחל משנות השבעים, נחשבת הקבוצה לאחת הקבוצות הבכירות והאהודות ביותר בכדורגל הישראלי. לזכות ביתר שש אליפויות ושבעה גביעי מדינה. כמו כן, זכתה הקבוצה שלוש פעמים בגביע הטוטו ופעמיים בתואר אלוף האלופים.",
-          imgClub: "https://sheva7.co.il/wp-content/uploads/2018/10/%D7%9C%D7%95%D7%92%D7%95-%D7%91%D7%99%D7%AA%D7%A8-%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D.png",
-          players: [{ id: 1, name: "ירדן שועה", age: 22 }, { id: 2, name: "אלירן עטר", age: 33 }, { id: 3, name: "דוד דגו", age: 20 }, { id: 4, name: "טל בן חיים", age: 39 }, { id: 5, name: "אנטואן קונטה", age: 26 }],
-          win: 3, draw: 1, loss: 1, points: 10
-        },
-        {
-          id: 5,
-          club: "הפועל באר-שבע",
-          info: "הפועל באר שבע הוא מועדון כדורגל ישראלי מהעיר באר שבע, המשחק בליגת העל הישראלית. המועדון הוקם בשנת 1949, ומאז 2007 הוא מנוהל על ידי אשת העסקים אלונה ברקת, שמכהנת כבעלי המועדון. המועדון כולל גם קבוצות נוער, נערים וילדים, ובתי ספר לכדורגל. המועדון חבר מן המניין בארגון המועדונים האירופיים.",
-          imgClub: "https://upload.wikimedia.org/wikipedia/he/2/27/HBSBC.png",
-          players: [{ id: 1, name: "מיגל ויטור", age: 32 }, { id: 2, name: "מרוואן קבהא", age: 30 }, { id: 3, name: "לואי טאהא", age: 32 }, { id: 4, name: "שון גולדברג", age: 25 }],
-          win: 2, draw: 3, loss: 0, points: 9
-        }
-      ],
+      // teams: [
+      //   {
+      //     id: 1,
+      //     club: "מכבי תל-אביב",
+      //     info: "מכבי תל אביב הוא מועדון כדורגל ישראלי מהעיר תל אביב, הנמנה עם מועדוני הכדורגל הוותיקים והמובילים בישראל ומשחק בליגת העל ובליגה האירופית. המועדון הוקם בשנת 1906, ומאז 2009 הוא בבעלות המיליארדר היהודי-קנדי מיטשל גולדהאר. המועדון חבר מן המניין בארגון המועדונים האירופיים ומנכלית הקבוצה שרון תמם מכהנת בדירקטוריון הארגון.",
+      //     imgClub: "https://upload.wikimedia.org/wikipedia/he/thumb/8/82/Maccabi_tlv_fc.png/250px-Maccabi_tlv_fc.png",
+      //     players: [{ id: 1, name: "שרן ייני", age: 34 }, { id: 2, name: "אייל גולסה", age: 30 }, { id: 3, name: "דור פרץ", age: 25 }, { id: 4, name: "יונתן כהן", age: 24 }, { id: 5, name: "איתי שכטר", age: 33 }],
+      //     win: 2, draw: 2, loss: 1, points: 8
+      //   },
+      //   {
+      //     id: 2,
+      //     club: "מכבי חיפה",
+      //     info: "מכבי חיפה הוא מועדון כדורגל ישראלי מהעיר חיפה, המשחק בליגת העל הישראלית. המועדון הוקם בשנת 1913, ומאז 1992 הוא מנוהל על ידי איש העסקים יעקב שחר, שמכהן כנשיא המועדון. המועדון כולל גם קבוצות נוער, נערים וילדים, ובתי ספר לכדורגל. המועדון חבר שותף בארגון המועדונים האירופיים.",
+      //     imgClub: "https://newshaifakrayot.net/wp-content/uploads/2019/08/214px-Maccabi-h.png",
+      //     players: [{ id: 1, name: "טאלב טואטחה", age: 28 }, { id: 2, name: "רמי גרשון", age: 32 }, { id: 3, name: "ניקיטה רוקאביצה", age: 33 }, { id: 4, name: "דולב חזיזה", age: 24 }],
+      //     win: 1, draw: 3, loss: 1, points: 6
+      //   },
+      //   {
+      //     id: 3,
+      //     club: "מכבי פתח-תקווה",
+      //     info: " מכבי עירוני פתח תקווה (השם המלא: מועדון ספורט מכבי אבשלום עירוני פתח תקווה) היא קבוצת כדורגל ישראלית מהעיר פתח תקווה, המשחקת בליגת העל.",
+      //     imgClub: "https://m-pt.co.il/wp-content/uploads/2020/10/maccabi_petah-tikva.png",
+      //     players: [{ id: 1, name: "אריק יאנקו", age: 30 }, { id: 2, name: "תומר לוי", age: 27 }, { id: 3, name: "ינון אליהו", age: 27 }, { id: 4, name: "מוחמד סרסור", age: 21 }],
+      //     win: 2, draw: 1, loss: 2, points: 7
+      //   },
+      //   {
+      //     id: 4,
+      //     club: "ביתר ירושלים",
+      //     info: "ביתר ירושלים היא קבוצת כדורגל מירושלים המשתייכת לאגודת הספורט ביתר, ומשחקת בליגת העל – ליגת הכדורגל הבכירה בישראל. הקבוצה הוקמה ב-1936, והחל משנות השבעים, נחשבת הקבוצה לאחת הקבוצות הבכירות והאהודות ביותר בכדורגל הישראלי. לזכות ביתר שש אליפויות ושבעה גביעי מדינה. כמו כן, זכתה הקבוצה שלוש פעמים בגביע הטוטו ופעמיים בתואר אלוף האלופים.",
+      //     imgClub: "https://sheva7.co.il/wp-content/uploads/2018/10/%D7%9C%D7%95%D7%92%D7%95-%D7%91%D7%99%D7%AA%D7%A8-%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D.png",
+      //     players: [{ id: 1, name: "ירדן שועה", age: 22 }, { id: 2, name: "אלירן עטר", age: 33 }, { id: 3, name: "דוד דגו", age: 20 }, { id: 4, name: "טל בן חיים", age: 39 }, { id: 5, name: "אנטואן קונטה", age: 26 }],
+      //     win: 3, draw: 1, loss: 1, points: 10
+      //   },
+      //   {
+      //     id: 5,
+      //     club: "הפועל באר-שבע",
+      //     info: "הפועל באר שבע הוא מועדון כדורגל ישראלי מהעיר באר שבע, המשחק בליגת העל הישראלית. המועדון הוקם בשנת 1949, ומאז 2007 הוא מנוהל על ידי אשת העסקים אלונה ברקת, שמכהנת כבעלי המועדון. המועדון כולל גם קבוצות נוער, נערים וילדים, ובתי ספר לכדורגל. המועדון חבר מן המניין בארגון המועדונים האירופיים.",
+      //     imgClub: "https://upload.wikimedia.org/wikipedia/he/2/27/HBSBC.png",
+      //     players: [{ id: 1, name: "מיגל ויטור", age: 32 }, { id: 2, name: "מרוואן קבהא", age: 30 }, { id: 3, name: "לואי טאהא", age: 32 }, { id: 4, name: "שון גולדברג", age: 25 }],
+      //     win: 2, draw: 3, loss: 0, points: 9
+      //   }
+      // ],
+    
       items: [
         { id: 1, prod: "צעיף", cost: 30, src: tezif_mc_pt, team_name: 'מכבי פתח תקווה', quantity: 0 },
         { id: 2, prod: "כדור", cost: 80, src: ball_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
@@ -149,9 +151,19 @@ class Manager extends Component {
         { id: 1, title: "חזק חזק ונתחזק: מצעד ההעברות הגדולות של ינואר", sub_title: "לרגל פתיחת חלון ההעברות, טופ 5 מדרג את החתמות החורף", image: maman, context: data2 },
         { id: 2, title: "בשליפה: המאמנים שנמצאים בסכנת הרחקה", sub_title: "בשל עדכון בחוקה, גם לספסלים נספרים צהובים. הנתונים פה:", image: teams, context: data3 }
       ],
-      resultsGames: []
+      resultsGames: [],
+      teamsList: []
     }
   }
+  componentDidMount() {  
+    axios.get("http://localhost:53291/api/TeamsRW/").then(response => {  
+        //console.log(response.data);  
+        this.setState({  
+          teamsList: response.data  
+        });
+    });  
+  }  
+
   //comp - Article
   setArticleNum = (num) => {
     this.state.article_num = num;
@@ -288,16 +300,16 @@ class Manager extends Component {
     return (
       <Switch>
         <Route exact path="/" render={() =>
-          <Home teams={this.state.teams}
+          <Home teams={this.state.teamsList}
             handleGameBtn={this.handleGameBtn}
             pointA={this.state.pointA}
             pointB={this.state.pointB}
             setArticleNum={this.setArticleNum}
             resultsGames={this.state.resultsGames}
           />}></Route>
-        <Route path="/teams" render={() => <Teams teams={this.state.teams}
+        <Route path="/teams" render={() => <Teams teams={this.state.teamsList}
           sendToParent={this.getTeamFromChild} />}></Route>
-        <Route path="/table" render={() => <TableTeams teams={this.state.teams} />}></Route>
+        <Route path="/table" render={() => <TableTeams teams={this.state.teamsList} />}></Route>
         <Route path="/store" render={() => <StoreTeams
           items={this.state.items}
           addToCart={this.addToCart}

@@ -3,75 +3,42 @@ import NavWeb from './Nav';
 import '../CSSWeb/table.css';
 import { withRouter } from 'react-router-dom';
 import israelLig from '../images/israelLeage.png';
-import axios from 'axios';
 class TableTeams extends Component {
   constructor(props) {
     super(props);
     this.state = {
       teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams')),
-      tableList: []
     }
   }
 
-  componentDidMount() {  
-    axios.get("http://localhost:53291/api/TeamsRW/").then(response => {  
-        //console.log(response.data);  
-        this.setState({  
-          tableList: response.data  
-        });  
-    });  
-  }  
+
 
   sendTeamToPrint = (id) => {
     let newTeam;
-    if (this.state.teamsFromLocalstorage === null) {
       newTeam = this.props.teams.find(team => team.id === id);
       this.props.history.push({
         pathname: '/team',
         state: { newTeam: newTeam }
       })
-    } else {
-      newTeam = this.state.teamsFromLocalstorage.find(team => team.id === id);
-      this.props.history.push({
-        pathname: '/team',
-        state: { newTeam: newTeam }
-      })
-    }
   }
 
   renderTableData = () => {
     let idTable = 1;
-    if (this.state.teamsFromLocalstorage === null) {
-      return this.props.teams.sort((a, b) => a.points < b.points ? 1 : -1).map((team, index) => {
+      return this.props.teams.sort((a, b) => a.Point < b.Point ? 1 : -1).map((team, index) => {
         return (
           <tr key={index}>
             <td>{idTable++}</td>
-            <td style={{ cursor: 'pointer' }} onClick={() => this.sendTeamToPrint(team.id)}>{team.club}</td>
-            <td>{team.win}</td>
-            <td>{team.draw}</td>
-            <td>{team.loss}</td>
-            <td>{team.points}</td>
+            <td style={{ cursor: 'pointer' }} onClick={() => this.sendTeamToPrint(team.IdTeam)}>{team.ClubName}</td>
+            <td>{team.Win}</td>
+            <td>{team.Draw}</td>
+            <td>{team.Lose}</td>
+            <td>{team.Point}</td>
           </tr>
         )
       })
-    } else {
-      return this.state.teamsFromLocalstorage.sort((a, b) => a.points < b.points ? 1 : -1).map((team, index) => {
-        return (
-          <tr style={{ fontSize: '20px', fontWeight: 'bold' }} key={index} >
-            <td >{idTable++}</td>
-            <td style={{ cursor: 'pointer' }} onClick={() => this.sendTeamToPrint(team.id)} >{team.club}</td>
-            <td>{team.win}</td>
-            <td>{team.draw}</td>
-            <td>{team.loss}</td>
-            <td>{team.points}</td>
-          </tr>
-        )
-      })
-    }
   }
 
   render() {
-    console.log(this.state.tableList)
     return (
       <div style={{ backgroundColor: 'lightcyan', paddingBottom: 50 }}>
         <NavWeb />

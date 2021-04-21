@@ -50,24 +50,15 @@ class Teams extends Component {
   }
 
   sendTeamToPrint = (index1) => {
-    if (this.state.teamsFromLocalstorage === null) {
-      let newTeam = this.props.teams.find(team => team.id === index1);
-
+      let newTeam = this.props.teams.find(team => team.IdTeam === index1);
       this.props.history.push({
         pathname: '/team',
         state: { newTeam: newTeam }
       })
-    } else {
-      let newTeam = this.state.teamsFromLocalstorage.find(team => team.id === index1);
-      console.log(newTeam);
-      this.props.history.push({
-        pathname: '/team',
-        state: { newTeam: newTeam }
-      })
-    }
   }
 
   render() {
+    console.log(this.props.teams);
     return (
       <div style={{ backgroundColor: 'lightcyan' }}>
         <NavWeb />
@@ -76,18 +67,11 @@ class Teams extends Component {
           <h1 style={{ color: 'lightseagreen', fontStyle: 'oblique', fontSize: 50 }}>קבוצות הליגה</h1>
         </center>
         <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
-          {this.state.teamsFromLocalstorage && this.state.teamsFromLocalstorage.map((team, index) =>
-            <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
-              <img style={{ cursor: 'pointer' }} index={team.id} src={team.imgClub} alt="stam" width="300" height="225"
-                onClick={() => this.sendTeamToPrint(team.id)} />
-              <b><p style={{ fontStyle: 'oblique', fontSize: 20 }} index={team.id}> {team.club} </p></b>
-            </div>
-          )}
-          {!this.state.teamsFromLocalstorage && this.props.teams.map((team, index) =>
-            <div index={team.id} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
-              <img style={{ cursor: 'pointer' }} index={team.id} src={team.imgClub} alt="stam" width="300" height="225"
-                onClick={() => this.sendTeamToPrint(team.id)} />
-              <b><p style={{ fontStyle: 'oblique', fontSize: 20 }} index={team.id}> {team.club} </p></b>
+          {this.props.teams.map((team, index) =>
+            <div index={team.IdTeam} style={{ textAlign: 'center', marginTop: '5%', padding: '2%' }}>
+              <img style={{ cursor: 'pointer' }} index={team.IdTeam} src={team.ImgClub} alt="stam" width="300" height="225"
+                onClick={() => this.sendTeamToPrint(team.IdTeam)} />
+              <b><p style={{ fontStyle: 'oblique', fontSize: 20 }} index={team.IdTeam}> {team.ClubName} </p></b>
             </div>
           )}
         </div>
