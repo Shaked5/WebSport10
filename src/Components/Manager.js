@@ -156,11 +156,11 @@ class Manager extends Component {
     }
   }
   componentDidMount() {  
-    axios.get("http://localhost:53291/api/TeamsRW/").then(response => {  
-        //console.log(response.data);  
+    axios.get("http://localhost:53291/api/TeamsRW").then(response => {  
         this.setState({  
           teamsList: response.data,
         });
+        console.log(response.data);  
     });  
   }  
 
