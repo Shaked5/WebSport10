@@ -37,6 +37,7 @@ import rokoviza from '../images/articles/rokoviza.png';
 import maman from '../images/articles/maman.png';
 import teams from '../images/articles/teams.png';
 
+
 class Manager extends Component {
   constructor(props) {
     super(props);
@@ -117,7 +118,7 @@ class Manager extends Component {
       //     win: 2, draw: 3, loss: 0, points: 9
       //   }
       // ],
-    
+
       items: [
         { id: 1, prod: "צעיף", cost: 30, src: tezif_mc_pt, team_name: 'מכבי פתח תקווה', quantity: 0 },
         { id: 2, prod: "כדור", cost: 80, src: ball_mc_pt, team_name: "מכבי פתח תקווה", quantity: 0 },
@@ -155,14 +156,16 @@ class Manager extends Component {
       teamsList: [],
     }
   }
-  componentDidMount() {  
-    axios.get("http://localhost:53291/api/TeamsRW").then(response => {  
-        this.setState({  
-          teamsList: response.data,
-        });
-        console.log(response.data);  
-    });  
-  }  
+
+  componentDidMount() {
+    const url = "http://localhost:53291/api/teamsRW/";
+    fetch(url, { method: "GET" })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        this.setState({ teamsList: data })
+      })
+  }
 
   //comp - Article
   setArticleNum = (num) => {
