@@ -15,7 +15,7 @@ class TableTeams extends Component {
 
   sendTeamToPrint = (id) => {
     let newTeam;
-      newTeam = this.props.teams.find(team => team.id === id);
+      newTeam = this.props.teams.find(team => team.IdTeam === id);
       this.props.history.push({
         pathname: '/team',
         state: { newTeam: newTeam }

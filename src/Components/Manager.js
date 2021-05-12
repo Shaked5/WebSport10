@@ -175,23 +175,31 @@ class Manager extends Component {
   //add team to array - from Teams
   getTeamFromChild = (data) => {
     let newArr;
-    if (this.state.teamsFromLocalstorage === null) {
-      newArr = [...this.state.teams]
-    } else {
-      newArr = [...this.state.teamsFromLocalstorage]
-    }
     let rWin = Math.floor(Math.random() * 4)
     let rDraw = Math.floor(Math.random() * 4)
     let rLoss = Math.floor(Math.random() * 4)
-    let points = rWin * 3 + rDraw
-    let newTeam = { id: ++this.counter, club: data.club, items: [], info: data.info, imgClub: data.imgClub, players: data.players, win: rWin, draw: rDraw, loss: rLoss, points: points }
-    newArr = [...newArr, newTeam]
-    this.setState({
-      teams: newArr
-    }, () => {
-      localStorage.setItem('teams', JSON.stringify(this.state.teams))
-    })
+    var requestOptions = {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        ClubName: data.club,
+        ImgClub: data.imgClub,
+        Info: data.info,
+        Win: rWin,
+        Draw: rDraw,
+        Lose: rLoss
+      })
+    };
+    fetch('http://localhost:53291/api/teamsRW/post', requestOptions)
+      .then(response => response.json())
+      .then(res => {
+        console.log(res)
+      });
   }
+
 
   //Store function to update increment items quantity   
   UpdateIncrement = (id) => {
@@ -323,10 +331,14 @@ class Manager extends Component {
           handleIncrement={this.UpdateIncrement}
           handleDecrement={this.UpdateDecrement} />}></Route>
         <Route path="/team" render={() => <Team />}></Route>
-        <Route path="/article" render={() => <Article articles={this.state.articles} article_num={this.state.article_num} />}></Route>
+        <Route path="/article" render={() =>
+          <Article articles={this.state.articles}
+            article_num={this.state.article_num}
+          />}></Route>
       </Switch>
     );
   }
 }
+
 
 export default withRouter(Manager);

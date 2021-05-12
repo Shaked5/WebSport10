@@ -20,7 +20,6 @@ class Home extends Component {
   handleTeamA = (e) => {
     let event = e.target.value
     while (this.state.teamB === event) {
-      // alert("בחרת אותה קבוצה")
       let showAlert = document.getElementById("wr").innerHTML = "לא ניתן לבחור אותה קבוצה"
       showAlert += document.getElementById("wr").style.display = "block"
       setTimeout(showAlert, 500);

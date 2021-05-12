@@ -7,38 +7,35 @@ class Team extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playersLocal : [],
-      playerList : []
+      playerList: []
     }
   }
 
-  componentDidMount() {  
-    axios.get("http://localhost:53291/api/PlayersRW/").then(response => {  
-        //console.log(response.data);  
-        this.setState({  
-         playerList: response.data,
-        });
-    });  
-  } 
+  componentDidMount() {
+    axios.get("http://localhost:53291/api/PlayersRW/").then(response => {
+      //console.log(response.data);  
+      this.setState({
+        playerList: response.data,
+      });
+    });
+  }
   //TODO: Fix this function 
-  // renderTableData = () => {
-  //   let id = 1;
-  //   let players = this.state.playerList.filter((player,index) => player.TeamName === this.props.location.state.newTeam.ClubName);
-  //   this.setState({playersLocal:players})
-  //    this.state.playersLocal.map((player,index) => {
-  //     return (
-  //       <tr key={index} style={{ fontWeight: 'bold', width: '80%' }}>
-  //         <td >{player.id++}</td>
-  //         <td >{player.PlayerName}</td>
-  //         <td >{player.Age}</td>
-  //       </tr>
-  //     )
-  //   })
-  // }
+  renderTableData = () => {
+    let id = 1;
+    return this.state.playerList.filter(player => player.TeamName === this.props.location.state.newTeam.ClubName)
+      .map((player, index) => (
+        <tr key={index} style={{ fontWeight: 'bold', width: '80%' }}>
+          <td >{id++}</td>
+          <td >{player.PlayerName}</td>
+          <td >{player.Age}</td>
+          <td >{player.ShirtNum}</td>
+        </tr>
+      ));
+  }
+
+
 
   render() {
-    console.log(this.props.location.state.newTeam.ClubName)
-    console.log(this.state.playerList)
     return (
       <div style={{ backgroundColor: 'lightcyan', paddingBottom: 40 }}>
         <NavWeb />
@@ -52,10 +49,11 @@ class Team extends Component {
               <tbody style={{ fontWeight: 'bold' }}>
                 <tr style={{ backgroundColor: 'lightblue', width: '100%' }}>
                   <th style={{ width: '10%' }}>#</th>
-                  <th style={{ width: '75%'}}>שם השחקן</th>
-                  <th style={{ width: '15%' }}>גיל</th>
+                  <th style={{ width: '45%' }}>שם השחקן</th>
+                  <th style={{ width: '25%' }}>גיל</th>
+                  <th style={{ width: '25%' }}>מספר חולצה</th>
                 </tr>
-                {this.renderTableData() }
+                {this.renderTableData()}
               </tbody>
             </table>
           </div>

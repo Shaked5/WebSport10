@@ -16,33 +16,53 @@ class Teams extends Component {
       players: [],
       playerName: "",
       age: 0,
+      shirt_num: 0,
       teamsFromLocalstorage: JSON.parse(localStorage.getItem('teams'))
     }
   }
+
+
+
+
   setOpen = () => {
     this.setState({ open: !this.state.open })
   }
 
   addPlayer = () => {
-    var regex = new RegExp('^[a-zA-Z\u0590-\u05FF]+$')
-    if (!regex.test(this.state.playerName) || this.state.age > 40 || this.state.age < 16) {
-      alert('אנא בדוק אם טווח גילאים הוא בין 16-40, ניתן לרשום רק בשפה העברית')
-      return;
-    }
-    let player = { id: this.id_Player, name: this.state.playerName, age: this.state.age }
-    this.id_Player++;
-    this.setState({ players: [...this.state.players, player], playerName: "", age: "" })
-
+    // var regex = new RegExp('^[a-zA-Z\u0590-\u05FF]+$')
+    // if (!regex.test(this.state.playerName) || this.state.age > 40 || this.state.age < 16) {
+    //   alert('אנא בדוק אם טווח גילאים הוא בין 16-40, ניתן לרשום רק בשפה העברית')
+    //   return;
+    // }
+    var requestOptions = {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        TeamName: this.state.club,
+        PlayerName: this.state.playerName,
+        Age: this.state.age,
+        ShirtNum: this.state.shirt_num
+      })
+    };
+    fetch('http://localhost:53291/api/playersRW/post', requestOptions)
+      .then(response => response.json())
+      .then(res => {
+        this.setState({ playerName: "", age: "", shirt_num: "" })
+        console.log(res)
+      });
   }
 
   sendTeamToParent = () => {
-    var regex = new RegExp('^[a-zA-Z\u0590-\u05FF]+$')
-    if (!regex.test(this.state.club) || !regex.test(this.state.info)) {
-      alert('ניתן לרשום רק בשפה העברית')
-      return;
-    }
+    // var regex = new RegExp('^[a-zA-Z\u0590-\u05FF]+$')
+    // if (!regex.test(this.state.club) || !regex.test(this.state.info)) {
+    //   alert('ניתן לרשום רק בשפה העברית')
+    //   return;
+    // }
     if (this.state.club !== "" && this.state.imgClub !== "" && this.state.players !== [] && this.state.info !== "") {
-      this.props.sendToParent({ club: this.state.club, imgClub: this.state.imgClub, info: this.state.info, players: this.state.players })
+      this.props.sendToParent({ club: this.state.club, imgClub: this.state.imgClub, info: this.state.info })
       this.setState({ club: "", imgClub: "", info: "" })
     }
     else
@@ -50,11 +70,11 @@ class Teams extends Component {
   }
 
   sendTeamToPrint = (index1) => {
-      let newTeam = this.props.teams.find(team => team.IdTeam === index1);
-      this.props.history.push({
-        pathname: '/team',
-        state: { newTeam: newTeam }
-      })
+    let newTeam = this.props.teams.find(team => team.IdTeam === index1);
+    this.props.history.push({
+      pathname: '/team',
+      state: { newTeam: newTeam }
+    })
   }
 
   render() {
@@ -103,6 +123,12 @@ class Teams extends Component {
 
               <Form.Label>הכנס את רשימת השחקנים</Form.Label>
               <Form.Row>
+                <Form.Group as={Col} controlId="formGridAddress0">
+                  <Form.Label>שם קבוצה</Form.Label>
+                  <Form.Control type="text" value={this.state.club}
+                    onChange={e => this.setState({ club: e.target.value })} />
+                </Form.Group>
+
                 <Form.Group as={Col} controlId="formGridAddress1">
                   <Form.Label>שם השחקן</Form.Label>
                   <Form.Control type="text" value={this.state.playerName}
@@ -113,6 +139,12 @@ class Teams extends Component {
                   <Form.Label>גיל</Form.Label>
                   <Form.Control type="number" value={this.state.age}
                     onChange={e => this.setState({ age: e.target.value })} />
+                </Form.Group>
+
+                <Form.Group as={Col} controlId="formGridAddress3">
+                  <Form.Label>מספר חולצה</Form.Label>
+                  <Form.Control type="shirt_number" value={this.state.shirt_num}
+                    onChange={e => this.setState({ shirt_num: e.target.value })} />
                 </Form.Group>
 
               </Form.Row>
