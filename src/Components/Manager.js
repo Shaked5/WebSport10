@@ -157,7 +157,7 @@ class Manager extends Component {
     }
   }
 
-  componentDidMount() {
+  getTeamsListFromDB = () => {
     const url = "http://localhost:53291/api/teamsRW/";
     fetch(url, { method: "GET" })
       .then(response => response.json())
@@ -165,6 +165,10 @@ class Manager extends Component {
         console.log(data)
         this.setState({ teamsList: data })
       })
+  }
+
+  componentDidMount() {
+    this.getTeamsListFromDB()
   }
 
   //comp - Article
@@ -196,6 +200,7 @@ class Manager extends Component {
     fetch('http://localhost:53291/api/teamsRW/post', requestOptions)
       .then(response => response.json())
       .then(res => {
+        this.getTeamsListFromDB()
         console.log(res)
       });
   }
@@ -319,7 +324,7 @@ class Manager extends Component {
             resultsGames={this.state.resultsGames}
           />}></Route>
         <Route path="/teams" render={() => <Teams teams={this.state.teamsList}
-          sendToParent={this.getTeamFromChild} />}></Route>
+          sendToParent={this.getTeamFromChild} getTeams={this.getTeamsListFromDB} />}></Route>
         <Route path="/table" render={() => <TableTeams teams={this.state.teamsList} />}></Route>
         <Route path="/store" render={() => <StoreTeams
           items={this.state.items}

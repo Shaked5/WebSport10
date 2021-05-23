@@ -77,6 +77,22 @@ class Teams extends Component {
     })
   }
 
+  delTeam = (id) => {
+    var obj = {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+    };
+    fetch('http://localhost:53291/api/del/' + id, obj)
+      .then(response => response.json())
+      .then(res => {
+        this.props.getTeams()
+        console.log(res)
+      });
+  }
+
   render() {
     console.log(this.props.teams);
     return (
@@ -92,6 +108,7 @@ class Teams extends Component {
               <img style={{ cursor: 'pointer' }} index={team.IdTeam} src={team.ImgClub} alt="stam" width="300" height="225"
                 onClick={() => this.sendTeamToPrint(team.IdTeam)} />
               <b><p style={{ fontStyle: 'oblique', fontSize: 20 }} index={team.IdTeam}> {team.ClubName} </p></b>
+              <Button variant="danger" style={{ fontWeight: 'normal'}}onClick={() => this.delTeam(team.IdTeam)}>מחק קבוצה</Button>
             </div>
           )}
         </div>
