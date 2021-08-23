@@ -15,7 +15,7 @@ class NavWeb extends Component {
         <Navbar expand="lg" bg="dark" variant="dark">
           <Nav.Link><Link to="/">דף הבית</Link></Nav.Link>
           <Nav.Link><Link to="/teams">קבוצות הליגה</Link></Nav.Link>
-          <Nav.Link><Link to="/table">טבלת דירוג </Link></Nav.Link>
+          <Nav.Link><Link to="/table">טבלת דירוג</Link></Nav.Link>
           <Nav.Link><Link to="/store">חנות האוהדים</Link></Nav.Link>
           <Nav.Item style={{ marginRight: '15%' }}><Link to="/"><img width="40%" src={iconNav}></img></Link></Nav.Item>
         </Navbar>

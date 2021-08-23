@@ -21,9 +21,6 @@ class Teams extends Component {
     }
   }
 
-
-
-
   setOpen = () => {
     this.setState({ open: !this.state.open })
   }

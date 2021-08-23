@@ -19,7 +19,6 @@ class Team extends Component {
       });
     });
   }
-  //TODO: Fix this function 
   renderTableData = () => {
     let id = 1;
     return this.state.playerList.filter(player => player.TeamName === this.props.location.state.newTeam.ClubName)
