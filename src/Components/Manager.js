@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import Home from './Home';
