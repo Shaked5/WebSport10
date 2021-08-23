@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NavWeb from './Nav';
-import ScrollToTop from './ScrollToTop ';
+import ScrollToTop from './ScrollToTop';
 import { withRouter } from 'react-router-dom';
 import { Card, Button, Modal, Alert } from 'react-bootstrap/';
 import { Cart } from 'react-bootstrap-icons';
